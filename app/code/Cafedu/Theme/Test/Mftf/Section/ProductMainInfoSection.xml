@@ -1,0 +1,21 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="ProductMainInfoSection">
+        <!--    Common elements-->
+        <element name="ProductGallery" type="block" selector=".gallery-placeholder"/>
+        <element name="ProductName" type="text" selector="strong[itemprop='name']"/>
+        <element name="ProductTitle" type="text" selector=".product-title h1"/>
+        <element name="WishlistIcon" type="button" selector="i.fa-heart"/>
+        <!--    Out of stock product's elements-->
+        <element name="OutStockLabel" type="text" selector=".out-stock-notice"/>
+        <!--    Common In stock product's elements-->
+        <element name="AddToBagButton" type="button" selector="#product-addtocart-button"/>
+        <element name="ProductPrice" type="text" selector=".price-box"/>
+        <!--    Configurable In stock product's elements-->
+        <element name="SwatchDropdown" type="block" selector=".swatch-attribute"/>
+    </section>
+</sections>
+
+
+
+

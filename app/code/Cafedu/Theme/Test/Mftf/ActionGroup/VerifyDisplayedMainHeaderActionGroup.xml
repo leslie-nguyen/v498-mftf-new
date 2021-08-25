@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedMainHeaderActionGroup">
+        <annotations>
+            <description>Goes to the Storefront. Validates that current page display main header at the top page</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForStorefrontPageLoad"/>
+<!--        There are already action group to verify visibility of Store switcher, account, wishlist, mini cart icons
+ so there will be no needed to verify in this action group anymore-->
+        <seeElement selector="{{MainHeaderSection.HeaderLogo}}"  stepKey="verifyLogoDisplayed"/>
+        <seeElement selector="{{MainHeaderSection.MenInMainMenu}}"  stepKey="verifyMenCategoryDisplayed"/>
+        <seeElement selector="{{MainHeaderSection.WomenInMainMenu}}"  stepKey="verifyWomenCategoryDisplayed"/>
+        <seeElement selector="{{MainHeaderSection.LaGazetteInMainMenu}}"  stepKey="verifyLaGazetteCategoryDisplayed"/>
+        <seeElement selector="{{MainHeaderSection.NissaInMainMenu}}"  stepKey="verifyNissaCategoryDisplayed"/>
+        <seeElement selector="{{MainHeaderSection.SearchIcon}}"  stepKey="verifySearchIconDisplayed"/>
+    </actionGroup>
+</actionGroups>

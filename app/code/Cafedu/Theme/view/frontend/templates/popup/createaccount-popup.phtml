@@ -1,0 +1,31 @@
+<div id="createacccountPopup" data-bind="scope:'createAccountComponent'" style="display:none;">
+  <!-- ko template: getTemplate() --><!-- /ko -->
+  <script type="text/x-magento-init">
+    {
+      "#createacccountPopup": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "createAccountComponent": {
+                    "component":"Cafedu_Theme/js/create-account",
+                    "actionUrl": "<?= $block->escapeUrl($block->getPostUrl()) ?>",
+                    "newsletter": "<?= $block->isNewsletterEnabled() ?>",
+                    "prefix": "<?= $block->isPrefixEnabled() ?>",
+                    "prefixOptions": <?= json_encode($block->getPrefixOptions()) ?>,
+                    "gender": "<?= $block->isGenderEnabled() ?>",
+                    "declaration": <?= json_encode($block->getDeclaration()) ?>,
+                    "newsheading": "<?= $block->getNewsletterheading() ?>",
+                    "passwordLength": "<?= $block->escapeHtml($block->getMinimumPasswordLength()) ?>",
+                    "passwordPattern": "<?= $block->escapeHtml($block->getRequiredCharacterClassesNumber()) ?>",
+                    "children": {
+                        "messages": {
+                            "component": "Magento_Ui/js/view/messages",
+                            "displayArea": "messages"
+                        }
+                    }
+                }
+            }
+        }
+      }
+    }
+  </script>
+</div>

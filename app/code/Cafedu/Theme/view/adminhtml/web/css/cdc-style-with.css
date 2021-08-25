@@ -1,0 +1,11 @@
+.cdc-theme-settings-field-complex {padding-left:185px;padding-right:45px;}
+.cdc-theme-settings-body {width:100%;padding:5px;min-height:250px;background:#f7f7f7;margin-bottom:10px;overflow:hidden;}
+.cdc-theme-settings-slot {display: inline-block;}
+.cdc-style-with-fieldset {height: 250px;padding: 10px;margin-bottom: 10px;}
+.cdc-style-with-fieldset-remove {color:#ff0000;right: 35px;top: 68px;cursor: pointer;height: 10px;float: right;}
+.cdc-style-with-side-col {width: 28% !important; height: 100%; !important}
+.cdc-style-with-main-col {padding-right: 0;width: 70% !important;height: 100% !important;margin-left: 10px;}
+.cdc-style-with-preview {height: 70%;margin-bottom: 5px;}
+.cdc-style-with-preview img {height: 100%;margin: 0 auto;display: block;}
+.cdc-style-with-uploader {height: 25%;text-align: center;}
+.cdc-style-with-field {height: 42px;margin-bottom: 5px;}

@@ -1,0 +1,87 @@
+<?php
+/** @array \Cafedu\Theme\Block\Switcher getWebsites **/ 
+$_allWebsites = $block->getWebsites();
+$_allStores = [];
+$positionClass = ( $block->getPosition() ) ? '-' . $block->getPosition() : '';
+?>
+
+<div class="shipping-to">
+	<h3><?php echo __('Shipping to') ?>:&nbsp;</h3>
+	<div class="select-fld switcher store switcher-store" id="switcher-store">
+        <div class="actions dropdown options switcher-options">
+            <?php foreach ($_allWebsites as $website): ?>
+                <?php if ($website['wedsite_id'] == $block->getWebsiteId()): ?>
+                    <?php $_allStores = $website['stores']; ?>
+                    <div class="action toggle switcher-trigger"
+                         role="button"
+                         tabindex="0"
+                         data-mage-init='{"dropdown":{}}'
+                         data-toggle="dropdown"
+                         data-trigger-keypress-button="true"
+                         id="switcher-store-trigger">
+                        <strong>
+                            <span><?= __($website['code'], $website['currency_symbol']); ?></span>
+                            <?php echo ' '; ?>
+                        </strong>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <ul class="dropdown switcher-dropdown" data-target="dropdown">
+                <?php foreach ($_allWebsites as $website): ?>
+                <?php if ($website['wedsite_id'] != $block->getWebsiteId()): ?>
+                    <li class="switcher-option">
+                        <a href="<?= $website['webiste_url']; ?>">
+                            <?= __($website['code'], $website['currency_symbol']); ?>
+                        </a>
+                    </li>
+                <?php else : ?>
+                    <li class="switcher-option">
+                        <a>
+                            <?= __($website['code'], $website['currency_symbol']); ?>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+	</div>
+	<?php if($_allStores): ?>
+		<div id="switcher-language" class="select-fld switcher language switcher-language" data-ui-id="language-switcher">
+			<div class="actions dropdown options switcher-options">
+		        <?php foreach ($_allStores as $store): ?>
+		        <?php if ($store['store_id'] == $block->getStoreId()): ?>
+		            <div class="action toggle switcher-trigger"
+		                 role="button"
+		                 tabindex="0"
+		                 data-mage-init='{"dropdown":{}}'
+		                 data-toggle="dropdown"
+		                 data-trigger-keypress-button="true"
+		                 id="switcher-store-trigger">
+		                <strong>
+                            <span><?= $block->escapeHtml($store['store_name']) ?></span>
+                            <?php echo ' '; ?>
+		                </strong>
+		            </div>
+		        <?php endif; ?>
+		        <?php endforeach; ?>
+		        <ul class="dropdown switcher-dropdown" data-target="dropdown">
+		            <?php foreach ($_allStores as $store): ?>
+		            <?php if ($store['store_id'] != $block->getStoreId()): ?>
+		                <li class="switcher-option">
+		                    <a href="<?= $store['store_url'] ?>">
+		                        <?= $block->escapeHtml($store['store_name']) ?>
+		                    </a>
+		                </li>
+                    <?php else : ?>
+                        <li class="switcher-option">
+                            <a>
+                                <?= $block->escapeHtml($store['store_name']) ?>
+                            </a>
+                        </li>
+		            <?php endif; ?>
+		            <?php endforeach; ?>
+		        </ul>
+		    </div>
+		</div>
+	<?php endif; ?>
+</div>

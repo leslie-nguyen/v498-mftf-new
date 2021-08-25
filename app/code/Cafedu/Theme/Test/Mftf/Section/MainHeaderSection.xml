@@ -1,0 +1,11 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="MainHeaderSection">
+        <element name="HeaderLogo" type="block" selector="a.logo"/>
+        <element name="MenInMainMenu" type="block" selector=".navigation a[href*='/mens-cycling-apparel.html']" />
+        <element name="WomenInMainMenu" type="block" selector=".navigation a[href*='/womens-cycling-apparel.html']" />
+        <element name="LaGazetteInMainMenu" type="block" selector=".navigation a[href*='/la-gazette']"/>
+        <element name="NissaInMainMenu" type="block" selector=".navigation a[href*='/nissa.html']"/>
+        <element name="SearchIcon" type="block" selector="a#inner-header-search-popup"/>
+    </section>
+</sections>

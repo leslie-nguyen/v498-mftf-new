@@ -1,0 +1,141 @@
+<div class="admin__field-complex cdc-theme-settings-field-complex" data-index="cdc_style_with_button_set">
+	<div class="admin__field-complex-elements">
+		<button type="button" class="action-basic cdc-style-with" data-index="cdc_style_with_button">
+    		<span data-bind="text: title"><?= __('Manage Style With') ?></span>
+		</button>
+	</div>
+
+    <div class="admin__field-complex-content">
+    	<?= __('Style with section offer customer to get recommended combination for best style. You need to create each slider with image, 4 products and view all looks link.') ?>
+    </div>
+    <!-- CDC Theme Settings - Style With -->
+	<div id="cdc-theme-settings-style-with" class="page-columns cdc-style-with-modal">
+		<div class="main-container">
+			<form id="cdc-style-with-container" class="cdc-theme-settings-body"></form>
+			<div class="footer">
+				<div class="cdc-theme-settings-slot">
+					<button type="button" id="cdc-theme-settings-style-with-add-item" class="style-with-add-item"><?= __('Add') ?></button>
+				</div>
+				<div class="cdc-theme-settings-slot">
+					<button type="button" id="cdc-theme-settings-style-with-confirm" class="style-with-confirm"><?= __('Done') ?></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	require([ 
+	  'jquery', 
+	  'Magento_Ui/js/modal/modal'
+	], function($,modal) {
+		/** style_with - hide **/
+		$('div[data-index="style_with"]').hide();
+
+		/** Item Remove **/
+		var cdcItemRemove = function(event) {
+			var setIdentity = jQuery(this).data('fieldset');
+			jQuery("#cdc-style-with-fieldset-"+setIdentity).remove();
+		}
+
+		/** Image Uploader **/
+		var cdcImageUploader = function(event) {
+		    var field_id = this.id;
+		    var path_id = field_id + "-path";
+
+		    var file_data = $("#"+field_id).prop("files")[0];
+		    var form_data = new FormData();
+		    form_data.append("panel_image", file_data);
+		    form_data.append("form_key", FORM_KEY);
+		    jQuery("#"+field_id+"-response").remove();
+		    jQuery.ajax({
+		      showLoader: true,
+		      url: '<?= $block->getUploaderUrl() ?>',
+		      data: form_data,
+		      type: "POST",
+		      cache: false,
+		      contentType: false,
+		      processData: false
+		    }).success(function (data) {
+		      if( data == 'error' ) {
+		        jQuery("#"+field_id).after('<label class="mage-error" id="'+field_id+'-response"><?= __("Unsupported file type found.") ?></label>');
+		      } else {
+		        var file_path = "<?= $block->getImageUrl() ?>" + data;
+		        var imageHolder = '<img alt="Preview" src="'+file_path+'">';
+		        jQuery("#"+field_id+"-preview").append(imageHolder);
+		        jQuery("#"+path_id).val(data);
+		        jQuery("#"+field_id).after('<label class="mage-success" id="'+field_id+'-response">Image successfully uploaded.</label>');
+		        setTimeout(function(){
+		          jQuery("#"+field_id+"-response").remove();
+		        }, 3000);
+		      }
+		    }).error(function (data) {
+		      jQuery("#"+field_id).after('<label class="mage-error" id="'+field_id+'-response"><?= __("Unable to upload your image.") ?></label>');
+		    });
+		}
+
+		/** prepare modal **/
+		var options = {
+			type: 'slide',
+			responsive: true,
+			innerScroll: false,
+			title: 'Style With',
+			buttons: false
+		};
+		var popup = modal(options, $('#cdc-theme-settings-style-with'));
+
+		$('.cdc-style-with').on("click", function(){
+			var style_with = $('div[data-index="style_with"]').find('textarea').val();
+			jQuery.ajax({
+		      showLoader: true,
+		      url: '<?= $block->getProcessUrl() ?>',
+		      data: 'style_with='+style_with,
+		      type: "GET",
+		      cache: false,
+		      contentType: false,
+		      processData: false
+		    }).success(function (data) {
+		    	$('#cdc-style-with-container').empty();
+		    	$('#cdc-style-with-container').append(data);
+        		$(".cdc-style-with-fieldset-remove").bind( "click", cdcItemRemove );
+        		$(".cdc-style-with-uploader-field").bind( "change", cdcImageUploader );
+		    	$('#cdc-theme-settings-style-with').modal('openModal');
+		    });
+		});
+
+		$('#cdc-theme-settings-style-with-add-item').on("click", function(){
+			var item_counter = jQuery("#cdc-style-with-container div.cdc-style-with-fieldset").length;
+			jQuery.ajax({
+		      showLoader: true,
+		      url: '<?= $block->getProcessUrl() ?>',
+		      data: 'action=add&item_counter='+item_counter,
+		      type: "GET",
+		      cache: false,
+		      contentType: false,
+		      processData: false
+		    }).success(function (data) {
+		    	$('#cdc-style-with-container').append(data);
+		    	$(".cdc-style-with-fieldset-remove").unbind( "click", cdcItemRemove );
+		    	$(".cdc-style-with-uploader-field").unbind( "change", cdcImageUploader );
+        		$(".cdc-style-with-fieldset-remove").bind( "click", cdcItemRemove );
+        		$(".cdc-style-with-uploader-field").bind( "change", cdcImageUploader );
+		    });
+		});
+
+		$('#cdc-theme-settings-style-with-confirm').on("click", function(){
+			var item_data = jQuery("form#cdc-style-with-container").serialize();
+			jQuery.ajax({
+		      showLoader: true,
+		      url: '<?= $block->getProcessUrl() ?>',
+		      data: 'action=process&'+item_data,
+		      type: "GET",
+		      cache: false,
+		      contentType: false,
+		      processData: false
+		    }).success(function (data) {
+		    	$('div[data-index="style_with"]').find('textarea').val(data);
+		    	$('div[data-index="style_with"]').find('textarea').trigger("change");
+		    	$('#cdc-theme-settings-style-with').modal('closeModal');
+		    });
+		});
+	});
+</script>

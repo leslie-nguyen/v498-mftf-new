@@ -1,0 +1,14 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="CateListingPageProductListSection">
+        <element name="ProductList" type="block" selector=".cdc-listing-container"/>
+        <!--    Verify first item displayed: image, item name, description, color and price -->
+        <element name="FirstProductImage" type="block" selector="(//div[@class='product-photo-wrapper desktop'])[1]"/>
+        <element name="FirstProductName" type="text" selector="(//a[@class='product-item-link'])[1]"/>
+        <element name="FirstProductDescription" type="text" selector="(//div[@class='description'])[1]"/>
+        <element name="FirstProductColor" type="text" selector="(//div[@class='product-color'])[1]"/>
+        <element name="FirstProductPrice" type="text" selector="(//span[@class='price-wrapper '])[1]"/>
+    </section>
+</sections>
+
+

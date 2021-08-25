@@ -1,0 +1,10 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="BannerSection">
+        <element name="BannerImage" type="block" selector=".banner-wrapper"/>
+        <element name="HomeMenuCategories" type="block" selector=".home-category"/>
+        <element name="Logo" type="block" selector=".home-logo"/>
+        <element name="SearchBox" type="input" selector=".search-box #search"/>
+        <element name="SearchIcon" type="button" selector=".search-submit"/>
+    </section>
+</sections>

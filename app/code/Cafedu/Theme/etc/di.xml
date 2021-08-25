@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Cafedu\Theme\CategoryBannerUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">catalog/tmp/category</argument>
+            <argument name="basePath" xsi:type="string">catalog/category</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+	<type name="Cafedu\Theme\Controller\Adminhtml\Category\Banner\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Cafedu\Theme\CategoryBannerUpload</argument>
+        </arguments>
+    </type>
+    <virtualType name="Cafedu\Theme\Category\ImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">catalog/tmp/category</argument>
+            <argument name="basePath" xsi:type="string">catalog/category</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Cafedu\Theme\Model\Category\Attribute\Backend\Image">
+        <arguments>
+            <argument name="uploader" xsi:type="object">Cafedu\Theme\Category\ImageUpload</argument>
+        </arguments>
+    </type>
+
+	<type name="Cafedu\Theme\Controller\Adminhtml\Category\Image\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Cafedu\Theme\Category\ImageUpload</argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Catalog\Model\Category\DataProvider" type="Cafedu\Theme\Model\Category\DataProvider" />
+    <preference for="Magento\Newsletter\Block\Subscribe" type="Cafedu\Theme\Block\Newsletter" />
+    <preference for="Magento\Newsletter\Controller\Subscriber\NewAction" type="Cafedu\Theme\Controller\Subscriber\NewAction" />
+    <preference for="Magento\Newsletter\Model\Subscriber" type="Cafedu\Theme\Model\Subscriber" />
+    <preference for="Magento\Theme\Block\Html\Topmenu" type="Cafedu\Theme\Block\Html\Topmenu" />
+    <preference for="Webkul\UvDeskConnector\Helper\Tickets" type="Cafedu\Theme\Helper\Tickets" />
+	<preference for="Magento\Catalog\Model\Product\Image" type="Cafedu\Theme\Model\Product\Image" />
+	<preference for="Magento\Store\Model\StoreResolver" type="Cafedu\Theme\Model\StoreResolver" />
+</config>

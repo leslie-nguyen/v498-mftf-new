@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <entity name="QuickGoThroughData" type="url">
+        <data key="homeUrl">/en_row/</data>
+        <data key="cateLandingUrl">/en_row/mens-cycling-apparel.html</data>
+        <data key="cateListingUrl">/en_row/mens-cycling-jerseys.html</data>
+        <data key="shopTheLookUrl">/en_row/mens-ss21-collection-shop-the-look.html</data>
+        <data key="lookDetailUrl">/en_row/mens-ss21-collection-shop-the-look-floriane-petunia-marinette-navy.html</data>
+        <data key="pdpUrl">/men-cycling-jersey-floriane-petunia.html</data>
+        <data key="laGazetteListUrl">/en_row/la-gazette/</data>
+        <data key="laGazettePostUrl">/en_row/la-gazette/a-coastal-classico/</data>
+        <data key="shopPageUrl">/en_row/shops</data>
+        <data key="cmsUrl">/en_row/orders-returns</data>
+        <data key="notFoundUrl">https://dev.cafeducycliste.com/en_row/aaaaaaaaaa</data>
+        <data key="loginUrl">/en_row/customer/account/login</data>
+        <data key="robotTxtUrl">https://dev.cafeducycliste.com/en_row/robots.txt</data>
+    </entity>
+    <entity name="storeCode" type="text">
+        <data key="fr_fr">fr_fr</data>
+        <data key="en_fr">/en_fr/</data>
+        <data key="de_de">/de_de/</data>
+        <data key="en_de">/en_de/</data>
+        <data key="en_uk">/en_uk/</data>
+        <data key="fr_uk">/fr_uk/</data>
+        <data key="en_us">/en_us/</data>
+        <data key="fr_us">/fr_us/</data>
+        <data key="en_ca">/en_ca/</data>
+        <data key="fr_ca">/fr_ca/</data>
+        <data key="en_au">/en_au/</data>
+        <data key="fr_au">/fr_au/</data>
+        <data key="jp_ja">/jp_ja/</data>
+        <data key="en_ja">/en_ja/</data>
+        <data key="en_row">/en_row/</data>
+        <data key="fr_row">/fr_row/</data>
+        <data key="en_roe">/en_roe/</data>
+        <data key="fr_roe">/fr_roe/</data>
+    </entity>
+</entities>
+

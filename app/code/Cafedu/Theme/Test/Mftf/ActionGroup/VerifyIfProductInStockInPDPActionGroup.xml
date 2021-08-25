@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyIfProductInStockInPDPActionGroup">
+        <annotations>
+            <description>Verify if current product page displayed in stock products elements</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <seeElement selector="{{ProductMainInfoSection.AddToBagButton}}" stepKey="verifyAddToBagButtonDisplayed"/>
+        <seeElement selector="{{ProductMainInfoSection.ProductPrice}}" stepKey="verifyProductPriceDisplayed"/>
+        <dontSeeElement selector="{{ProductMainInfoSection.OutStockLabel}}" stepKey="verifyOutStockLabelNotDisplayed" />
+    </actionGroup>
+</actionGroups>

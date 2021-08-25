@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="NotFoundPageTest">
+        <annotations>
+            <features value="Check display 404 Not Found page"/>
+            <stories value="Check display 404 Not Found page"/>
+            <description value="Check display 404 Not Found page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-NOTFOUND01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+        <!--        Access 404 Not Found page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnUrl url="{{QuickGoThroughData.notFoundUrl}}" stepKey="amOnNotFoundPage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <!--        Verify Content page displayed-->
+        <seeElement selector=".std" stepKey="verifyMainContentBlockDisplayed"/>
+        <makeScreenshot userInput="NotFoundPageScreenshot" stepKey="screenshotNotFoundPage"/>
+    </test>
+</tests>

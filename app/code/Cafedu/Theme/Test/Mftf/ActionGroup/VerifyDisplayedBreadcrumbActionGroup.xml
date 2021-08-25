@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedBreadcrumbActionGroup">
+        <annotations>
+            <description>Verify breadcrumb displayed (breadcrumb selector is the same on most of the pages)</description>
+        </annotations>
+        <seeElement selector=".breadcrumbs ul" stepKey="verifyBreadcrumbDisplayed"/>
+    </actionGroup>
+</actionGroups>

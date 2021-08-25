@@ -1,0 +1,36 @@
+<?php /** getSocialLinks **/ $_SocialLinks = $block->getSocialLinks(); ?>
+<div class="social-icons">
+	<h3><?php echo __('follow café du cycliste') ?></h3>
+	<ul>
+		<?php if( $_SocialLinks['facebook']['link'] ) : ?>
+			<li class="facebook"><a 
+				href="<?php echo $_SocialLinks['facebook']['link'] ?>"
+				title="<?php echo $_SocialLinks['facebook']['name'] ?>"
+				target="_blank" ><?php echo __('Facebook') ?></a></li>
+		<?php endif; ?>
+		<?php if( $_SocialLinks['twitter']['link'] ) : ?>
+			<li class="twitter"><a 
+				href="<?php echo $_SocialLinks['twitter']['link'] ?>"
+				title="<?php echo $_SocialLinks['twitter']['name'] ?>"
+				target="_blank" ><?php echo __('Twitter') ?></a></li>
+		<?php endif; ?>
+		<?php if( $_SocialLinks['instagram']['link'] ) : ?>
+			<li class="instagram"><a 
+				href="<?php echo $_SocialLinks['instagram']['link'] ?>"
+				title="<?php echo $_SocialLinks['instagram']['name'] ?>"
+				target="_blank" ><?php echo __('Instagram') ?></a></li>
+		<?php endif; ?>
+		<?php if( $_SocialLinks['pinterest']['link'] ) : ?>
+			<li class="pinterest"><a 
+				href="<?php echo $_SocialLinks['pinterest']['link'] ?>"
+				title="<?php echo $_SocialLinks['pinterest']['name'] ?>"
+				target="_blank" ><?php echo __('Pinterest') ?></a></li>
+		<?php endif; ?>
+		<?php if( $_SocialLinks['strava']['link'] ) : ?>
+			<li class="strava"><a 
+				href="<?php echo $_SocialLinks['strava']['link'] ?>"
+				title="<?php echo $_SocialLinks['strava']['name'] ?>"
+				target="_blank" ><?php echo __('Strava') ?></a></li>
+		<?php endif; ?>
+	</ul>
+</div>

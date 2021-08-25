@@ -1,0 +1,176 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+
+/**
+ *  General template for displaying group of blocks devided into sections
+ */
+
+$group = $block->getGroupName();
+$groupCss = $block->getGroupCss();
+$groupBehavior = $block->getGroupBehaviour() ? $block->getGroupBehaviour() : '{"tabs":{"openedState":"active"}}';
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames($group, 'getChildHtml')): ?>
+
+    <div class="sections <?= /* @escapeNotVerified */ $groupCss ?>">
+        <?php $layout = $block->getLayout(); ?>
+        <!-- Home/search Section Start -->
+        <div class="side-homelinks">
+            <a href="<?=  $this->getUrl('') ?>"><?=  __('Home') ?></a>
+            <a href="javascript:void(0);" class="mobile-search-icon">Search</a>
+        </div>
+        <!-- Home/search Section End -->
+        <div class="section-items <?= /* @escapeNotVerified */ $groupCss ?>-items" data-mage-init='<?= /* @escapeNotVerified */ $groupBehavior ?>'>
+            <?php foreach ($detailedInfoGroup as $name): ?>
+                <?php
+                $html = $layout->renderElement($name);
+                if (!trim($html) && ($block->getUseForce() != true)) {
+                    continue;
+                }
+                $alias = $layout->getElementAlias($name);
+                $label = $block->getChildData($alias, 'title');
+                ?>
+                <div class="section-item-title <?= /* @escapeNotVerified */ $groupCss ?>-item-title" data-role="collapsible">
+                    <a class="<?= /* @escapeNotVerified */ $groupCss ?>-item-switch" data-toggle="switch" href="#<?= /* @escapeNotVerified */ $alias ?>">
+                        <?= /* @escapeNotVerified */ $label ?>
+                    </a>
+                </div>
+                <div class="section-item-content <?= /* @escapeNotVerified */ $groupCss ?>-item-content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                    <?= /* @escapeNotVerified */ $html ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <!-- Account Section Start -->
+        <div class="side-otherlinks account-links">
+            <h3><?=  __('Account') ?></h3>
+            <ul>
+                <!--<li><a href="#"><?=  __('Log-IN / Create Account') ?></a></li>-->
+                <li>
+                    <?php
+                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                    $customerSession = $objectManager->create('Magento\Customer\Model\Session');
+                    if ($customerSession->isLoggedIn()) :
+                        ?>
+
+                        <a href="javascript:void(0);" class="cdc-customer-logout">
+                            <?=  __('Sign Out') ?>
+                        </a>
+                    <?php else: ?>
+                        <a class="trigger-auth-popup" href="javascript:void(0);"><?=  __('Log-IN / Create Account') ?></a>
+                    <?php
+                    endif;
+                    ?>
+                </li>
+                <!--<li><a href="#"><?=  __('Shopping Bag') ?></a></li>-->
+                <li>
+                    <a class="action showcart mobileshowcart" href="<?= /* @escapeNotVerified */ $block->getShoppingCartUrl(); ?>"
+                       data-bind="scope: 'minicart_content'"  id="cafedu-minicart-overlay">
+                        <?=  __('Shopping Bag') ?>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=  $this->getUrl('wishlist') ?>">
+                        <?= __('Favorites') ?>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Account Section End -->
+        <!-- Customer Service Section Start -->
+        <div class="side-otherlinks service-links">
+            <h3><?=  __('Customer Service') ?></h3>
+            <ul>
+                <li>
+                    <a href="#"><?=  __('Contact Us') ?></a>
+                </li>
+                <!--<li><a href="<?=  $this->getUrl('contact') ?>"><?=  __('Contact Us') ?></a></li>-->
+            </ul>
+        </div>
+        <!-- Customer Service Section End -->
+        <!-- Shipping To Section Start -->
+        <?php
+        $blockObj = $block->getLayout()->createBlock('Cafedu\Theme\Block\Switcher');
+        $_allWebsites = $blockObj->getWebsites();
+        $positionClass = ($block->getPosition()) ? '-' . $block->getPosition() : '';
+        ?>
+
+        <div class="shipping-to">
+            <h3><?= __('Shipping to') ?>:</h3>
+            <div class="select-fld">
+                <select name="cafedu-shipping-to-list"
+                        class="cafedu-shipping-to-list<?= $positionClass; ?>"
+                        onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+                    <?php
+                    foreach ($_allWebsites as $website) {
+                        ?>
+                        <?php
+                        if ($website['wedsite_id'] == $blockObj->getWebsiteId()) {
+                            $_selected = 'selected = "selected"';
+                            $_allStores = $website['stores'];
+                        } else {
+                            $_selected = '';
+                        }
+                        ?>
+
+                        <option value="<?=  $website['webiste_url']; ?>" <?=  $_selected; ?>>
+                            <?=  $website['webiste_name'] . ' (' . $website['currency_symbol'] . ')'; ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            </div>
+            <?php if (is_array($_allStores)): ?>
+                <div class="select-fld language">
+                    <select name="cafedu-store-language" class="cafedu-store-language<?=  $positionClass; ?>"
+                            onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+                        <?php foreach ($_allStores as $store): ?>
+                            <?php
+                            if ($store['store_id'] == $blockObj->getStoreId()) {
+                                $_selected = 'selected = "selected"';
+                            } else {
+                                $_selected = '';
+                            }
+                            ?>
+                            <option value="<?= $store['store_url']; ?>" <?= $_selected; ?>>
+                                <?= $store['store_name']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            <?php endif; ?>
+        </div>
+        <script>
+            require(['jquery', 'formCustom'], function ($) {
+            });
+        </script>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "fancyfieldsA": {
+                    "elementObject": {
+                      "0": {
+                          "elm": ".cafedu-shipping-to-list<?php echo $positionClass; ?>
+                , .cafedu-store-language<?php echo $positionClass; ?>",
+                          "byClass": "",
+                          "onSelectChange": true,
+                          "onCheckboxChange": false
+                        }
+                    }
+                },
+                "showPopup": {}
+            },
+            ".page-header": {
+                 "scrollSticky": {}
+            }
+        }
+        </script>
+        <!-- Shipping To Section End -->
+
+    </div>
+<?php endif; ?>

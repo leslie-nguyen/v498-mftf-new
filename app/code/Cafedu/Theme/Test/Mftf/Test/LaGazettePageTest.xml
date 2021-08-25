@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="LaGazettePageTest">
+        <annotations>
+            <features value="Check display La Gazette page"/>
+            <stories value="Check display La Gazette page"/>
+            <description value="Check display La Gazette page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-LAGAZETTE01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+        <!--        Access La Gazette page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnPage url="{{QuickGoThroughData.laGazetteListUrl}}" stepKey="amOnLaGazettePage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <!--        Verify header displayed-->
+        <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
+        <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />
+        <actionGroup ref="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup" stepKey="verifyWishlistAccountMiniCartIconsDisplayed" />
+        <!--        Verify if La Gazette menu, blog list and Load more button are displayed-->
+        <seeElement selector="{{LaGazetteMenuSection.LaGazetteMenu}}" stepKey="verifyLaGazetteMenuDisplayed"/>
+        <seeElement selector="{{LaGazetteBlogListSection.BlogList}}" stepKey="verifyBlogListDisplayed"/>
+        <seeElement selector="{{LaGazetteBlogListSection.LoadMoreButton}}" stepKey="verifyLoadMoreButtonDisplayed"/>
+        <makeScreenshot userInput="LaGazettePageScreenshot" stepKey="screenshotLaGazettePage"/>
+        <!--        Verify footer displayed-->
+        <actionGroup ref="VerifyDisplayedMainFooterActionGroup" stepKey="verifyMainFooterDisplayed"/>
+        <!--        Verify sticky header displayed-->
+        <actionGroup ref="VerifyDisplayedStickyHeaderActionGroup" stepKey="verifyStickyHeaderDisplayed"/>
+    </test>
+</tests>

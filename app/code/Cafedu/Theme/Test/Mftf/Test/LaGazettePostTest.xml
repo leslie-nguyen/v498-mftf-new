@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="LaGazettePostTest">
+        <annotations>
+            <features value="Check display La Gazette Post page"/>
+            <stories value="Check display La Gazette Post page"/>
+            <description value="Check display La Gazette Post page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-LAGAZETTEPOST01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+        <!--        Access La Gazette Post page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnPage url="{{QuickGoThroughData.laGazettePostUrl}}" stepKey="amOnLaGazettePostPage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <!--        Verify header displayed-->
+        <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
+        <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />
+        <actionGroup ref="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup" stepKey="verifyWishlistAccountMiniCartIconsDisplayed" />
+        <!--        Verify if La Gazette menu, post content and blog pagination are displayed-->
+        <seeElement selector="{{LaGazetteMenuSection.LaGazetteMenu}}" stepKey="verifyLaGazetteMenuDisplayed"/>
+        <makeScreenshot userInput="LaGazettePostTopPageScreenshot" stepKey="screenshotLaGazettePostTopPage"/>
+        <actionGroup ref="VerifyDisplayedLaGazettePostContentActionGroup" stepKey="verifyLaGazettePostContentDisplayed"/>
+        <makeScreenshot userInput="LaGazettePostBottomScreenshot" stepKey="screenshotLaGazettePostBottom"/>
+        <!--        Verify footer displayed-->
+        <actionGroup ref="VerifyDisplayedMainFooterActionGroup" stepKey="verifyMainFooterDisplayed"/>
+        <!--        Verify sticky header displayed-->
+        <actionGroup ref="VerifyDisplayedStickyHeaderActionGroup" stepKey="verifyStickyHeaderDisplayed"/>
+    </test>
+</tests>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup">
+        <annotations>
+            <description>Verify if Wishlist icon, Account icon and Mini cart icon are displayed</description>
+        </annotations>
+        <seeElement selector="{{WishlistAccountCartIconsSection.WishlistIcon}}" stepKey="verifyWishlistIconDisplayed"/>
+        <seeElement selector="{{WishlistAccountCartIconsSection.AccountIcon}}" stepKey="verifyAccountIconDisplayed"/>
+        <seeElement selector="{{WishlistAccountCartIconsSection.MiniCartIcon}}" stepKey="verifyMiniCartIconDisplayed"/>
+    </actionGroup>
+</actionGroups>

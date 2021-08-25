@@ -1,0 +1,8 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="ShopTheLookBannerSection">
+        <element name="Banner" type="block" selector="#look-banner"/>
+        <element name="Title" type="text" selector="h1.title"/>
+        <element name="Description" type="text" selector=".category-description"/>
+    </section>
+</sections>

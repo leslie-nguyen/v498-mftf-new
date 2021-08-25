@@ -1,0 +1,81 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Cafedu\Theme\Block\Newsletter $block */
+?>
+<?php $bssGeoIPHelper = $this->helper(\Bss\GeoIPAutoSwitchStore\Helper\Data::class); ?>
+<form
+    novalidate
+    action="<?= $block->escapeUrl($block->getFormActionUrl()) ?>"
+    method="post"
+    id="newsletter-validate-detail<?= $block->getFormId() ?>">
+    <input 
+        class="newsletter-email"
+        name="email" 
+        type="text"
+        placeholder="<?php /* @escapeNotVerified */ echo __('Enter your email address') ?>"
+        data-validate="{required:true, 'validate-email':true}" />
+    <input type="hidden" name="ometria_form" value="<?= $block->getData('ometria_form_id') ?>"/>
+    <input type="hidden" name="ometria_account" value="<?= $block->getData('ometria_account') ?>"/>
+    <div class="bottom-option">
+        <div class="country-select">
+            <?php $countryList = $block->getCountryCollection() ?>
+            <?php $countryCode = $bssGeoIPHelper->getCountryCodeFromIp() ?>
+            <label><?php echo __('Country') ?></label>
+            <select class="newsletter_country" name="country" data-validate="{required:true}" >
+                
+            </select>
+        </div>
+        <div class="gender-select">
+            <div class="radio-column">
+                <input type="radio" name="gender" value="M" data-validate="{'validate-one-required-by-name':true}" checked="checked" class="newsletter_gender">
+                <span><?= __('Male') ?></span>
+            </div>
+            <div class="radio-column">
+                <input type="radio" name="gender" value="F" data-validate="{'validate-one-required-by-name':true}" class="newsletter_gender">
+                <span><?= __('Female') ?></span>
+            </div>
+        </div>
+        <button type="submit" class="action-black subscribe submit-btn" value=""><?= __('Submit') ?></button>
+        <div class="note"><p>
+            <?= __('Your personal data will be used by Café du Cycliste to provide the Newsletter service expressly requested by you. Please consult the Privacy Information Notice for further information.') ?></p>
+        </div>
+    </div>
+</form>
+<script type="text/x-magento-init">
+    {
+        "#newsletter-validate-detail<?= $block->getFormId() ?>": {
+            "validation": {
+                "errorClass": "mage-error"
+            },
+            "fancyfieldsA": {
+                <?php if(empty($block->getFormId())) : ?>
+                    "delayElementClick": "#newsletter-validate-detail .newsletter-email",
+                <?php else : ?>
+                    "delayElementClick": false,
+                <?php endif; ?>
+                "elementObject": {
+                    "0": {
+                        "elm": "#newsletter-validate-detail<?= $block->getFormId() ?> .newsletter_country",
+                        "byClass": "",
+                        "onSelectChange": false,
+                        "onCheckboxChange": false,
+                        "optionsData": <?php echo json_encode($countryList); ?>,
+                        "optionSelect": "<?php echo $countryCode; ?>"
+                    },
+                    "1": {
+                        "elm": "#newsletter-validate-detail<?= $block->getFormId() ?> .gender-select input",
+                        "byClass": "",
+                        "onSelectChange": false,
+                        "onCheckboxChange": true
+                    }
+                }
+            }
+        }
+    }
+</script>

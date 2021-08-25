@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="CateLandingPageTest">
+        <annotations>
+            <features value="Check display category landing page"/>
+            <stories value="Check display category landing page"/>
+            <description value="Check display category landing page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-CATE01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+<!--        Access Category landing page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnPage url="{{QuickGoThroughData.cateLandingUrl}}" stepKey="amOnCategoryLandingPage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+<!--        Verify header displayed-->
+        <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
+        <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />
+        <actionGroup ref="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup" stepKey="verifyWishlistAccountMiniCartIconsDisplayed" />
+<!--        Verify banner and banner text  content Category landing page-->
+        <seeElement selector="{{CateLandingPageBannerSection.CateLandingBanner}}" stepKey="verifyBannerDisplayed"/>
+        <seeElement selector="{{CateLandingPageBannerSection.CateLandingBannerText}}" stepKey="verifyBannerTextDisplayed"/>
+        <makeScreenshot userInput="CateLandingPageHeaderAndBannerScreenshot" stepKey="screenshotCateLandingPageHeaderAndBanner"/>
+        <actionGroup ref="VerifyDisplayedBreadcrumbActionGroup" stepKey="verifyBreadcrumbDisplayed"/>
+        <scrollTo selector=".breadcrumbs ul" stepKey="scrollToBreadcrumb"/>
+<!--        Verify main content Category landing page-->
+        <seeElement selector="{{CateLandingPageMainContentSection.CateLandingMainContent}}" stepKey="verifyMainContentBlockDisplayed"/>
+        <waitForAjaxLoad stepKey="waitForAjaxLoad"/>
+        <makeScreenshot userInput="CateLandingPageMainContentScreenshot" stepKey="screenshotCateLandingPageMainContent"/>
+<!--        Verify footer displayed-->
+        <actionGroup ref="VerifyDisplayedMainFooterActionGroup" stepKey="verifyMainFooterDisplayed"/>
+<!--        Verify sticky header displayed-->
+        <actionGroup ref="VerifyDisplayedStickyHeaderActionGroup" stepKey="verifyStickyHeaderDisplayed"/>
+    </test>
+</tests>

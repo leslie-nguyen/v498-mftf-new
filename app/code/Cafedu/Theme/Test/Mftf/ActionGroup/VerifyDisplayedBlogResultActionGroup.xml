@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedBlogResultActionGroup">
+        <annotations>
+            <description>Verify display Blog search result in Search page</description>
+        </annotations>
+        <scrollToTopOfPage stepKey="scrollToTopOfPages"/>
+        <seeElement selector="{{BlogResultSection.BlogTab}}" stepKey="verifyBlogTabDisplayed"/>
+        <click selector="{{BlogResultSection.BlogTab}}" stepKey="clickBlogTab"/>
+        <waitForAjaxLoad stepKey="waitForAjaxLoad"/>
+        <makeScreenshot userInput="SearchPageBlogResultScreenshot" stepKey="screenshotBlogResultInSearchPage"/>
+        <seeElement selector="{{BlogResultSection.BlogList}}" stepKey="verifyBlogListDisplayed"/>
+        <scrollTo selector="{{BlogResultSection.TotalResultItems}}" stepKey="scrollTotalResultBlog"/>
+        <seeElement selector="{{BlogResultSection.TotalResultItems}}" stepKey="verifyTotalResultBlogDisplayed"/>
+    </actionGroup>
+</actionGroups>

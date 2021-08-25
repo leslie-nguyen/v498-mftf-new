@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <entity name="StorecodeData" type="text">
+        <data key="fr_fr">fr_fr</data>
+        <data key="en_fr">/en_fr/</data>
+        <data key="de_de">/de_de/</data>
+        <data key="en_de">/en_de/</data>
+        <data key="en_uk">/en_uk/</data>
+        <data key="fr_uk">/fr_uk/</data>
+        <data key="en_us">/en_us/</data>
+        <data key="fr_us">/fr_us/</data>
+        <data key="en_ca">/en_ca/</data>
+        <data key="fr_ca">/fr_ca/</data>
+        <data key="en_au">/en_au/</data>
+        <data key="fr_au">/fr_au/</data>
+        <data key="jp_ja">/jp_ja/</data>
+        <data key="en_ja">/en_ja/</data>
+        <data key="en_row">/en_row/</data>
+        <data key="fr_row">/fr_row/</data>
+        <data key="en_roe">/en_roe/</data>
+        <data key="fr_roe">/fr_roe/</data>
+    </entity>
+</entities>
+

@@ -1,0 +1,18 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="ProductTabsSection">
+        <element name="ProductTabsContainer" type="block" selector=".information-tabs-container"/>
+<!--        Product Details tab-->
+        <element name="ProductDetailsTab" type="block" selector="div[data-info='details']"/>
+        <element name="ProductDetailsContent" type="block" selector=".information-content.details"/>
+<!--        Product Delivery Info Tab-->
+        <element name="ProductDeliveryInfoTab" type="block" selector="div[data-info='delivery']"/>
+        <element name="ProductDeliveryInfoContent" type="block" selector=".information-content.delivery"/>
+<!--        Size help tab-->
+        <element name="SizeHelpTab" type="block" selector="div[data-info='size-guide']"/>
+        <element name="SizeHelpContent" type="block" selector=".information-content.size-guide"/>
+<!--        Care Instructions tab-->
+        <element name="CareInstructionsTab" type="block" selector="div[data-info='care-instructions']"/>
+        <element name="CareInstructionsContent" type="block" selector=".information-content.care-instructions"/>
+    </section>
+</sections>

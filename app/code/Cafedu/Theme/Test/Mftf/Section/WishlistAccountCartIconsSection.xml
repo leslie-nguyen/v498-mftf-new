@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="WishlistAccountCartIconsSection">
+        <element name="WishlistIcon" type="button" selector="a.trigger-auth-wishlist-popup"/>
+        <element name="AccountIcon" type="button" selector="a.trigger-auth-popup"/>
+        <element name="MiniCartIcon" type="button" selector="a#cafedu-minicart-overlay"/>
+    </section>
+</sections>

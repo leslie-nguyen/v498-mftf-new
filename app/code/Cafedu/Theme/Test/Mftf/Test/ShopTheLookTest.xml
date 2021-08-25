@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="ShopTheLookTest">
+        <annotations>
+            <features value="Check display Shop the look page"/>
+            <stories value="Check display Shop the look page"/>
+            <description value="Check display Shop the look page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-SHOPTHELOOK01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+<!--        Access Shop the look page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnPage url="{{QuickGoThroughData.shopTheLookUrl}}" stepKey="amOnShopTheLookPage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+<!--        On dev env, there is an issue with lazy load: after page load it required to scroll page to show page content , but these can be removed in live env-->
+        <scrollTo selector="{{MainFooterSection.FooterBlock}}" stepKey="scrollToBottom"/>
+        <scrollToTopOfPage stepKey="scrollToTop"/>
+<!--        Verify header displayed-->
+        <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
+        <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />
+        <actionGroup ref="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup" stepKey="verifyWishlistAccountMiniCartIconsDisplayed" />
+<!--        Verify if banner, title, description  are displayed-->
+        <seeElement selector="{{ShopTheLookBannerSection.Banner}}" stepKey="verifyBannerDisplayed"/>
+        <seeElement selector="{{ShopTheLookBannerSection.Title}}" stepKey="verifyTitleDisplayed"/>
+        <seeElement selector="{{ShopTheLookBannerSection.Description}}" stepKey="verifyDescriptionDisplayed"/>
+<!--        Verify if look listing displayed and first look contains image, Get the look button-->
+        <scrollTo selector="{{ShopTheLookBannerSection.Description}}" stepKey="scrollDownToLookListing"/>
+        <seeElement selector="{{ShopTheLookListingSection.LookListing}}" stepKey="verifyLookListingDisplayed"/>
+        <seeElement selector="{{ShopTheLookListingSection.LookImage}}" stepKey="verifyLookImageDisplayed"/>
+        <moveMouseOver selector="{{ShopTheLookListingSection.LookImage}}" stepKey="hoverOverFirstLook"/>
+        <seeElement selector="{{ShopTheLookListingSection.GetTheLookButton}}" stepKey="verifyGetTheLookButtonDisplayed"/>
+        <makeScreenshot userInput="ShopTheLookScreenshot" stepKey="screenshotShopTheLookPage"/>
+<!--        Verify footer displayed-->
+        <actionGroup ref="VerifyDisplayedMainFooterActionGroup" stepKey="verifyMainFooterDisplayed"/>
+<!--        Verify sticky header displayed-->
+        <actionGroup ref="VerifyDisplayedStickyHeaderActionGroup" stepKey="verifyStickyHeaderDisplayed"/>
+    </test>
+</tests>

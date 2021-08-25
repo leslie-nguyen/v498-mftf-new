@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page_layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/PageLayout/etc/layouts.xsd">
+  <layout id="1column-fullwidth">
+    <label translate="true">1 Column - Fullwidth</label>
+  </layout>
+  <layout id="category">
+    <label translate="true">Category Page</label>
+  </layout>
+  <layout id="category-listing">
+    <label translate="true">Category Listing</label>
+  </layout>
+  <layout id="category-sales">
+    <label translate="true">Category Sales</label>
+  </layout>
+  <layout id="size-guide">
+    <label translate="true">Size Guide</label>
+  </layout>
+</page_layouts>

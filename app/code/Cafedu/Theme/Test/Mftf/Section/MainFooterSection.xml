@@ -1,0 +1,12 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="MainFooterSection">
+        <element name="FooterBlock" type="block" selector="footer.inner-footer"/>
+        <element name="NewsletterBlock" type="block" selector=".footer-top-row div.newsletter"/>
+        <element name="SocialIcons" type="block" selector=".social-icons" />
+        <element name="ServiceBlock" type="block" selector="(//div[@class='footer-cloumn'])[1]" />
+        <element name="ContactUsBlock" type="block" selector="(//div[@class='footer-cloumn'])[2]"/>
+        <element name="ShopsBlock" type="block" selector="(//div[@class='footer-cloumn'])[3]"/>
+        <element name="CopyrightText" type="block" selector=".copyright"/>
+    </section>
+</sections>

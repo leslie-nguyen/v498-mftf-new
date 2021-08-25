@@ -1,0 +1,8 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="StickyHeaderSection">
+        <element name="StickyHeader" type="block" selector=".page-header.cafedu-page-header-scroll.has-scroll"/>
+    </section>
+</sections>
+
+

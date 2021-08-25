@@ -1,0 +1,38 @@
+<div class="footer-cloumn">
+	<h3><?php echo __('service')?></h3>
+	<h3 class="accordion-link"><?php echo __('service')?></h3>
+	<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_customer_care')->toHtml();?>
+</div>
+<div class="footer-cloumn">
+	<h3><?php echo __('contact us')?></h3>
+	<h3 class="accordion-link"><?php echo __('contact us')?></h3>
+	<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_contact_us')->toHtml();?>
+</div>	
+<div class="footer-cloumn">
+	<h3><?php echo __('shops')?></h3>
+	<h3 class="accordion-link"><?php echo __('shops')?></h3>
+	<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_shops')->toHtml();?>
+</div>
+
+
+<script>
+require([
+	'jquery',
+], function($){
+	$('.footer-middle .footer-cloumn .accordion-link').click(function() {
+		
+	var a = $(this).closest('.footer-cloumn');
+	var b = $(a).hasClass('active');
+	var c = $(a).closest('.footer-middle').find('.active');
+		
+	if(b != true) {
+		$(c).find('.exp-col-content').slideUp(200);
+		$(c).removeClass('active');
+	}
+
+	$(a).toggleClass('active');
+	$(a).find('.exp-col-content').slideToggle(200);
+
+});
+});
+</script>

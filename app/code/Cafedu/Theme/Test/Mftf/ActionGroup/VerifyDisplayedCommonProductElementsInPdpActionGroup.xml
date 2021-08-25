@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedCommonProductElementsInPdpActionGroup">
+        <annotations>
+            <description>Verify Product page displayed common product's elements</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <seeElement selector="{{ProductMainInfoSection.ProductGallery}}" stepKey="verifyFirstProductImageGalleryDisplayed"/>
+        <seeElement selector="{{ProductMainInfoSection.ProductName}}" stepKey="verifyFirstProductNameDisplayed"/>
+        <seeElement selector="{{ProductMainInfoSection.ProductTitle}}" stepKey="verifyFirstProductTitleDisplayed"/>
+        <seeElement selector="{{ProductMainInfoSection.WishlistIcon}}" stepKey="verifyFirstWishlistIconDisplayed"/>
+    </actionGroup>
+</actionGroups>

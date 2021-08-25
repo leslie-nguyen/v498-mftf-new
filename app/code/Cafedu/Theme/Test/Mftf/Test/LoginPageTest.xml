@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="LoginPageTest">
+        <annotations>
+            <features value="Check display Login page"/>
+            <stories value="Check display Login page"/>
+            <description value="Check display Login page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-LOGIN01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+        <!--        Access Login page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnPage url="{{QuickGoThroughData.loginUrl}}" stepKey="amOnLoginPage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <!--        Verify header displayed-->
+        <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
+        <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />
+        <actionGroup ref="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup" stepKey="verifyWishlistAccountMiniCartIconsDisplayed" />
+        <makeScreenshot userInput="LoginPageScreenshot" stepKey="screenshotLoginPage"/>
+        <!--        Verify if Login form  displayed-->
+        <actionGroup ref="VerifyDisplayedLoginFormActionGroup" stepKey="verifyDisplayedLoginFormElements"/>
+        <!--        Verify footer displayed-->
+        <actionGroup ref="VerifyDisplayedMainFooterActionGroup" stepKey="verifyMainFooterDisplayed"/>
+        <!--        Verify sticky header displayed-->
+        <actionGroup ref="VerifyDisplayedStickyHeaderActionGroup" stepKey="verifyStickyHeaderDisplayed"/>
+    </test>
+</tests>

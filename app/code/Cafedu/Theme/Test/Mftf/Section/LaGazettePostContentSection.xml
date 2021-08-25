@@ -1,0 +1,13 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="LaGazettePostContentSection">
+        <element name="PostContent" type="block" selector=".blog-details-container"/>
+<!--    Blog pagination elements-->
+        <element name="PreviousStoryButton" type="button" selector=".blog-pagination ul li:first-of-type"/>
+        <element name="AllButton" type="button" selector=".blog-pagination ul li:nth-of-type(2)"/>
+        <element name="NextStoryButton" type="button" selector=".blog-pagination ul li:last-of-type"/>
+    </section>
+</sections>
+
+
+

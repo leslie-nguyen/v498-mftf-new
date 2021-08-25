@@ -1,0 +1,10 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="LookDetailSliderSection">
+        <element name="SliderBlock" type="block" selector=".header-slider"/>
+        <element name="LookSlider" type="block" selector=".slick-list"/>
+        <element name="LookTitle" type="text" selector=".stl-header-info-inner h2"/>
+        <element name="LookDescription" type="text" selector=".stl-header-text"/>
+        <element name="ViewAllButton" type="button" selector="a.stl-header-link"/>
+    </section>
+</sections>

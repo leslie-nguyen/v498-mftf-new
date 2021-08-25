@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedProductTabsActionGroup">
+        <annotations>
+            <description>Verify if current product page displayed in stock products elements</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <scrollTo selector="{{ProductImageSliderFullWidthSection.ProductLongDescription}}" stepKey="scrollToProductTabs"/>
+        <wait time="1" stepKey="waitASeconds"/>
+<!--        Check Product Details tab-->
+        <seeElement selector="{{ProductTabsSection.ProductDetailsTab}}" stepKey="verifyProductDetailsTabDisplayed"/>
+        <click selector="{{ProductTabsSection.ProductDetailsTab}}" stepKey="clickToOpenProductDetailsTab"/>
+        <seeElement selector="{{ProductTabsSection.ProductDetailsContent}}" stepKey="verifyProductDetailsContentDisplayed"/>
+<!--        Check Product Delivery Info Tab-->
+        <seeElement selector="{{ProductTabsSection.ProductDeliveryInfoTab}}" stepKey="verifyProductDeliveryInfoTabDisplayed"/>
+        <click selector="{{ProductTabsSection.ProductDeliveryInfoTab}}" stepKey="clickToOpenProductDeliveryInfoTab"/>
+        <seeElement selector="{{ProductTabsSection.ProductDeliveryInfoContent}}" stepKey="verifyProductDeliveryInfoContentDisplayed"/>
+<!--        Check Size help tab-->
+        <seeElement selector="{{ProductTabsSection.SizeHelpTab}}" stepKey="verifySizeHelpTabDisplayed"/>
+        <click selector="{{ProductTabsSection.SizeHelpTab}}" stepKey="clickToOpenSizeHelpTab"/>
+        <seeElement selector="{{ProductTabsSection.SizeHelpContent}}" stepKey="verifySizeHelpContentDisplayed"/>
+<!--        Check Care Instructions tab-->
+        <seeElement selector="{{ProductTabsSection.CareInstructionsTab}}" stepKey="verifyCareInstructionsTabDisplayed"/>
+        <click selector="{{ProductTabsSection.CareInstructionsTab}}" stepKey="clickToOpenCareInstructionsTab"/>
+        <seeElement selector="{{ProductTabsSection.CareInstructionsContent}}" stepKey="verifyCareInstructionsContentDisplayed"/>
+    </actionGroup>
+</actionGroups>

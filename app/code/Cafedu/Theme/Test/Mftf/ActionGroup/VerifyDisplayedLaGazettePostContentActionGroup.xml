@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedLaGazettePostContentActionGroup">
+        <annotations>
+            <description>Verify if blog post included content block and blog pagination.</description>
+        </annotations>
+        <seeElement selector="{{LaGazettePostContentSection.PostContent}}" stepKey="verifyPostContentBlockDisplayed"/>
+        <scrollTo selector="{{MainFooterSection.FooterBlock}}" stepKey="scrollToPageBottom"/>
+        <seeElement selector="{{LaGazettePostContentSection.PreviousStoryButton}}" stepKey="verifyPreviousStoryButtonDisplayed"/>
+        <seeElement selector="{{LaGazettePostContentSection.AllButton}}" stepKey="verifyAllButtonDisplayed"/>
+        <seeElement selector="{{LaGazettePostContentSection.NextStoryButton}}" stepKey="verifyNextStoryButtonDisplayed"/>
+    </actionGroup>
+</actionGroups>
+

@@ -1,0 +1,12 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <body>
+    <attribute name="class" value="has-promo-box"/>
+    <referenceContainer name="cafedu.promo.box">
+        <block class="Magento\Cms\Block\Block" name="home_promo_box">
+          <arguments>
+            <argument name="block_id" xsi:type="string">home_promo_box</argument>
+          </arguments>
+        </block>
+    </referenceContainer>
+  </body>
+</page>

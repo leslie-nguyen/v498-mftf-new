@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedStickyHeaderActionGroup">
+        <annotations>
+            <description>Goes to the Storefront. Validates that current page display sticky header after scroll</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForStorefrontPageLoad"/>
+<!--        There are already action group to verify visibility of Store switcher, account, wishlist, mini cart icons
+so there will be no needed to verify in this action group anymore-->        <!--Scroll down to display sticky header-->
+        <scrollTo selector="{{MainFooterSection.FooterBlock}}" stepKey="scrollDownToFooter"/>
+        <seeElement selector="{{StickyHeaderSection.StickyHeader}}"  stepKey="verifyStickyHeaderDisplayed"/>
+<!--        Verify if main menu displayed-->
+        <seeElement selector="{{MainHeaderSection.MenInMainMenu}}"  stepKey="verifyMenCategoryDisplayed"/>
+        <seeElement selector="{{MainHeaderSection.WomenInMainMenu}}"  stepKey="verifyWomenCategoryDisplayed"/>
+        <seeElement selector="{{MainHeaderSection.LaGazetteInMainMenu}}"  stepKey="verifyLaGazetteCategoryDisplayed"/>
+        <seeElement selector="{{MainHeaderSection.NissaInMainMenu}}"  stepKey="verifyNissaCategoryDisplayed"/>
+<!--        Verify if Search icon displayed-->
+        <seeElement selector="{{MainHeaderSection.SearchIcon}}"  stepKey="verifySearchIconDisplayed"/>
+    </actionGroup>
+</actionGroups>

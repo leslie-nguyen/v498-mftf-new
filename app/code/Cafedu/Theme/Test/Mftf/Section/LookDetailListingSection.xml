@@ -1,0 +1,14 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="LookDetailListingSection">
+        <element name="ProductListingBlock" type="block" selector="#look-item-collection"/>
+<!--    First product elements: product number, image, name, color, description, wishlist icon, See detail button -->
+        <element name="FirstProductNumber" type="text" selector="(//ol/li)[1]//div[@class='product-number']"/>
+        <element name="FirstProductImage" type="block" selector="(//ol/li)[1]//div[@class='gallery-placeholder']"/>
+        <element name="FirstProductName" type="text" selector="(//ol/li)[1]//a[@class='product-item-link']"/>
+        <element name="FirstProductColor" type="text" selector="(//ol/li)[1]//h3"/>
+        <element name="FirstWishlistIcon" type="button" selector="(//ol/li)[1]//i[contains(@class,'fa-heart')]"/>
+        <element name="FirstProductDescription" type="text" selector="(//ol/li)[1]//div[contains(@class,'product-item-description')]"/>
+        <element name="FirstSeeDetailButton" type="button" selector="(//ol/li)[1]//div[contains(@class,'product-item-description')]//a[contains(@class,'action')]"/>
+    </section>
+</sections>

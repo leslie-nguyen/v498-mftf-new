@@ -1,0 +1,7 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="MainContentSection">
+        <element name="MainContent" type="block" selector="#maincontent"/>
+    </section>
+</sections>
+

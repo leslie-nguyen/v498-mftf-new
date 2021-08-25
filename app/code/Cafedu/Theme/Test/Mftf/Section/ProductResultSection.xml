@@ -1,0 +1,10 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="ProductResultSection">
+        <element name="ProductTab" type="block" selector=".result-product-tab"/>
+        <element name="ProductList" type="block" selector=".product-row-container"/>
+        <element name="TotalResultItems" type="text" selector="#toolbar-amount"/>
+    </section>
+</sections>
+
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="CateListingPageTest">
+        <annotations>
+            <features value="Check display category listing page"/>
+            <stories value="Check display category listing page"/>
+            <description value="Check display category listing page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-CATE02"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+<!--        Access category listing page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnPage url="{{QuickGoThroughData.cateListingUrl}}" stepKey="amOnCateListingPage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+<!--        Verify header displayed-->
+        <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
+        <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />
+        <actionGroup ref="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup" stepKey="verifyWishlistAccountMiniCartIconsDisplayed" />
+<!--        Verify if Category title, description & breadcrumb are displayed-->
+        <seeElement selector="{{CateListingPageContentTopSection.TitleAndDescription}}" stepKey="verifyCateTitleAndDescriptionDisplayed"/>
+        <actionGroup ref="VerifyDisplayedBreadcrumbActionGroup" stepKey="verifyBreadcrumbDisplayed"/>
+<!--        Verify if filter section displayed-->
+        <actionGroup ref="VerifyDisplayedFilterSectionActionGroup" stepKey="verifyFilterSectionDisplayed"/>
+<!--        Verify if first product displayed with image, name, description, color and price-->
+        <actionGroup ref="VerifyDisplayedFirstProductDetailInProductListingActionGroup" stepKey="verifyFirstProductDisplayedImageNameDesColorAndPrice"/>
+        <makeScreenshot userInput="CateListingPageScreenshot" stepKey="screenshotCateListingPage"/>
+<!--        Verify footer displayed-->
+        <actionGroup ref="VerifyDisplayedMainFooterActionGroup" stepKey="verifyMainFooterDisplayed"/>
+<!--        Verify sticky header displayed-->
+        <actionGroup ref="VerifyDisplayedStickyHeaderActionGroup" stepKey="verifyStickyHeaderDisplayed"/>
+    </test>
+</tests>

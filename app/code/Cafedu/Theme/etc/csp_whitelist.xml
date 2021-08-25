@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="cdc_script_google" type="host">*.google.com</value>
+                <value id="cdc_script_googleads" type="host">googleads.g.doubleclick.net</value>
+                <value id="cdc_script_ometria" type="host">*.ometria.com</value>
+                <value id="cdc_script_gstatic" type="host">*.gstatic.com</value>
+                <value id="cdc_script_braintreegateway" type="host">*.braintreegateway.com</value>
+                <value id="cdc_script_paypalobjects" type="host">*.paypalobjects.com</value>
+                <value id="cdc_script_paypal" type="host">*.paypal.com</value>
+                <value id="cdc_script_cafeducycliste" type="host">cafeducycliste.checkfront.co.uk</value>
+                <value id="cdc_script_fontawesome" type="host">*.fontawesome.com</value>
+                <value id="cdc_script_hotjar" type="host">*.hotjar.com</value>
+                <value id="cdc_script_facebook" type="host">*.facebook.net</value>
+                <value id="cdc_script_googletagmanager" type="host">*.googletagmanager.com</value>
+                <value id="cdc_script_google_analytics" type="host">*.google-analytics.com</value>
+                <value id="cdc_script_google_service" type="host">*.googleadservices.com</value>
+                <value id="cdc_script_wisepops" type="host">*.wisepops.com</value>
+                <value id="cdc_script_typeform" type="host">*.typeform.com</value>
+                <value id="cdc_script_komoot" type="host">*.komoot.com</value>
+                <value id="cdc_script_cdn" type="host">d6ea5r7lgkrij.cloudfront.net</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="cdc_style_googleapis" type="host">*.googleapis.com</value>
+                <value id="cdc_style_fontawesome" type="host">*.fontawesome.com</value>
+                <value id="cdc_style_bootstrapcdn" type="host">*.bootstrapcdn.com</value>
+                <value id="cdc_style_cdn" type="host">d6ea5r7lgkrij.cloudfront.net</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="cdc_connect_paypal" type="host">*.paypal.com</value>
+                <value id="cdc_connect_braintree" type="host">*.braintree-api.com</value>
+                <value id="cdc_connect_braintreegateway" type="host">*.braintreegateway.com</value>
+                <value id="cdc_connect_ometria" type="host">*.ometria.com</value>
+                <value id="cdc_connect_hotjarcom" type="host">*.hotjar.com</value>
+                <value id="cdc_connect_hotjario" type="host">*.hotjar.io</value>
+                <value id="cdc_connect_cardinalcommerce" type="host">*.cardinalcommerce.com</value>
+                <value id="cdc_connect_wisepops" type="host">*.wisepops.com</value>
+                <value id="cdc_connect_facebook" type="host">*.facebook.com</value>
+                <value id="cdc_connect_doubleclick" type="host">https://stats.g.doubleclick.net</value>
+                <value id="cdc_connect_google_analytics" type="host">https://www.google-analytics.com</value>
+                <value id="cdc_connect_cdn" type="host">d6ea5r7lgkrij.cloudfront.net</value>
+            </values>
+        </policy>
+        <policy id="font-src">
+            <values>
+                <value id="cdc_font_gstatic" type="host">*.gstatic.com</value>
+                <value id="cdc_font_fontawesome" type="host">*.fontawesome.com</value>
+                <value id="cdc_font_bootstrapcdn" type="host">*.bootstrapcdn.com</value>
+                <value id="cdc_font_hotjar" type="host">*.hotjar.com</value>
+                <value id="cdc_font_cdn" type="host">d6ea5r7lgkrij.cloudfront.net</value>
+            </values>
+        </policy>
+        <policy id="form-action">
+            <values>
+                <value id="cdc_form_facebook" type="host">*.facebook.com</value>
+            </values>
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="cdc_frame_cardinalcommerce" type="host">*.cardinalcommerce.com</value>
+                <value id="cdc_frame_vimeo" type="host">*.vimeo.com</value>
+                <value id="cdc_frame_google" type="host">*.google.com</value>
+                <value id="cdc_frame_braintreegateway" type="host">*.braintreegateway.com</value>
+                <value id="cdc_frame_kaptcha" type="host">*.kaptcha.com</value>
+                <value id="cdc_frame_hotjar" type="host">*.hotjar.com</value>
+                <value id="cdc_frame_facebook" type="host">*.facebook.com</value>
+                <value id="cdc_frame_cafeducycliste_checkfront" type="host">https://cafeducycliste.checkfront.co.uk</value>
+                <value id="cdc_frame_typeform" type="host">*.typeform.com</value>
+                <value id="cdc_frame_komoot " type="host">*.komoot.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="cdc_img_magentocommerce" type="host">*.magentocommerce.com</value>
+                <value id="cdc_img_paypal" type="host">*.paypal.com</value>
+                <value id="cdc_img_vimeocdn" type="host">*.vimeocdn.com</value>
+                <value id="cdc_img_ytimg" type="host">*.ytimg.com</value>
+                <value id="cdc_img_google" type="host">*.google.com</value>
+                <value id="cdc_img_doubleclick" type="host">https://stats.g.doubleclick.net</value>
+                <value id="cdc_img_google_analytics" type="host">*.google-analytics.com</value>
+                <value id="cdc_img_google_service" type="host">*.googleadservices.com</value>
+                <value id="cdc_img_paypalobjects" type="host">*.paypalobjects.com</value>
+                <value id="cdc_img_amcglobal" type="host">https://amcglobal.sc.omtrdc.net/</value>
+                <value id="cdc_img_data" type="host">data:</value>
+                <value id="cdc_img_googlevn" type="host">https://www.google.com.vn/</value>
+                <value id="cdc_img_ometria" type="host">*.ometria.com</value>
+                <value id="cdc_img_gstatic" type="host">*.gstatic.com</value>
+                <value id="cdc_img_cafeducycliste" type="host">*.cafeducycliste.com</value>
+                <value id="cdc_img_facebook" type="host">*.facebook.com</value>
+                <value id="cdc_img_cafeducycliste_checkfront" type="host">https://cafeducycliste.checkfront.co.uk</value>
+                <value id="cdc_img_komoot" type="host">*.komoot.com</value>
+                <value id="cdc_img_cdn" type="host">d6ea5r7lgkrij.cloudfront.net</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

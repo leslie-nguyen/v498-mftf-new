@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedFilterSectionActionGroup">
+        <annotations>
+            <description>Verify if Filter button and filter content displayed</description>
+        </annotations>
+        <seeElement selector="{{CateListingPageFilterSection.FilterButton}}" stepKey="verifyFilterButtonDisplayed"/>
+        <click selector="{{CateListingPageFilterSection.FilterButton}}" stepKey="clickOnFilterButtonToOpenFilterSection"/>
+        <waitForElement selector="{{CateListingPageFilterSection.FilterContent}}" stepKey="waitForFilterContent"/>
+        <seeElement selector="{{CateListingPageFilterSection.FilterContent}}" stepKey="verifyFilterContentDisplayed"/>
+        <makeScreenshot userInput="CateListingPageFilterScreenshot" stepKey="screenshotCateListingPageFilter"/>
+        <click selector="{{CateListingPageFilterSection.FilterButton}}" stepKey="clickOnFilterButtonToCloseFilterSection"/>
+    </actionGroup>
+</actionGroups>

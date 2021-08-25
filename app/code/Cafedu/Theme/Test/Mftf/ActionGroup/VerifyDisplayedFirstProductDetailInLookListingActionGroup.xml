@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedFirstProductDetailInLookListingActionGroup">
+        <annotations>
+            <description>Goes to the Storefront. Validates that current page display Look listing elements</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForStorefrontPageLoad"/>
+        <scrollTo selector="{{LookDetailSliderSection.ViewAllButton}}" stepKey="scrollToProductListing"/>
+<!--        Verify Listing block displayed-->
+        <seeElement selector="{{LookDetailListingSection.ProductListingBlock}}" stepKey="verifyProductListingBlockDisplayed"/>
+<!--        Verify FIRST PRODUCT item displayed: product number, image, name, color, description, wishlist icon, See detail button
+NOTE: SELECTOR of first product's elements had been fixed with hardcoded ex:[1] so it can not be reuse in other case-->
+        <seeElement selector="{{LookDetailListingSection.FirstProductNumber}}" stepKey="verifyFirstProductNumberDisplayed"/>
+        <seeElement selector="{{LookDetailListingSection.FirstProductImage}}" stepKey="verifyFirstProductImageDisplayed"/>
+        <seeElement selector="{{LookDetailListingSection.FirstProductName}}" stepKey="verifyFirstProductNameDisplayed"/>
+        <seeElement selector="{{LookDetailListingSection.FirstWishlistIcon}}" stepKey="verifyFirstWishlistIconDisplayed"/>
+        <seeElement selector="{{LookDetailListingSection.FirstProductDescription}}" stepKey="verifyFirstProductDescriptionDisplayed"/>
+        <seeElement selector="{{LookDetailListingSection.FirstSeeDetailButton}}" stepKey="verifyFirstSeeDetailButtonDisplayed"/>
+    </actionGroup>
+</actionGroups>
+

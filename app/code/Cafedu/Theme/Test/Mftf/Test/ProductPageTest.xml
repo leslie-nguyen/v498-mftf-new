@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="ProductPageTest">
+        <annotations>
+            <features value="Check display Product  page"/>
+            <stories value="Check display Product  page"/>
+            <description value="Check display Product  page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-PDP01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+<!--        Access Product  page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+<!--        <amOnPage url="/{{storeCode.fr_fr}}/{{QuickGoThroughData.pdpUrl}}" stepKey="amOnProductPage"/>-->
+        <actionGroup ref="AmOnPageForMultiStoreviewsActionGroup" stepKey="amOnPage">
+                <argument name="storeCode" value="{{StorecodeData.en_row}}"/>
+                <argument name="storeCode" value="{{StorecodeData.fr_fr}}"/>
+        </actionGroup>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+<!--        Verify header displayed-->
+        <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
+        <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />
+        <actionGroup ref="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup" stepKey="verifyWishlistAccountMiniCartIconsDisplayed" />
+        <makeScreenshot userInput="ProductPageScreenshot" stepKey="screenshotProductPage"/>
+<!--        Verify Product page displayed: breadcrumb, product image slider full width, product tabs -->
+        <actionGroup ref="VerifyDisplayedBreadcrumbActionGroup" stepKey="verifyBreadcrumbDisplayed"/>
+        <actionGroup ref="VerifyDisplayedCommonProductElementsInPdpActionGroup" stepKey="verifyCommonProductElementsDisplayed"/>
+        <actionGroup ref="VerifyDisplayedProductImageSliderFullWidthActionGroup" stepKey="verifyProductImageSliderFullWidthDisplayed"/>
+        <actionGroup ref="VerifyDisplayedProductTabsActionGroup" stepKey="verifyProductTabsDisplayed"/>
+<!--        Verify footer displayed-->
+        <actionGroup ref="VerifyDisplayedMainFooterActionGroup" stepKey="verifyMainFooterDisplayed"/>
+<!--        Verify sticky header displayed-->
+        <actionGroup ref="VerifyDisplayedStickyHeaderActionGroup" stepKey="verifyStickyHeaderDisplayed"/>
+    </test>
+</tests>

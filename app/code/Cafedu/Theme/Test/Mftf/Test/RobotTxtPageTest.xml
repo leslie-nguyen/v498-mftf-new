@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="RobotTxtPageTest">
+        <annotations>
+            <features value="Check display Robot.txt page"/>
+            <stories value="Check display Robot.txt page"/>
+            <description value="Check display Robot.txt page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-ROBOTTXT01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+        <!--        Access Robot.txt page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnUrl url="{{QuickGoThroughData.robotTxtUrl}}" stepKey="amOnRobotTxtPage"/>
+        <!--        Verify not displayed as 404 not found and content text included "User-agent:" -->
+        <dontSeeElementInDOM selector=".std" stepKey="verifyPageIsNot404"/>
+        <see userInput="User-agent:" selector="pre" stepKey="waitForTextUserAgentInPageContent"/>
+        <makeScreenshot userInput="RobotTxtScreenshot" stepKey="screenshotRobotTxt"/>
+    </test>
+</tests>

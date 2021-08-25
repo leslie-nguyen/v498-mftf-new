@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedProductImageSliderFullWidthActionGroup">
+        <annotations>
+            <description>Verify if current product page displayed product slider image full width (simple and configurable contains this block, bundle prd is excluded)</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <seeElement selector="{{ProductImageSliderFullWidthSection.ProductImageSlider}}" stepKey="verifyImageSliderDisplayed"/>
+        <seeElement selector="{{ProductImageSliderFullWidthSection.ProductLongDescription}}" stepKey="verifyProductLongDescriptionDisplayed"/>
+    </actionGroup>
+</actionGroups>

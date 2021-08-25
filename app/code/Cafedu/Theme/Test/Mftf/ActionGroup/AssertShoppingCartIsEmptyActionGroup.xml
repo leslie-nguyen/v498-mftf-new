@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="AssertShoppingCartIsEmptyActionGroup">
+        <!-- Extends from default AssertShoppingCartIsEmptyActionGroup.xml, it removes the original action -->
+        <remove keyForRemoval="seeNoItemsInShoppingCart"/>
+        <seeElement selector=".cart-empty" stepKey="seeCartEmptyBlock"/>
+        <grabAttributeFrom userInput="href" selector=".cart-empty a" stepKey="grabLinkInClickHereMessage"/>
+        <seeInCurrentUrl url="{$grabLinkInClickHereMessage}" stepKey="seeClickHereLinkInCurrentUrl"/>
+    </actionGroup>
+</actionGroups>

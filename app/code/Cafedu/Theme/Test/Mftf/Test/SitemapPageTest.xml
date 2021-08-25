@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="SitemapPageTest">
+        <annotations>
+            <features value="Check display Sitemap page"/>
+            <stories value="Check display Sitemap page"/>
+            <description value="Check display Sitemap page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-SITEMAP01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+        <!--        Access Sitemap page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnUrl url="{{SitemapData.sitemap_en_row}}" stepKey="amOnSitemapPage"/>
+        <!--        Verify not displayed as 404 not found and content text included "This XML file does not appear to have any style information associated with it. The document tree is shown below." -->
+        <dontSeeElement selector=".std" stepKey="verifyPageIsNot404"/>
+        <see userInput="This XML file does not appear to have any style information associated with it. The document tree is shown below." selector=".header span" stepKey="seeTextHeaderTextInPageContent"/>
+        <makeScreenshot userInput="SitemapScreenshot" stepKey="screenshotSitemap"/>
+    </test>
+</tests>

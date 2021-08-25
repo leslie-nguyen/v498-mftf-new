@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cafedu" translate="label" sortOrder="200">
+            <label>Cafedu - CDC Theme</label>
+        </tab>
+        <section id="social" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Social Links</label>
+            <tab>cafedu</tab>
+            <resource>Cafedu_Theme::theme</resource>
+            <group id="links" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Manage Social Links</label>
+                <field id="facebook" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Facebook</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="twitter" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Twitter</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="pinterest" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Pinterest</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="instagram" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Instagram</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="strava" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Strava</label>
+                    <validate>validate-url</validate>
+                </field>
+            </group>
+        </section>
+        <section id="frontend" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Frontend</label>
+            <tab>cafedu</tab>
+            <resource>Cafedu_Theme::theme</resource>
+            <group id="color" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Absolute Color</label>
+                <field id="style_elements" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Style Elements</label>
+                    <comment>Ex: .product-title</comment>
+                </field>
+            </group>
+        </section>
+        <section id="payment">
+            <group id="realexpayments_hpp_section" translate="label" type="text" sortOrder="101" showInDefault="1" showInWebsite="1" showInStore="1">
+                <group id="realexpayments_hpp" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <group id="realexpayments_hpp_basic" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="5">
+                        <field id="hpp_logo" translate="label comment" type="image" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Upload Logo</label>
+                            <backend_model>Cafedu\Theme\Model\Config\Backend\Image</backend_model>
+                            <base_url type="media" scope_info="1">cafedu</base_url>
+                        </field>
+                    </group>
+                </group>
+            </group>
+            <group id="braintree_section" sortOrder="6" showInDefault="0" showInWebsite="0" showInStore="0">
+                <group id="braintree" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <group id="braintree_required" translate="label" showInDefault="1" showInWebsite="1" sortOrder="5">
+                        <field id="braintree_logo" translate="label comment" type="image" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Upload Logo</label>
+                            <backend_model>Cafedu\Theme\Model\Config\Backend\Image</backend_model>
+                            <base_url type="media" scope_info="1">cafedu</base_url>
+                        </field>
+                    </group>
+                    <group id="braintree_applepay" translate="label" showInDefault="1" showInWebsite="1" sortOrder="40">
+                        <field id="applepay_logo" translate="label comment" type="image" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Upload Logo</label>
+                            <backend_model>Cafedu\Theme\Model\Config\Backend\Image</backend_model>
+                            <base_url type="media" scope_info="1">cafedu</base_url>
+                        </field>
+                    </group>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

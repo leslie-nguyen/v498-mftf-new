@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="SearchPageTest">
+        <annotations>
+            <features value="Check display Search page"/>
+            <stories value="Check display Search page"/>
+            <description value="Check display ProSearchduct  page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-SEARCH01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+<!--        Access Search page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnPage url="{{QuickGoThroughData.cateLandingUrl}}" stepKey="amOnSearchPage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+<!--        Search by key -->
+        <click selector="{{MainHeaderSection.SearchIcon}}" stepKey="clickSearchIconToOpenSearchForm"/>
+        <actionGroup ref="SearchByKeywordActionGroup" stepKey="searchByKey">
+            <argument name="query" value="{{SearchData.searchKey}}"/>
+        </actionGroup>
+<!--        Verify header displayed-->
+        <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
+        <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />
+        <actionGroup ref="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup" stepKey="verifyWishlistAccountMiniCartIconsDisplayed" />
+
+<!--        Verify Search result's content-->
+        <actionGroup ref="VerifyDisplayedBreadcrumbActionGroup" stepKey="verifyBreadcrumbDisplayed"/>
+        <actionGroup ref="VerifyDisplayedProductResultActionGroup" stepKey="verifyProductResultDisplayed"/>
+        <actionGroup ref="VerifyDisplayedBlogResultActionGroup" stepKey="verifyBlogResultDisplayed"/>
+<!--        Verify footer displayed-->
+        <actionGroup ref="VerifyDisplayedMainFooterActionGroup" stepKey="verifyMainFooterDisplayed"/>
+<!--        Verify sticky header displayed-->
+        <actionGroup ref="VerifyDisplayedStickyHeaderActionGroup" stepKey="verifyStickyHeaderDisplayed"/>
+    </test>
+</tests>

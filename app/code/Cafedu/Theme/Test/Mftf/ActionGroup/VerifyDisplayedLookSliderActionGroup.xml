@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedLookSliderActionGroup">
+        <annotations>
+            <description>Goes to the Storefront. Validates that current page display look slider block</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForStorefrontPageLoad"/>
+        <seeElement selector="{{LookDetailSliderSection.SliderBlock}}" stepKey="verifySliderBlockDisplayed"/>
+        <seeElement selector="{{LookDetailSliderSection.LookSlider}}" stepKey="verifyLookSliderDisplayed"/>
+        <seeElement selector="{{LookDetailSliderSection.LookTitle}}" stepKey="verifyLookTitleDisplayed"/>
+        <seeElement selector="{{LookDetailSliderSection.LookDescription}}" stepKey="verifyLookDescriptionDisplayed"/>
+        <seeElement selector="{{LookDetailSliderSection.ViewAllButton}}" stepKey="verifyViewAllButtonDisplayed"/>
+    </actionGroup>
+</actionGroups>

@@ -1,0 +1,166 @@
+<div class="block block-cafedu-create-account" data-bind="afterRender: createAccountModal, blockLoader: isLoading" style="display: none">
+  <div class="block block-customer-create-account">
+    <div class="block-title">
+      <strong id="block-customer-login-heading"
+              role="heading"
+              aria-level="2"
+              data-bind="i18n: 'CREATE AN ACCOUNT'"></strong>
+    </div>
+    <div data-role="invalid-character-notify" class="messages" data-bind="visible: isJpStore()">
+      <div role="alert"
+           class="message notice"
+           data-bind="i18n: 'invalid_character_appear_notify'">
+      </div>
+    </div>
+    <!-- ko foreach: getRegion('messages') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <div class="block-content">
+      <form
+        method="post"
+        id="cafedu-create-account-form-validate"
+        class="form create account form-create-account cafedu-create-account-form"
+        data-bind="attr: {autocomplete: autocomplete }, submit: createAccountAction">
+        <input type="hidden" name="form_key" data-bind="attr: {value: formKey}"/>
+        <input type="hidden" name="success_url" value="">
+        <input type="hidden" name="error_url" value="">
+        <!-- ko if: prefix -->
+          <div class="field prefix required">
+            <select
+              id="cafedu-create-account-prefix"
+              name="prefix"
+              data-bind="attr: {title: $t('Title')}, options: prefixOptions"
+              data-validate="{required:true}"></select>
+          </div>
+        <!-- /ko -->
+        <div class="field firstname required">
+          <input
+            type="text"
+            class="input-text"
+            id="cafedu-create-account-firstname"
+            name="firstname"
+            data-bind="
+            attr: {
+              autocomplete: autocomplete,
+              placeholder: $t('FIRST NAME*')
+            }"
+            data-validate="{required: true, 'cdc-validate-jp-row-char': true}" />
+        </div>
+        <div class="field surname required">
+          <input
+            type="text"
+            class="input-text"
+            id="cafedu-create-account-lastname"
+            name="lastname"
+            data-bind="
+            attr: {
+              autocomplete: autocomplete,
+              placeholder: $t('SURNAME*')
+            }"
+            data-validate="{required:true, 'cdc-validate-jp-row-char': true}" />
+        </div>
+        <div class="field email required">
+          <input
+            type="email"
+            class="input-text"
+            id="cafedu-create-account-email"
+            name="email"
+            data-bind="
+            attr: {
+              autocomplete: autocomplete,
+              placeholder: $t('E-MAIL ADDRESS*')
+            }"
+            data-validate="{required:true, 'validate-email':true}" />
+        </div>
+        <div class="field password required">
+          <input
+            type="password"
+            class="input-text"
+            id="cafedu-create-account-password"
+            name="password"
+            data-bind="
+            attr: {
+              autocomplete: autocomplete,
+              placeholder: $t('PASSWORD*'),
+              'data-password-min-length': passwordLength,
+              'data-password-min-character-sets': passwordPattern
+            }"
+            data-validate="{required:true, 'validate-customer-password':true}" />
+          <p class="password-desc" data-bind="i18n: 'At least 8 characters and case sensitive.'"></p>
+        </div>
+        <div class="field confirm-password required">
+          <input
+            type="password"
+            class="input-text"
+            id="cafedu-create-account-confirm-password"
+            name="password_confirmation"
+            data-bind="
+            attr: {
+              autocomplete: autocomplete,
+              placeholder: $t('CONFIRM PASSWORD*'),
+              'data-password-min-length': passwordLength,
+              'data-password-min-character-sets': passwordPattern
+            }"
+            data-validate="{required:true, equalTo:'#cafedu-create-account-password'}" />
+        </div>
+        <!-- ko if: gender -->
+          <div class="field gender required">
+            <div class="radio-column">
+              <input
+                type="radio"
+                id="cafedu-create-account-gender-m"
+                name="gender"
+                value="1"
+                data-validate="{'validate-one-required':true}" />
+              <span data-bind="i18n: 'Male'"></span>
+            </div>
+            <div class="radio-column">
+              <input
+                type="radio"
+                id="cafedu-create-account-gender-f"
+                name="gender"
+                value="2"
+                data-validate="{'validate-one-required':true}" />
+              <span data-bind="i18n: 'Female'"></span>
+            </div>
+          </div>
+        <!-- /ko -->
+        <!-- ko if: newsletter -->
+		  <div class="field choice newsletter gender">
+            <label for="cafedu-create-account-is-subscribed" class="label">
+              <span data-bind="html: newsheading"></span>
+            </label>
+			<div class="radio-column">
+              <input
+                type="radio"
+                id="cafedu-create-account-is-subscribed"
+                name="is_subscribed"
+                value="1"
+                data-validate="{'validate-one-required':true}" />
+              <span data-bind="i18n: 'Yes'"></span>
+            </div>
+            <div class="radio-column">
+              <input
+                type="radio"
+                id="cafedu-create-account-subscribed"
+                name="is_subscribed"
+                value=""
+                data-validate="{'validate-one-required':true}" />
+              <span data-bind="i18n: 'No'"></span>
+            </div>
+          </div>
+        <!-- /ko -->
+        <div class="actions-toolbar">
+          <div class="primary">
+            <button type="submit" class="action action-create-account primary" name="send">
+              <span data-bind="i18n: 'CREATE MY ACCOUNT'"></span>
+            </button>
+          </div>
+          <div class="cafedu-seconday-container">
+            <p data-bind="html: declaration"></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

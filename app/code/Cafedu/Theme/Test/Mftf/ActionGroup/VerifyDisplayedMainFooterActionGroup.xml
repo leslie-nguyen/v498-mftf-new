@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedMainFooterActionGroup">
+        <annotations>
+            <description>Goes to the Storefront. Validates that current page display main footer at the bottom page</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForStorefrontPageLoad"/>
+        <scrollTo selector="{{MainFooterSection.FooterBlock}}" stepKey="scrollToFooter"/>
+        <seeElement selector="{{MainFooterSection.NewsletterBlock}}"  stepKey="verifyNewsletterBlockDisplayed"/>
+        <seeElement selector="{{MainFooterSection.SocialIcons}}"  stepKey="verifySocialIconsDisplayed"/>
+        <seeElement selector="{{MainFooterSection.ServiceBlock}}"  stepKey="verifyServiceBlockDisplayed"/>
+        <seeElement selector="{{MainFooterSection.ContactUsBlock}}"  stepKey="verifyContactBlockDisplayed"/>
+        <seeElement selector="{{MainFooterSection.ShopsBlock}}"  stepKey="verifyShopsBlockDisplayed"/>
+        <seeElement selector="{{MainFooterSection.CopyrightText}}"  stepKey="verifyCopyrightTextDisplayed"/>
+    </actionGroup>
+</actionGroups>

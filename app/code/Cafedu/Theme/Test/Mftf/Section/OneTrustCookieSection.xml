@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="OneTrustCookieSection">
+        <element name="ClosePopupIcon" type="button" selector="#onetrust-close-btn-container button"/>
+    </section>
+</sections>

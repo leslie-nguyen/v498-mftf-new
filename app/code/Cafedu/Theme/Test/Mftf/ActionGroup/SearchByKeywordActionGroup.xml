@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="SearchByKeywordActionGroup">
+        <annotations>
+            <description>Search keyword by press enter (search button not appears on search form header)</description>
+        </annotations>
+        <arguments>
+            <argument name="query" type="string"/>
+        </arguments>
+        <waitForElement selector="{{StorefrontQuickSearchSection.searchPhrase}}" stepKey="waitForSearchField"/>
+        <fillField stepKey="fillSearchField" selector="{{StorefrontQuickSearchSection.searchPhrase}}" userInput="{{query}}"/>
+        <executeJS function="var form = document.getElementById('search_mini_form'); form.submit();" stepKey="pressEnter"/>
+        <waitForPageLoad stepKey="waitForSearchResults"/>
+    </actionGroup>
+</actionGroups>

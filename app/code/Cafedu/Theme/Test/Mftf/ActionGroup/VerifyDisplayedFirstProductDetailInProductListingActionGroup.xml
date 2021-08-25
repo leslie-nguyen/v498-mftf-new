@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedFirstProductDetailInProductListingActionGroup">
+        <annotations>
+            <description>Verify if first product displayed with image, name, description, color and price</description>
+        </annotations>
+        <seeElement selector="{{CateListingPageProductListSection.FirstProductImage}}" stepKey="verifyProductImageDisplayed"/>
+        <seeElement selector="{{CateListingPageProductListSection.FirstProductName}}" stepKey="verifyProductNameDisplayed"/>
+        <seeElement selector="{{CateListingPageProductListSection.FirstProductDescription}}" stepKey="verifyProductDescriptionDisplayed"/>
+        <seeElement selector="{{CateListingPageProductListSection.FirstProductColor}}" stepKey="verifyProductColorDisplayed"/>
+<!--        Price will not displayed inn case product out of stock-->
+<!--        <seeElement selector="{{CateListingPageProductListSection.FirstProductPrice}}" stepKey="verifyProductPriceDisplayed"/>-->
+    </actionGroup>
+</actionGroups>

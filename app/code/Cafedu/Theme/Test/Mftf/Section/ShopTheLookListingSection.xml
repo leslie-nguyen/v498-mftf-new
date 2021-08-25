@@ -1,0 +1,9 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="ShopTheLookListingSection">
+        <element name="LookListing" type="block" selector=".look-collection.items"/>
+        <!--    Verify if first look contains image & Get the look button-->
+        <element name="GetTheLookButton" type="button" selector="(//a[@class='look-item-link'])[1]"/>
+        <element name="LookImage" type="block" selector="(//li//div[contains(@class,'look-image')])[1]"/>
+    </section>
+</sections>

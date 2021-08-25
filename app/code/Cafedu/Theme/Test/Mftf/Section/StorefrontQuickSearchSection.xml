@@ -1,0 +1,8 @@
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+<!--    This file update selector of search Button from original file StorefrontQuickSearchSection (Default MFTF)-->
+    <section name="StorefrontQuickSearchSection">
+        <element name="searchButton" type="button" selector="button.search-submit" timeout="30"/>
+    </section>
+</sections>

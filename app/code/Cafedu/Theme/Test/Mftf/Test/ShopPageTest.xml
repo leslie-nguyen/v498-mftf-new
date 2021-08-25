@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="ShopPageTest">
+        <annotations>
+            <features value="Check display Shop page"/>
+            <stories value="Check display Shop page"/>
+            <description value="Check display Shop page"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="QUICK-SHOPPAGE01"/>
+            <group value="QuickGoThrough"/>
+        </annotations>
+        <!--        Access Shop page-->
+        <maximizeWindow stepKey="maximizeWindow"/>
+        <amOnPage url="{{QuickGoThroughData.shopPageUrl}}" stepKey="amOnShopPage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <!--        Verify header displayed-->
+        <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
+        <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />
+        <actionGroup ref="VerifyDisplayedWishlistAccountMiniCartIconsActionGroup" stepKey="verifyWishlistAccountMiniCartIconsDisplayed" />
+        <!--        Verify main Shop page-->
+        <actionGroup ref="VerifyDisplayedBreadcrumbActionGroup" stepKey="verifyBreadcrumbDisplayed"/>
+        <seeElement selector="{{MainContentSection.MainContent}}" stepKey="verifyMainContentBlockDisplayed"/>
+        <makeScreenshot userInput="ShopPageScreenshot" stepKey="screenshotShopPage"/>
+        <!--        Verify footer displayed-->
+        <actionGroup ref="VerifyDisplayedMainFooterActionGroup" stepKey="verifyMainFooterDisplayed"/>
+        <!--        Verify sticky header displayed-->
+        <actionGroup ref="VerifyDisplayedStickyHeaderActionGroup" stepKey="verifyStickyHeaderDisplayed"/>
+    </test>
+</tests>

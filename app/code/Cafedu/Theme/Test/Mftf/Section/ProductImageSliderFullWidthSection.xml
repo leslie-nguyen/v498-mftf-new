@@ -1,0 +1,7 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="ProductImageSliderFullWidthSection">
+        <element name="ProductImageSlider" type="block" selector=".product-image-slider"/>
+        <element name="ProductLongDescription" type="block" selector=".long-description-block"/>
+    </section>
+</sections>
