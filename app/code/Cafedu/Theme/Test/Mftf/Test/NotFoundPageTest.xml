@@ -12,8 +12,9 @@
         </annotations>
         <!--        Access 404 Not Found page-->
         <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnUrl url="{{QuickGoThroughData.notFoundUrl}}" stepKey="amOnNotFoundPage"/>
-        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.notFoundUrl}}"/>
+        </actionGroup>
         <!--        Verify Content page displayed-->
         <seeElement selector=".std" stepKey="verifyMainContentBlockDisplayed"/>
         <makeScreenshot userInput="NotFoundPageScreenshot" stepKey="screenshotNotFoundPage"/>

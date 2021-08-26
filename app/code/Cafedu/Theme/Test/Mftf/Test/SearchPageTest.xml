@@ -12,8 +12,9 @@
         </annotations>
 <!--        Access Search page-->
         <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnPage url="{{QuickGoThroughData.cateLandingUrl}}" stepKey="amOnSearchPage"/>
-        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.cateLandingUrl}}"/>
+        </actionGroup>
 <!--        Search by key -->
         <click selector="{{MainHeaderSection.SearchIcon}}" stepKey="clickSearchIconToOpenSearchForm"/>
         <actionGroup ref="SearchByKeywordActionGroup" stepKey="searchByKey">

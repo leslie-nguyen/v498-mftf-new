@@ -11,10 +11,11 @@
         <data key="laGazetteListUrl">/en_row/la-gazette/</data>
         <data key="laGazettePostUrl">/en_row/la-gazette/a-coastal-classico/</data>
         <data key="shopPageUrl">/en_row/shops</data>
+        <data key="cartUrl">/en_row/checkout/cart/</data>
         <data key="cmsUrl">/en_row/orders-returns</data>
-        <data key="notFoundUrl">https://dev.cafeducycliste.com/en_row/aaaaaaaaaa</data>
+        <data key="notFoundUrl">/en_row/aaaaaaaaaa</data>
         <data key="loginUrl">/en_row/customer/account/login</data>
-        <data key="robotTxtUrl">https://dev.cafeducycliste.com/en_row/robots.txt</data>
+        <data key="robotTxtUrl">https://tmp.cafeducycliste.com//en_row/robots.txt</data>
     </entity>
     <entity name="storeCode" type="text">
         <data key="fr_fr">fr_fr</data>

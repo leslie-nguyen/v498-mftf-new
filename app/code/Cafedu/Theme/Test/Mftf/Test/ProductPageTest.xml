@@ -12,12 +12,9 @@
         </annotations>
 <!--        Access Product  page-->
         <maximizeWindow stepKey="maximizeWindow"/>
-<!--        <amOnPage url="/{{storeCode.fr_fr}}/{{QuickGoThroughData.pdpUrl}}" stepKey="amOnProductPage"/>-->
-        <actionGroup ref="AmOnPageForMultiStoreviewsActionGroup" stepKey="amOnPage">
-                <argument name="storeCode" value="{{StorecodeData.en_row}}"/>
-                <argument name="storeCode" value="{{StorecodeData.fr_fr}}"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.pdpUrl}}"/>
         </actionGroup>
-        <waitForPageLoad stepKey="waitForPageLoad"/>
 <!--        Verify header displayed-->
         <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
         <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />

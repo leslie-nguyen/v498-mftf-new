@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="AmOnPageVerifyJSErrorActionGroup">
+        <annotations>
+            <description>Redirect to url and verify ì page contains JS errors</description>
+        </annotations>
+        <arguments>
+            <argument name="PageUrl" type="string"/>
+        </arguments>
+        <amOnPage url="{{PageUrl}}" stepKey="accessPage"/>
+        <dontSeeJsError stepKey="dontSeeJsError"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+    </actionGroup>
+</actionGroups>

@@ -12,8 +12,9 @@
         </annotations>
 <!--        Access category listing page-->
         <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnPage url="{{QuickGoThroughData.cateListingUrl}}" stepKey="amOnCateListingPage"/>
-        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.cateListingUrl}}"/>
+        </actionGroup>
 <!--        Verify header displayed-->
         <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
         <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />

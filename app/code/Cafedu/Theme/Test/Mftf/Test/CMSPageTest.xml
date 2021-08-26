@@ -12,8 +12,9 @@
         </annotations>
         <!--        Access CMS page-->
         <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnPage url="{{QuickGoThroughData.cmsUrl}}" stepKey="amOnCMSPage"/>
-        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.cmsUrl}}"/>
+        </actionGroup>
         <!--        Verify header displayed-->
         <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
         <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />

@@ -9,11 +9,13 @@
             <severity value="MAJOR"/>
             <testCaseId value="QUICK-CARTEMPTY01"/>
             <group value="QuickGoThrough"/>
+            <group value="1"/>
         </annotations>
         <!--        Access Cart empty page-->
         <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnPage url="{{CheckoutCartPage.url}}" stepKey="amOnCartEmptyPage"/>
-        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.cartUrl}}"/>
+        </actionGroup>
         <!--        Verify header displayed-->
         <actionGroup ref="VerifyDisplayedMainHeaderActionGroup" stepKey="verifyLogoMainMenuAndSearchIcon"/>
         <actionGroup ref="VerifyDisplayedStoreSwitchersActionGroup" stepKey="verifyCountryDropdownDisplayed" />

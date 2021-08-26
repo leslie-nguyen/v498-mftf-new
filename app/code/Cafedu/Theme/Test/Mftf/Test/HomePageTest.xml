@@ -12,8 +12,9 @@
         </annotations>
 <!--    Access Homepage, close cookie popup-->
         <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnPage url="{{QuickGoThroughData.homeUrl}}" stepKey="amOnHomePage"/>
-        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.homeUrl}}"/>
+        </actionGroup>
         <waitForElement selector="{{OneTrustCookieSection.ClosePopupIcon}}" stepKey="waitForOneTrustCookieDisplayed"/>
         <click selector="{{OneTrustCookieSection.ClosePopupIcon}}" stepKey="closeCookiePopup"/>
 <!--        Verify display banner, logo, menu, Search field and search icon-->

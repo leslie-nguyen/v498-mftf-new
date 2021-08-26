@@ -12,8 +12,9 @@
         </annotations>
 <!--        Access Shop the look page-->
         <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnPage url="{{QuickGoThroughData.shopTheLookUrl}}" stepKey="amOnShopTheLookPage"/>
-        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.shopTheLookUrl}}"/>
+        </actionGroup>
 <!--        On dev env, there is an issue with lazy load: after page load it required to scroll page to show page content , but these can be removed in live env-->
         <scrollTo selector="{{MainFooterSection.FooterBlock}}" stepKey="scrollToBottom"/>
         <scrollToTopOfPage stepKey="scrollToTop"/>
