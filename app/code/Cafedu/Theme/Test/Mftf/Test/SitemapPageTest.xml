@@ -11,8 +11,9 @@
             <group value="QuickGoThrough"/>
         </annotations>
         <!--        Access Sitemap page-->
-        <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnUrl url="{{SitemapData.sitemap_en_row}}" stepKey="amOnSitemapPage"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.sitemapUrl}}"/>
+        </actionGroup>
         <!--        Verify not displayed as 404 not found and content text included "This XML file does not appear to have any style information associated with it. The document tree is shown below." -->
         <dontSeeElement selector=".std" stepKey="verifyPageIsNot404"/>
         <see userInput="This XML file does not appear to have any style information associated with it. The document tree is shown below." selector=".header span" stepKey="seeTextHeaderTextInPageContent"/>

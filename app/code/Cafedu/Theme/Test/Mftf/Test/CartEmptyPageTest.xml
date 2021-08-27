@@ -12,7 +12,6 @@
             <group value="1"/>
         </annotations>
         <!--        Access Cart empty page-->
-        <maximizeWindow stepKey="maximizeWindow"/>
         <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
             <argument name="PageUrl" value="{{QuickGoThroughData.cartUrl}}"/>
         </actionGroup>

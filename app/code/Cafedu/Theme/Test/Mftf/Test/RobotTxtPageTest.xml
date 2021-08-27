@@ -11,8 +11,9 @@
             <group value="QuickGoThrough"/>
         </annotations>
         <!--        Access Robot.txt page-->
-        <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnPage url="{{QuickGoThroughData.robotTxtUrl}}" stepKey="amOnRobotTxtPage"/>
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData.robotTxtUrl}}"/>
+        </actionGroup>
         <!--        Verify not displayed as 404 not found and content text included "User-agent:" -->
         <dontSeeElementInDOM selector=".std" stepKey="verifyPageIsNot404"/>
         <see userInput="User-agent:" selector="pre" stepKey="waitForTextUserAgentInPageContent"/>

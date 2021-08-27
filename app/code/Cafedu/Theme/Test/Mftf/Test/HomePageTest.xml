@@ -11,7 +11,6 @@
             <group value="QuickGoThrough"/>
         </annotations>
 <!--    Access Homepage, close cookie popup-->
-        <maximizeWindow stepKey="maximizeWindow"/>
         <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
             <argument name="PageUrl" value="{{QuickGoThroughData.homeUrl}}"/>
         </actionGroup>
