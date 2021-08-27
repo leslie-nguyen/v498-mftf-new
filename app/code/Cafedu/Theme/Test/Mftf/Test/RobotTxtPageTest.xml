@@ -12,7 +12,7 @@
         </annotations>
         <!--        Access Robot.txt page-->
         <maximizeWindow stepKey="maximizeWindow"/>
-        <amOnUrl url="{{QuickGoThroughData.robotTxtUrl}}" stepKey="amOnRobotTxtPage"/>
+        <amOnPage url="{{QuickGoThroughData.robotTxtUrl}}" stepKey="amOnRobotTxtPage"/>
         <!--        Verify not displayed as 404 not found and content text included "User-agent:" -->
         <dontSeeElementInDOM selector=".std" stepKey="verifyPageIsNot404"/>
         <see userInput="User-agent:" selector="pre" stepKey="waitForTextUserAgentInPageContent"/>

@@ -15,7 +15,7 @@
         <data key="cmsUrl">/en_row/orders-returns</data>
         <data key="notFoundUrl">/en_row/aaaaaaaaaa</data>
         <data key="loginUrl">/en_row/customer/account/login</data>
-        <data key="robotTxtUrl">https://tmp.cafeducycliste.com//en_row/robots.txt</data>
+        <data key="robotTxtUrl">/en_row/robots.txt</data>
     </entity>
     <entity name="storeCode" type="text">
         <data key="fr_fr">fr_fr</data>

@@ -32,7 +32,7 @@ class RobotTxtPageTestCest
 	{
 		$I->comment("Access Robot.txt page");
 		$I->maximizeWindow(); // stepKey: maximizeWindow
-		$I->amOnUrl("https://tmp.cafeducycliste.com//en_row/robots.txt"); // stepKey: amOnRobotTxtPage
+		$I->amOnPage("/en_row/robots.txt"); // stepKey: amOnRobotTxtPage
 		$I->comment("Verify not displayed as 404 not found and content text included \"User-agent:\"");
 		$I->dontSeeElementInDOM(".std"); // stepKey: verifyPageIsNot404
 		$I->see("User-agent:", "pre"); // stepKey: waitForTextUserAgentInPageContent
