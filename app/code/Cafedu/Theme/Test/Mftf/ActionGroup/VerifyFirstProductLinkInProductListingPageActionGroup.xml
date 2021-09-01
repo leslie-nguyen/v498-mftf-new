@@ -18,6 +18,6 @@
             <expectedResult type="string">$grabFirstProductIdInListingPage</expectedResult>
             <actualResult type="string">$grabProductIdInPDP</actualResult>
         </assertEquals>
-        <see userInput="{$grabFirstProductNameInListingPage}" selector="strong[itemprop]" stepKey="seeTitle"/>
+        <see userInput="{$grabFirstProductNameInListingPage}" selector="{{ProductMainInfoSection.ProductName}}" stepKey="seeProductNameMatched"/>
     </actionGroup>
 </actionGroups>

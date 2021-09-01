@@ -1,0 +1,13 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="StorefrontMinicartSection">
+        <element name="productOptionByNameAndAttribute" type ="text" selector="//a[text()='{{var1}}']/../following-sibling::div[contains(@class,'options')]//dt[@class='label']" parameterized="true"/>
+        <element name="productOption" type ="text" selector="//a[text()='{{var1}}']/../following-sibling::div[contains(@class,'options')]//dd/span" parameterized="true" />
+    </section>
+</sections>
+
+
+
+
+
+

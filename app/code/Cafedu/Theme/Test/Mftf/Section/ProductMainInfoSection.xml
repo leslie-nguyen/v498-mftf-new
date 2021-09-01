@@ -13,8 +13,12 @@
         <element name="ProductPrice" type="text" selector=".price-box"/>
         <!--    Configurable In stock product's elements-->
         <element name="SwatchDropdown" type="block" selector=".swatch-attribute"/>
+        <element name="AttributeBlock" type="block" selector="//div[contains(@class,'swatch-attribute')][contains(@class,'{{var1}}')]" parameterized="true" />
+        <element name="AttributeOption" type="block" selector="//div[contains(@class,'swatch-attribute')][contains(@class,'{{var1}}')]//*[contains(@class,'swatch-option')][contains(text(),'{{var2}}')]" parameterized="true" />
     </section>
 </sections>
+
+
 
 
 

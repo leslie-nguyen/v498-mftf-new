@@ -18,5 +18,12 @@
         <data key="robotTxtUrl">/en_row/robots.txt</data>
         <data key="sitemapUrl" >/en_row/sitemap/sitemap_en_row.xml</data>
     </entity>
+    <entity name="CheckoutFlowData" type="text">
+        <data key="configurableUrl">/en_row/men-cycling-jersey-floriane-groseille.html</data>
+        <data key="productName" >Floriane</data>
+        <data key="attributeName" >Size</data>
+        <data key="attributeCode" >size</data>
+        <data key="attributeOption">M</data>
+    </entity>
 </entities>
 

@@ -10,11 +10,29 @@
             <testCaseId value="FLOW01"/>
             <group value="CheckoutFlow"/>
         </annotations>
-        <!--        Access Cart empty page-->
+        <!--        Access Cate Listing page page-->
         <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
             <argument name="PageUrl" value="{{QuickGoThroughData.cateListingUrl}}"/>
         </actionGroup>
         <!--        Check product link -->
         <actionGroup ref="VerifyFirstProductLinkInProductListingPageActionGroup" stepKey="verifyFirstProductLinkInCateListingPage"/>
+        <!--        Check add product to cart & verify in mini cart-->
+        <amOnPage url="{{CheckoutFlowData.configurableUrl}}" stepKey="accessConfigurablePdp"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <actionGroup ref="AddConfigurableProductToCartActionGroup" stepKey="addConfigurablePrdToCart">
+            <argument name="attributeCode" value="{{CheckoutFlowData.attributeCode}}"/>
+            <argument name="attributeOption" value="{{CheckoutFlowData.attributeOption}}"/>
+        </actionGroup>
+        <grabTextFrom selector="{{ProductMainInfoSection.ProductPrice}}" stepKey="getProductPriceInPdp"/>
+        <actionGroup ref="VerifyMiniCartItemsActionGroup" stepKey="assertItemInMiniCart">
+            <argument name="productName" value="{{CheckoutFlowData.productName}}"/>
+            <argument name="productPrice" value="{$getProductPriceInPdp}"/>
+            <argument name="productAttribute" value="{{CheckoutFlowData.attributeName}}"/>
+            <argument name="productOption" value="{{CheckoutFlowData.attributeOption}}"/>
+        </actionGroup>
+
+
+
+
     </test>
 </tests>

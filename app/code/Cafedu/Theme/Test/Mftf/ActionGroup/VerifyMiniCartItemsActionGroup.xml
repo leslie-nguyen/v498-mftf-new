@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyMiniCartItemsActionGroup">
+        <annotations>
+            <description>Open minicart, verify product name, price, attribute, image</description>
+        </annotations>
+        <arguments>
+            <argument name="productName" type="string"/>
+            <argument name="productPrice" type="string"/>
+            <argument name="productAttribute" type="string"/>
+            <argument name="productOption" type="string"/>
+        </arguments>
+        <see userInput="{{productName}}" selector="{{StorefrontMinicartSection.miniCartItemsText}}"  stepKey="seeProductNameInMiniCart"/>
+        <see userInput="{{productPrice}}" selector="{{StorefrontMinicartSection.miniCartItemsText}}" stepKey="seeProductPriceInMiniCart"/>
+        <see userInput="{{productAttribute}}" selector="{{StorefrontMinicartSection.productOptionByNameAndAttribute(productName)}}" stepKey="seeAttributeName"/>
+        <see userInput="{{productOption}}" selector="{{StorefrontMinicartSection.productOption(productName)}}" stepKey="seeAttributeOption"/>
+        <seeElement selector="{{StorefrontMinicartSection.goToCheckout}}" stepKey="seeCheckOutButtonInMiniCart"/>
+        <seeElement selector="{{StorefrontMinicartSection.productImage}}" stepKey="seeProductImage"/>
+    </actionGroup>
+</actionGroups>

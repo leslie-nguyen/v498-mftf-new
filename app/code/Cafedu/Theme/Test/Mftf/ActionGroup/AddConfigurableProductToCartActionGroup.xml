@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="AddConfigurableProductToCartActionGroup">
+        <annotations>
+            <description>Goes to the provided Storefront URL. Selects the provided Product Option under the Product Attribute. Clicks Add to Cart</description>
+        </annotations>
+        <arguments>
+            <argument name="attributeCode" type="string"/>
+            <argument name="attributeOption" type="string"/>
+        </arguments>
+
+        <click selector="{{ProductMainInfoSection.AttributeBlock(attributeCode)}}" stepKey="clickToOpenSizeDropdown"/>
+        <click selector="{{ProductMainInfoSection.AttributeOption(attributeCode,attributeOption)}}" stepKey="selectAttributeOption"/>
+        <click selector="{{StorefrontProductActionSection.addToCart}}" stepKey="clickOnAddToCartButton"/>
+        <waitForAjaxLoad stepKey="waitForAjaxLoad"/>
+        <seeElement selector="{{StorefrontMinicartSection.blockMiniCart}}" stepKey="seeMiniCartBlock"/>
+    </actionGroup>
+</actionGroups>

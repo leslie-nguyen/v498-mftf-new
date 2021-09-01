@@ -13,7 +13,7 @@ use Yandex\Allure\Adapter\Model\SeverityLevel;
 use Yandex\Allure\Adapter\Annotation\TestCaseId;
 
 /**
- * @Description("Checkout as guest with Paypal<h3>Test files</h3>app\code\Cafedu\Theme\Test\Mftf\Test\CheckoutFlow\CheckoutAsGuestPaypalTest.xml<br>")
+ * @Description("Checkout as guest with Paypal<h3>Test files</h3>app\code\Cafedu\Theme\Test\Mftf\Test\CheckoutAsGuestPaypalTest.xml<br>")
  * @TestCaseId("FLOW01")
  * @group CheckoutFlow
  */
@@ -30,7 +30,7 @@ class CheckoutAsGuestPaypalTestCest
 	 */
 	public function CheckoutAsGuestPaypalTest(AcceptanceTester $I)
 	{
-		$I->comment("Access Cart empty page");
+		$I->comment("Access Cate Listing page page");
 		$I->comment("Entering Action Group [accessPageAndVerifyJSError] AmOnPageVerifyJSErrorActionGroup");
 		$I->comment("<maximizeWindow stepKey=\"maximizeWindow\"/>");
 		$I->amOnPage("/"); // stepKey: accessHomeAccessPageAndVerifyJSError
@@ -48,14 +48,31 @@ class CheckoutAsGuestPaypalTestCest
 		$I->click("(//div[@class='product-photo-wrapper desktop'])[1]"); // stepKey: clickOnFirstProductImageVerifyFirstProductLinkInCateListingPage
 		$I->waitForPageLoad(30); // stepKey: waitForPageLoadVerifyFirstProductLinkInCateListingPage
 		$grabProductIdInPDPVerifyFirstProductLinkInCateListingPage = $I->grabAttributeFrom(".price-box.price-final_price", "data-product-id"); // stepKey: grabProductIdInPDPVerifyFirstProductLinkInCateListingPage
-		$I->comment("<grabTextFrom selector=\"strong[itemprop='name']\" stepKey=\"grabProductNameInPDP\"/>");
 		$I->comment("Assert product ID, name in product listing & PDP are matched");
 		$I->assertEquals("$grabFirstProductIdInListingPageVerifyFirstProductLinkInCateListingPage", "$grabProductIdInPDPVerifyFirstProductLinkInCateListingPage", "Product ID does not matched"); // stepKey: assertProductIDBetweenListingPageAndPDPVerifyFirstProductLinkInCateListingPage
-		$I->comment("<assertEquals message=\"Product name does not matched\" stepKey=\"assertProductNameBetweenListingPageAndPDP\">");
-		$I->comment("<expectedResult type=\"string\">\$grabFirstProductNameInListingPageVerifyFirstProductLinkInCateListingPage</expectedResult>");
-		$I->comment("<actualResult type=\"string\">\$grabProductNameInPDP</actualResult>");
-		$I->comment("</assertEquals>");
-		$I->see($grabFirstProductNameInListingPageVerifyFirstProductLinkInCateListingPage, "strong[itemprop]"); // stepKey: seeTitleVerifyFirstProductLinkInCateListingPage
+		$I->see($grabFirstProductNameInListingPageVerifyFirstProductLinkInCateListingPage, "strong[itemprop='name']"); // stepKey: seeProductNameMatchedVerifyFirstProductLinkInCateListingPage
 		$I->comment("Exiting Action Group [verifyFirstProductLinkInCateListingPage] VerifyFirstProductLinkInProductListingPageActionGroup");
+		$I->comment("Check add product to cart & verify in mini cart");
+		$I->amOnPage("/en_row/men-cycling-jersey-floriane-groseille.html"); // stepKey: accessConfigurablePdp
+		$I->waitForPageLoad(30); // stepKey: waitForPageLoad
+		$I->comment("Entering Action Group [addConfigurablePrdToCart] AddConfigurableProductToCartActionGroup");
+		$I->click("//div[contains(@class,'swatch-attribute')][contains(@class,'size')]"); // stepKey: clickToOpenSizeDropdownAddConfigurablePrdToCart
+		$I->click("//div[contains(@class,'swatch-attribute')][contains(@class,'size')]//*[contains(@class,'swatch-option')][contains(text(),'M')]"); // stepKey: selectAttributeOptionAddConfigurablePrdToCart
+		$I->click("#product-addtocart-button"); // stepKey: clickOnAddToCartButtonAddConfigurablePrdToCart
+		$I->waitForPageLoad(60); // stepKey: clickOnAddToCartButtonAddConfigurablePrdToCartWaitForPageLoad
+		$I->waitForAjaxLoad(30); // stepKey: waitForAjaxLoadAddConfigurablePrdToCart
+		$I->seeElement(".block-minicart"); // stepKey: seeMiniCartBlockAddConfigurablePrdToCart
+		$I->waitForPageLoad(30); // stepKey: seeMiniCartBlockAddConfigurablePrdToCartWaitForPageLoad
+		$I->comment("Exiting Action Group [addConfigurablePrdToCart] AddConfigurableProductToCartActionGroup");
+		$getProductPriceInPdp = $I->grabTextFrom(".price-box"); // stepKey: getProductPriceInPdp
+		$I->comment("Entering Action Group [assertItemInMiniCart] VerifyMiniCartItemsActionGroup");
+		$I->see("Floriane", ".minicart-items"); // stepKey: seeProductNameInMiniCartAssertItemInMiniCart
+		$I->see($getProductPriceInPdp, ".minicart-items"); // stepKey: seeProductPriceInMiniCartAssertItemInMiniCart
+		$I->see("Size", "//a[text()='Floriane']/../following-sibling::div[contains(@class,'options')]//dt[@class='label']"); // stepKey: seeAttributeNameAssertItemInMiniCart
+		$I->see("M", "//a[text()='Floriane']/../following-sibling::div[contains(@class,'options')]//dd/span"); // stepKey: seeAttributeOptionAssertItemInMiniCart
+		$I->seeElement("#top-cart-btn-checkout"); // stepKey: seeCheckOutButtonInMiniCartAssertItemInMiniCart
+		$I->waitForPageLoad(30); // stepKey: seeCheckOutButtonInMiniCartAssertItemInMiniCartWaitForPageLoad
+		$I->seeElement("//ol[@id='mini-cart']//img[@class='product-image-photo']"); // stepKey: seeProductImageAssertItemInMiniCart
+		$I->comment("Exiting Action Group [assertItemInMiniCart] VerifyMiniCartItemsActionGroup");
 	}
 }
