@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyFirstProductLinkInProductListingPageActionGroup">
+        <annotations>
+            <description>Click on first product in product listing page, then check Product ID, name matched</description>
+        </annotations>
+<!--        Grab first product ID, name in product listing page-->
+        <grabAttributeFrom userInput="data-product-id" selector="(//div[contains(@class,'price-box')][contains(@data-product-id,'')])[1]" stepKey="grabFirstProductIdInListingPage"/>
+        <grabTextFrom selector="(//strong[contains(@class,'product-item-name')])[1]" stepKey="grabFirstProductNameInListingPage"/>
+<!--        Grab product ID, name in product page-->
+        <scrollTo selector=".breadcrumbs ul" stepKey="scrollToBreadcrumb"/>
+        <click selector="{{CateListingPageProductListSection.FirstProductImage}}" stepKey="clickOnFirstProductImage"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <grabAttributeFrom userInput="data-product-id" selector=".price-box.price-final_price" stepKey="grabProductIdInPDP"/>
+<!--        Assert product ID, name in product listing & PDP are matched-->
+        <assertEquals message="Product ID does not matched" stepKey="assertProductIDBetweenListingPageAndPDP">
+            <expectedResult type="string">$grabFirstProductIdInListingPage</expectedResult>
+            <actualResult type="string">$grabProductIdInPDP</actualResult>
+        </assertEquals>
+        <see userInput="{$grabFirstProductNameInListingPage}" selector="strong[itemprop]" stepKey="seeTitle"/>
+    </actionGroup>
+</actionGroups>

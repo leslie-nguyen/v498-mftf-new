@@ -1,1 +1,1 @@
--g DemoSuite1
+tests\functional\Magento\_generated\default\CheckoutAsGuestPaypalTestCest.php
