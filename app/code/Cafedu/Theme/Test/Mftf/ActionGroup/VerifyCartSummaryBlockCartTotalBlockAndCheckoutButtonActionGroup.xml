@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyCartSummaryBlockCartTotalBlockAndCheckoutButtonActionGroup">
+        <annotations>
+            <description>Assert display cart summary block, cart total block and Checkout button in Cart page</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <seeElement selector="{{CheckoutCartSummarySection.subTotal}}" stepKey="verifySubTotalPriceDisplayed"/>
+        <seeElement selector="{{CheckoutCartSummarySection.shippingPrice}}" stepKey="verifyShippingPriceDisplayed"/>
+        <seeElement selector="{{CheckoutCartSummarySection.orderTotal}}" stepKey="verifyOrderTotalPriceDisplayed"/>
+
+        <seeElement selector="{{CheckoutCartSummarySection.proceedToCheckout}}" stepKey="verifyCheckoutButtonDisplayed"/>
+        <seeElement selector="{{CheckoutCartSummarySection.continueShopping}}" stepKey="verifyContinueShoppingButtonDisplayed"/>
+
+        <seeElement selector="{{CheckoutCartSummarySection.shippingAndReturnsTab}}" stepKey="verifyShippingAndReturnsTabDisplayed"/>
+        <seeElement selector="{{CheckoutCartSummarySection.canWeHelpTab}}" stepKey="verifyCanWeHelpTabDisplayed"/>
+        <seeElement selector="{{CheckoutCartSummarySection.securePaymentsTab}}" stepKey="verifySecurePaymentsTabDisplayed"/>
+        <seeElement selector="{{CheckoutCartSummarySection.redeemAGiftCardTab}}" stepKey="verifyRedeemAGiftCardTabDisplayed"/>
+        <seeElement selector="{{CheckoutCartSummarySection.discountTab}}" stepKey="verifyDiscountTabDisplayed"/>
+
+    </actionGroup>
+</actionGroups>

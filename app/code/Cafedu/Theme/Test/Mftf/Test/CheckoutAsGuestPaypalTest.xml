@@ -10,13 +10,13 @@
             <testCaseId value="FLOW01"/>
             <group value="CheckoutFlow"/>
         </annotations>
-        <!--        Access Cate Listing page page-->
+<!--        Access Cate Listing page page-->
         <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
             <argument name="PageUrl" value="{{QuickGoThroughData.cateListingUrl}}"/>
         </actionGroup>
-        <!--        Check product link -->
+<!--        Check product link -->
         <actionGroup ref="VerifyFirstProductLinkInProductListingPageActionGroup" stepKey="verifyFirstProductLinkInCateListingPage"/>
-        <!--        Check add product to cart & verify in mini cart-->
+<!--        Check add product to cart & verify in mini cart-->
         <amOnPage url="{{CheckoutFlowData.configurableUrl}}" stepKey="accessConfigurablePdp"/>
         <waitForPageLoad stepKey="waitForPageLoad"/>
         <actionGroup ref="AddConfigurableProductToCartActionGroup" stepKey="addConfigurablePrdToCart">
@@ -30,7 +30,19 @@
             <argument name="productAttribute" value="{{CheckoutFlowData.attributeName}}"/>
             <argument name="productOption" value="{{CheckoutFlowData.attributeOption}}"/>
         </actionGroup>
-
+<!--        Check redirect to Cart page-->
+        <conditionalClick selector="{{WishlistAccountCartIconsSection.MiniCartIcon}}" dependentSelector="{{StorefrontMinicartSection.blockMiniCart}}" visible="false" stepKey="openMiniCart"/>
+        <click selector="{{StorefrontMinicartSection.goToCheckout}}" stepKey="clickCheckoutButton"/>
+        <waitForPageLoad stepKey="waiForPageLoad"/>
+        <seeInCurrentUrl url="/checkout/cart/" stepKey="seeCartLinkInCurrentUrl"/>
+<!--        Check cart page display-->
+        <actionGroup ref="VerifyCartSummaryBlockCartTotalBlockAndCheckoutButtonActionGroup" stepKey="verifyCartSummaryCartTotalAndCheckoutButtonDisplayed"/>
+        <actionGroup ref="VerifyCartItemsActionGroup" stepKey="verifyCartItemInformation" >
+            <argument name="productName" value="{{CheckoutFlowData.productName}}"/>
+            <argument name="productPrice" value="{$getProductPriceInPdp}"/>
+            <argument name="productAttribute" value="{{CheckoutFlowData.attributeName}}"/>
+            <argument name="productOption" value="{{CheckoutFlowData.attributeOption}}"/>
+        </actionGroup>
 
 
 

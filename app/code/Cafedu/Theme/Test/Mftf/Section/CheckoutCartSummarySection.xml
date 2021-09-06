@@ -1,0 +1,18 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="CheckoutCartSummarySection">
+
+        <element name="shippingPrice" type="text" selector="//*[@id='cart-totals']//tr[contains(@class,'shipping')]//span[@class='price']"/>
+
+        <element name="proceedToCheckout" type="button" selector="main .action.primary.checkout span"/>
+        <element name="continueShopping" type="button" selector="main .action.continue"/>
+
+        <element name="shippingAndReturnsTab" type="block" selector="#block-shiiping-return"/>
+        <element name="canWeHelpTab" type="block" selector="#block-canwe-help"/>
+        <element name="securePaymentsTab" type="block" selector="#block-secure-payments"/>
+        <element name="redeemAGiftCardTab" type="block" selector="#block-giftcard"/>
+        <element name="discountTab" type="block" selector="#block-discount"/>
+
+    </section>
+</sections>
+

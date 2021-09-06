@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyCartItemsActionGroup">
+        <annotations>
+            <description>Validates that the provided Product details (Name, SKU, Price, Subtotal and Quantity) are present and correct on the Storefront Shopping Cart page.</description>
+        </annotations>
+        <arguments>
+            <argument name="productName" type="string"/>
+            <argument name="productPrice" type="string"/>
+            <argument name="productAttribute" type="string"/>
+            <argument name="productOption" type="string"/>
+        </arguments>
+
+        <waitForElementVisible selector="{{CheckoutCartProductSection.productName}}" time="60" stepKey="waitForProductNameVisible"/>
+        <see selector="{{CheckoutCartProductSection.productName}}" userInput="{{productName}}"  stepKey="seeProductNameInCheckoutSummary"/>
+        <see selector="{{CheckoutCartProductSection.ProductPriceByName(productName)}}" userInput="{{productPrice}}" stepKey="seeProductPriceInCart"/>
+        <see selector="{{CheckoutCartProductSection.ProductOptionByNameAndAttribute(productName,productAttribute)}}" userInput="{{productOption}}" stepKey="seeProductOptionInCart"/>
+    </actionGroup>
+</actionGroups>

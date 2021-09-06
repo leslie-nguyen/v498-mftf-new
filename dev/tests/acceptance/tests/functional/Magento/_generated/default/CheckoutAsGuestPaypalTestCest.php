@@ -74,5 +74,33 @@ class CheckoutAsGuestPaypalTestCest
 		$I->waitForPageLoad(30); // stepKey: seeCheckOutButtonInMiniCartAssertItemInMiniCartWaitForPageLoad
 		$I->seeElement("//ol[@id='mini-cart']//img[@class='product-image-photo']"); // stepKey: seeProductImageAssertItemInMiniCart
 		$I->comment("Exiting Action Group [assertItemInMiniCart] VerifyMiniCartItemsActionGroup");
+		$I->comment("Check redirect to Cart page");
+		$I->conditionalClick("a#cafedu-minicart-overlay", ".block-minicart", false); // stepKey: openMiniCart
+		$I->waitForPageLoad(30); // stepKey: openMiniCartWaitForPageLoad
+		$I->click("#top-cart-btn-checkout"); // stepKey: clickCheckoutButton
+		$I->waitForPageLoad(30); // stepKey: clickCheckoutButtonWaitForPageLoad
+		$I->waitForPageLoad(30); // stepKey: waiForPageLoad
+		$I->seeInCurrentUrl("/checkout/cart/"); // stepKey: seeCartLinkInCurrentUrl
+		$I->comment("Check cart page display");
+		$I->comment("Entering Action Group [verifyCartSummaryCartTotalAndCheckoutButtonDisplayed] VerifyCartSummaryBlockCartTotalBlockAndCheckoutButtonActionGroup");
+		$I->waitForPageLoad(30); // stepKey: waitForPageLoadVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->seeElement("span[data-th='Subtotal']"); // stepKey: verifySubTotalPriceDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->seeElement("//*[@id='cart-totals']//tr[contains(@class,'shipping')]//span[@class='price']"); // stepKey: verifyShippingPriceDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->seeElement(".grand.totals .amount .price"); // stepKey: verifyOrderTotalPriceDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->seeElement("main .action.primary.checkout span"); // stepKey: verifyCheckoutButtonDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->waitForPageLoad(30); // stepKey: verifyCheckoutButtonDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayedWaitForPageLoad
+		$I->seeElement("main .action.continue"); // stepKey: verifyContinueShoppingButtonDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->seeElement("#block-shiiping-return"); // stepKey: verifyShippingAndReturnsTabDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->seeElement("#block-canwe-help"); // stepKey: verifyCanWeHelpTabDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->seeElement("#block-secure-payments"); // stepKey: verifySecurePaymentsTabDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->seeElement("#block-giftcard"); // stepKey: verifyRedeemAGiftCardTabDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->seeElement("#block-discount"); // stepKey: verifyDiscountTabDisplayedVerifyCartSummaryCartTotalAndCheckoutButtonDisplayed
+		$I->comment("Exiting Action Group [verifyCartSummaryCartTotalAndCheckoutButtonDisplayed] VerifyCartSummaryBlockCartTotalBlockAndCheckoutButtonActionGroup");
+		$I->comment("Entering Action Group [verifyCartItemInformation] VerifyCartItemsActionGroup");
+		$I->waitForElementVisible("//tbody[@class='cart item']//strong[@class='product-item-name']", 60); // stepKey: waitForProductNameVisibleVerifyCartItemInformation
+		$I->see("Floriane", "//tbody[@class='cart item']//strong[@class='product-item-name']"); // stepKey: seeProductNameInCheckoutSummaryVerifyCartItemInformation
+		$I->see($getProductPriceInPdp, "(//tbody[@class='cart item']//a[text()='Floriane']/..)/..//span[@class='price']"); // stepKey: seeProductPriceInCartVerifyCartItemInformation
+		$I->see("M", "//main//table[@id='shopping-cart-table']//tbody//tr[.//strong[contains(@class, 'product-item-name')]//a[contains(text(), 'Floriane')]]//dl[@class='item-options']//dt[.='Size']/following-sibling::dd[1]"); // stepKey: seeProductOptionInCartVerifyCartItemInformation
+		$I->comment("Exiting Action Group [verifyCartItemInformation] VerifyCartItemsActionGroup");
 	}
 }
