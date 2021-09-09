@@ -34,7 +34,7 @@ class CheckoutAsGuestPaypalTestCest
 		$I->comment("Entering Action Group [accessPageAndVerifyJSError] AmOnPageVerifyJSErrorActionGroup");
 		$I->comment("<maximizeWindow stepKey=\"maximizeWindow\"/>");
 		$I->amOnPage("/"); // stepKey: accessHomeAccessPageAndVerifyJSError
-		$I->amOnPage("/en_row/mens-cycling-jerseys.html"); // stepKey: redirectToTargetPageAccessPageAndVerifyJSError
+		$I->amOnPage("/en_ca/mens-cycling-jerseys.html"); // stepKey: redirectToTargetPageAccessPageAndVerifyJSError
 		$I->dontSeeJsError(); // stepKey: dontSeeJsErrorAccessPageAndVerifyJSError
 		$I->waitForPageLoad(30); // stepKey: waitForPageLoadAccessPageAndVerifyJSError
 		$I->comment("Exiting Action Group [accessPageAndVerifyJSError] AmOnPageVerifyJSErrorActionGroup");
@@ -53,7 +53,7 @@ class CheckoutAsGuestPaypalTestCest
 		$I->see($grabFirstProductNameInListingPageVerifyFirstProductLinkInCateListingPage, "strong[itemprop='name']"); // stepKey: seeProductNameMatchedVerifyFirstProductLinkInCateListingPage
 		$I->comment("Exiting Action Group [verifyFirstProductLinkInCateListingPage] VerifyFirstProductLinkInProductListingPageActionGroup");
 		$I->comment("Check add product to cart & verify in mini cart");
-		$I->amOnPage("/en_row/test-2.html"); // stepKey: accessConfigurablePdp
+		$I->amOnPage("/en_ca/test-2.html"); // stepKey: accessConfigurablePdp
 		$I->waitForPageLoad(30); // stepKey: waitForPageLoad
 		$I->comment("Entering Action Group [addConfigurablePrdToCart] AddConfigurableProductToCartActionGroup");
 		$I->click("//div[contains(@class,'swatch-attribute')][contains(@class,'color')]"); // stepKey: clickToOpenSizeDropdownAddConfigurablePrdToCart
@@ -105,7 +105,7 @@ class CheckoutAsGuestPaypalTestCest
 		$I->comment("Enter coupon code");
 		$grabTotalBeforeAppliedDiscount = $I->grabTextFrom(".grand.totals .amount .price"); // stepKey: grabTotalBeforeAppliedDiscount
 		$I->conditionalClick("#block-discount", "#coupon_code", false); // stepKey: expandDiscountTab
-		$I->comment("Entering Action Group [enterCouponCode] ApplyCouponActionGroup");
+		$I->comment("Entering Action Group [enterCouponCode] StorefrontApplyCouponActionGroup");
 		$I->waitForElement("#block-discount-heading", 30); // stepKey: waitForCouponHeaderEnterCouponCode
 		$I->conditionalClick("#block-discount-heading", ".block.discount.active", false); // stepKey: clickCouponHeaderEnterCouponCode
 		$I->waitForElementVisible("#coupon_code", 30); // stepKey: waitForCouponFieldEnterCouponCode
@@ -113,12 +113,33 @@ class CheckoutAsGuestPaypalTestCest
 		$I->click("#discount-coupon-form button[class*='apply']"); // stepKey: clickApplyButtonEnterCouponCode
 		$I->waitForPageLoad(30); // stepKey: clickApplyButtonEnterCouponCodeWaitForPageLoad
 		$I->waitForPageLoad(30); // stepKey: waitForPageLoadEnterCouponCode
-		$I->comment("Exiting Action Group [enterCouponCode] ApplyCouponActionGroup");
+		$I->comment("Exiting Action Group [enterCouponCode] StorefrontApplyCouponActionGroup");
 		$I->seeElement("td[data-th='Discount']"); // stepKey: verifyDiscountAmountDisplayed
 		$I->comment("Check redirect to checkout page");
 		$I->click("main .action.primary.checkout span"); // stepKey: clickCheckoutButtonInCheckoutPage
 		$I->waitForPageLoad(30); // stepKey: clickCheckoutButtonInCheckoutPageWaitForPageLoad
 		$I->waitForPageLoad(30); // stepKey: waitForCheckoutPageLoad
 		$I->seeElement("#checkout"); // stepKey: verifyCheckoutContainerInPage
+		$I->comment("Check checkout page, Check email form, Check shipping address form, Check payment step display");
+		$I->selectOption("//select[contains(@name,'cafedu_phone_preffix')]", "France: +33"); // stepKey: selectPhoneCode
+		$I->comment("Entering Action Group [fillingEmailAndAddress] GuestCheckoutFillingShippingSectionActionGroup");
+		$I->fillField("input[id*=customer-email]", "testmagentobss@gmail.com"); // stepKey: enterEmailFillingEmailAndAddress
+		$I->fillField("input[name=firstname]", "test"); // stepKey: enterFirstNameFillingEmailAndAddress
+		$I->fillField("input[name=lastname]", "test"); // stepKey: enterLastNameFillingEmailAndAddress
+		$I->fillField("input[name='street[0]']", "T"); // stepKey: enterStreetFillingEmailAndAddress
+		$I->fillField("input[name=city]", "Test city"); // stepKey: enterCityFillingEmailAndAddress
+		$I->selectOption("select[name=region_id]", "Alberta"); // stepKey: selectRegionFillingEmailAndAddress
+		$I->fillField("input[name=postcode]", "test"); // stepKey: enterPostcodeFillingEmailAndAddress
+		$I->fillField("input[name=telephone]", "234234"); // stepKey: enterTelephoneFillingEmailAndAddress
+		$I->waitForLoadingMaskToDisappear(); // stepKey: waitForLoadingMaskFillingEmailAndAddress
+		$I->waitForElement("//div[@id='checkout-shipping-method-load']//td[contains(., '')]/..//input", 30); // stepKey: waitForShippingMethodFillingEmailAndAddress
+		$I->click("//div[@id='checkout-shipping-method-load']//td[contains(., '')]/..//input"); // stepKey: selectShippingMethodFillingEmailAndAddress
+		$I->waitForElement("button.button.action.continue.primary", 30); // stepKey: waitForNextButtonFillingEmailAndAddress
+		$I->waitForPageLoad(30); // stepKey: waitForNextButtonFillingEmailAndAddressWaitForPageLoad
+		$I->click("button.button.action.continue.primary"); // stepKey: clickNextFillingEmailAndAddress
+		$I->waitForPageLoad(30); // stepKey: clickNextFillingEmailAndAddressWaitForPageLoad
+		$I->waitForElement("//*[@id='checkout-payment-method-load']//div[@data-role='title']", 30); // stepKey: waitForPaymentSectionLoadedFillingEmailAndAddress
+		$I->seeInCurrentUrl("/checkout/#payment"); // stepKey: assertCheckoutPaymentUrlFillingEmailAndAddress
+		$I->comment("Exiting Action Group [fillingEmailAndAddress] GuestCheckoutFillingShippingSectionActionGroup");
 	}
 }

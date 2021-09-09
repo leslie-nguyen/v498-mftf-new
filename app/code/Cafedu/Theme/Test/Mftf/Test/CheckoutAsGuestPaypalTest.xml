@@ -17,18 +17,18 @@
 <!--        Check product link -->
         <actionGroup ref="VerifyFirstProductLinkInProductListingPageActionGroup" stepKey="verifyFirstProductLinkInCateListingPage"/>
 <!--        Check add product to cart & verify in mini cart-->
-        <amOnPage url="{{CheckoutFlowData.configurableUrl}}" stepKey="accessConfigurablePdp"/>
+        <amOnPage url="{{CheckoutFlowProductData.configurableUrl}}" stepKey="accessConfigurablePdp"/>
         <waitForPageLoad stepKey="waitForPageLoad"/>
         <actionGroup ref="AddConfigurableProductToCartActionGroup" stepKey="addConfigurablePrdToCart">
-            <argument name="attributeCode" value="{{CheckoutFlowData.attributeCode}}"/>
-            <argument name="attributeOption" value="{{CheckoutFlowData.attributeOption}}"/>
+            <argument name="attributeCode" value="{{CheckoutFlowProductData.attributeCode}}"/>
+            <argument name="attributeOption" value="{{CheckoutFlowProductData.attributeOption}}"/>
         </actionGroup>
         <grabTextFrom selector="{{ProductMainInfoSection.ProductPrice}}" stepKey="getProductPriceInPdp"/>
         <actionGroup ref="VerifyMiniCartItemsActionGroup" stepKey="assertItemInMiniCart">
-            <argument name="productName" value="{{CheckoutFlowData.productName}}"/>
+            <argument name="productName" value="{{CheckoutFlowProductData.productName}}"/>
             <argument name="productPrice" value="{$getProductPriceInPdp}"/>
-            <argument name="productAttribute" value="{{CheckoutFlowData.attributeName}}"/>
-            <argument name="productOption" value="{{CheckoutFlowData.attributeOption}}"/>
+            <argument name="productAttribute" value="{{CheckoutFlowProductData.attributeName}}"/>
+            <argument name="productOption" value="{{CheckoutFlowProductData.attributeOption}}"/>
         </actionGroup>
 <!--        Check redirect to Cart page-->
         <conditionalClick selector="{{WishlistAccountCartIconsSection.MiniCartIcon}}" dependentSelector="{{StorefrontMinicartSection.blockMiniCart}}" visible="false" stepKey="openMiniCart"/>
@@ -38,22 +38,29 @@
 <!--        Check cart page display-->
         <actionGroup ref="VerifyCartSummaryBlockCartTotalBlockAndCheckoutButtonActionGroup" stepKey="verifyCartSummaryCartTotalAndCheckoutButtonDisplayed"/>
         <actionGroup ref="VerifyCartItemsActionGroup" stepKey="verifyCartItemInformation" >
-            <argument name="productName" value="{{CheckoutFlowData.productName}}"/>
+            <argument name="productName" value="{{CheckoutFlowProductData.productName}}"/>
             <argument name="productPrice" value="{$getProductPriceInPdp}"/>
-            <argument name="productAttribute" value="{{CheckoutFlowData.attributeName}}"/>
-            <argument name="productOption" value="{{CheckoutFlowData.attributeOption}}"/>
+            <argument name="productAttribute" value="{{CheckoutFlowProductData.attributeName}}"/>
+            <argument name="productOption" value="{{CheckoutFlowProductData.attributeOption}}"/>
         </actionGroup>
 <!--        Enter coupon code-->
         <grabTextFrom selector="{{CheckoutCartSummarySection.orderTotal}}" stepKey="grabTotalBeforeAppliedDiscount"/>
         <conditionalClick selector="{{CheckoutCartSummarySection.discountTab}}" dependentSelector="{{StorefrontSalesRuleCartCouponSection.couponField}}" visible="false" stepKey="expandDiscountTab"/>
         <actionGroup ref="StorefrontApplyCouponActionGroup" stepKey="enterCouponCode">
-            <argument name="coupon" value="CheckoutFlowData"/>
+            <argument name="coupon" value="CheckoutFlowCouponCode"/>
         </actionGroup>
         <seeElement selector="{{CheckoutCartSummarySection.discountAmount}}" stepKey="verifyDiscountAmountDisplayed"/>
 <!--        Check redirect to checkout page-->
         <click selector="{{CheckoutCartSummarySection.proceedToCheckout}}" stepKey="clickCheckoutButtonInCheckoutPage"/>
         <waitForPageLoad stepKey="waitForCheckoutPageLoad"/>
         <seeElement selector="#checkout" stepKey="verifyCheckoutContainerInPage"/>
+<!--        Check checkout page, Check email form, Check shipping address form, Check payment step display-->
+        <selectOption selector="{{CheckoutShippingSection.countryPhoneCode}}" userInput="{{CheckoutFlowCustomerAddressData.phoneCode}}" stepKey="selectPhoneCode"/>
+        <actionGroup ref="GuestCheckoutFillingShippingSectionActionGroup" stepKey="fillingEmailAndAddress">
+            <argument name="customerVar" value="CheckoutFlowGuestCustomerData"/>
+            <argument name="customerAddressVar" value="CheckoutFlowCustomerAddressData"/>
+        </actionGroup>
+
 
     </test>
 </tests>
