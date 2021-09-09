@@ -19,11 +19,12 @@
         <data key="sitemapUrl" >/en_row/sitemap/sitemap_en_row.xml</data>
     </entity>
     <entity name="CheckoutFlowData" type="text">
-        <data key="configurableUrl">/en_row/men-cycling-jersey-floriane-groseille.html</data>
-        <data key="productName" >Floriane</data>
-        <data key="attributeName" >Size</data>
-        <data key="attributeCode" >size</data>
-        <data key="attributeOption">M</data>
+        <data key="configurableUrl">/en_row/test-2.html</data>
+        <data key="productName" >test 2</data>
+        <data key="attributeName" >Color</data>
+        <data key="attributeCode" >color</data>
+        <data key="attributeOption">Navy</data>
+        <data key="code">99999testing99999</data>
     </entity>
 </entities>
 

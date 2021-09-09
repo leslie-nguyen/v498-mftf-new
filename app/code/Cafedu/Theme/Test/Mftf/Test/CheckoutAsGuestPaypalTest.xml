@@ -32,8 +32,8 @@
         </actionGroup>
 <!--        Check redirect to Cart page-->
         <conditionalClick selector="{{WishlistAccountCartIconsSection.MiniCartIcon}}" dependentSelector="{{StorefrontMinicartSection.blockMiniCart}}" visible="false" stepKey="openMiniCart"/>
-        <click selector="{{StorefrontMinicartSection.goToCheckout}}" stepKey="clickCheckoutButton"/>
-        <waitForPageLoad stepKey="waiForPageLoad"/>
+        <click selector="{{StorefrontMinicartSection.goToCheckout}}" stepKey="clickCheckoutButtonInMiniCart"/>
+        <waitForPageLoad stepKey="waitForCartPageLoad"/>
         <seeInCurrentUrl url="/checkout/cart/" stepKey="seeCartLinkInCurrentUrl"/>
 <!--        Check cart page display-->
         <actionGroup ref="VerifyCartSummaryBlockCartTotalBlockAndCheckoutButtonActionGroup" stepKey="verifyCartSummaryCartTotalAndCheckoutButtonDisplayed"/>
@@ -43,8 +43,17 @@
             <argument name="productAttribute" value="{{CheckoutFlowData.attributeName}}"/>
             <argument name="productOption" value="{{CheckoutFlowData.attributeOption}}"/>
         </actionGroup>
-
-
+<!--        Enter coupon code-->
+        <grabTextFrom selector="{{CheckoutCartSummarySection.orderTotal}}" stepKey="grabTotalBeforeAppliedDiscount"/>
+        <conditionalClick selector="{{CheckoutCartSummarySection.discountTab}}" dependentSelector="{{StorefrontSalesRuleCartCouponSection.couponField}}" visible="false" stepKey="expandDiscountTab"/>
+        <actionGroup ref="StorefrontApplyCouponActionGroup" stepKey="enterCouponCode">
+            <argument name="coupon" value="CheckoutFlowData"/>
+        </actionGroup>
+        <seeElement selector="{{CheckoutCartSummarySection.discountAmount}}" stepKey="verifyDiscountAmountDisplayed"/>
+<!--        Check redirect to checkout page-->
+        <click selector="{{CheckoutCartSummarySection.proceedToCheckout}}" stepKey="clickCheckoutButtonInCheckoutPage"/>
+        <waitForPageLoad stepKey="waitForCheckoutPageLoad"/>
+        <seeElement selector="#checkout" stepKey="verifyCheckoutContainerInPage"/>
 
     </test>
 </tests>

@@ -53,11 +53,11 @@ class CheckoutAsGuestPaypalTestCest
 		$I->see($grabFirstProductNameInListingPageVerifyFirstProductLinkInCateListingPage, "strong[itemprop='name']"); // stepKey: seeProductNameMatchedVerifyFirstProductLinkInCateListingPage
 		$I->comment("Exiting Action Group [verifyFirstProductLinkInCateListingPage] VerifyFirstProductLinkInProductListingPageActionGroup");
 		$I->comment("Check add product to cart & verify in mini cart");
-		$I->amOnPage("/en_row/men-cycling-jersey-floriane-groseille.html"); // stepKey: accessConfigurablePdp
+		$I->amOnPage("/en_row/test-2.html"); // stepKey: accessConfigurablePdp
 		$I->waitForPageLoad(30); // stepKey: waitForPageLoad
 		$I->comment("Entering Action Group [addConfigurablePrdToCart] AddConfigurableProductToCartActionGroup");
-		$I->click("//div[contains(@class,'swatch-attribute')][contains(@class,'size')]"); // stepKey: clickToOpenSizeDropdownAddConfigurablePrdToCart
-		$I->click("//div[contains(@class,'swatch-attribute')][contains(@class,'size')]//*[contains(@class,'swatch-option')][contains(text(),'M')]"); // stepKey: selectAttributeOptionAddConfigurablePrdToCart
+		$I->click("//div[contains(@class,'swatch-attribute')][contains(@class,'color')]"); // stepKey: clickToOpenSizeDropdownAddConfigurablePrdToCart
+		$I->click("//div[contains(@class,'swatch-attribute')][contains(@class,'color')]//*[contains(@class,'swatch-option')][contains(text(),'Navy')]"); // stepKey: selectAttributeOptionAddConfigurablePrdToCart
 		$I->click("#product-addtocart-button"); // stepKey: clickOnAddToCartButtonAddConfigurablePrdToCart
 		$I->waitForPageLoad(60); // stepKey: clickOnAddToCartButtonAddConfigurablePrdToCartWaitForPageLoad
 		$I->waitForAjaxLoad(30); // stepKey: waitForAjaxLoadAddConfigurablePrdToCart
@@ -66,10 +66,10 @@ class CheckoutAsGuestPaypalTestCest
 		$I->comment("Exiting Action Group [addConfigurablePrdToCart] AddConfigurableProductToCartActionGroup");
 		$getProductPriceInPdp = $I->grabTextFrom(".price-box"); // stepKey: getProductPriceInPdp
 		$I->comment("Entering Action Group [assertItemInMiniCart] VerifyMiniCartItemsActionGroup");
-		$I->see("Floriane", ".minicart-items"); // stepKey: seeProductNameInMiniCartAssertItemInMiniCart
+		$I->see("test 2", ".minicart-items"); // stepKey: seeProductNameInMiniCartAssertItemInMiniCart
 		$I->see($getProductPriceInPdp, ".minicart-items"); // stepKey: seeProductPriceInMiniCartAssertItemInMiniCart
-		$I->see("Size", "//a[text()='Floriane']/../following-sibling::div[contains(@class,'options')]//dt[@class='label']"); // stepKey: seeAttributeNameAssertItemInMiniCart
-		$I->see("M", "//a[text()='Floriane']/../following-sibling::div[contains(@class,'options')]//dd/span"); // stepKey: seeAttributeOptionAssertItemInMiniCart
+		$I->see("Color", "//a[text()='test 2']/../following-sibling::div[contains(@class,'options')]//dt[@class='label']"); // stepKey: seeAttributeNameAssertItemInMiniCart
+		$I->see("Navy", "//a[text()='test 2']/../following-sibling::div[contains(@class,'options')]//dd/span"); // stepKey: seeAttributeOptionAssertItemInMiniCart
 		$I->seeElement("#top-cart-btn-checkout"); // stepKey: seeCheckOutButtonInMiniCartAssertItemInMiniCart
 		$I->waitForPageLoad(30); // stepKey: seeCheckOutButtonInMiniCartAssertItemInMiniCartWaitForPageLoad
 		$I->seeElement("//ol[@id='mini-cart']//img[@class='product-image-photo']"); // stepKey: seeProductImageAssertItemInMiniCart
@@ -77,9 +77,9 @@ class CheckoutAsGuestPaypalTestCest
 		$I->comment("Check redirect to Cart page");
 		$I->conditionalClick("a#cafedu-minicart-overlay", ".block-minicart", false); // stepKey: openMiniCart
 		$I->waitForPageLoad(30); // stepKey: openMiniCartWaitForPageLoad
-		$I->click("#top-cart-btn-checkout"); // stepKey: clickCheckoutButton
-		$I->waitForPageLoad(30); // stepKey: clickCheckoutButtonWaitForPageLoad
-		$I->waitForPageLoad(30); // stepKey: waiForPageLoad
+		$I->click("#top-cart-btn-checkout"); // stepKey: clickCheckoutButtonInMiniCart
+		$I->waitForPageLoad(30); // stepKey: clickCheckoutButtonInMiniCartWaitForPageLoad
+		$I->waitForPageLoad(30); // stepKey: waitForCartPageLoad
 		$I->seeInCurrentUrl("/checkout/cart/"); // stepKey: seeCartLinkInCurrentUrl
 		$I->comment("Check cart page display");
 		$I->comment("Entering Action Group [verifyCartSummaryCartTotalAndCheckoutButtonDisplayed] VerifyCartSummaryBlockCartTotalBlockAndCheckoutButtonActionGroup");
@@ -98,9 +98,27 @@ class CheckoutAsGuestPaypalTestCest
 		$I->comment("Exiting Action Group [verifyCartSummaryCartTotalAndCheckoutButtonDisplayed] VerifyCartSummaryBlockCartTotalBlockAndCheckoutButtonActionGroup");
 		$I->comment("Entering Action Group [verifyCartItemInformation] VerifyCartItemsActionGroup");
 		$I->waitForElementVisible("//tbody[@class='cart item']//strong[@class='product-item-name']", 60); // stepKey: waitForProductNameVisibleVerifyCartItemInformation
-		$I->see("Floriane", "//tbody[@class='cart item']//strong[@class='product-item-name']"); // stepKey: seeProductNameInCheckoutSummaryVerifyCartItemInformation
-		$I->see($getProductPriceInPdp, "(//tbody[@class='cart item']//a[text()='Floriane']/..)/..//span[@class='price']"); // stepKey: seeProductPriceInCartVerifyCartItemInformation
-		$I->see("M", "//main//table[@id='shopping-cart-table']//tbody//tr[.//strong[contains(@class, 'product-item-name')]//a[contains(text(), 'Floriane')]]//dl[@class='item-options']//dt[.='Size']/following-sibling::dd[1]"); // stepKey: seeProductOptionInCartVerifyCartItemInformation
+		$I->see("test 2", "//tbody[@class='cart item']//strong[@class='product-item-name']"); // stepKey: seeProductNameInCheckoutSummaryVerifyCartItemInformation
+		$I->see($getProductPriceInPdp, "(//tbody[@class='cart item']//a[text()='test 2']/..)/..//span[@class='price']"); // stepKey: seeProductPriceInCartVerifyCartItemInformation
+		$I->see("Navy", "//main//table[@id='shopping-cart-table']//tbody//tr[.//strong[contains(@class, 'product-item-name')]//a[contains(text(), 'test 2')]]//dl[@class='item-options']//dt[.='Color']/following-sibling::dd[1]"); // stepKey: seeProductOptionInCartVerifyCartItemInformation
 		$I->comment("Exiting Action Group [verifyCartItemInformation] VerifyCartItemsActionGroup");
+		$I->comment("Enter coupon code");
+		$grabTotalBeforeAppliedDiscount = $I->grabTextFrom(".grand.totals .amount .price"); // stepKey: grabTotalBeforeAppliedDiscount
+		$I->conditionalClick("#block-discount", "#coupon_code", false); // stepKey: expandDiscountTab
+		$I->comment("Entering Action Group [enterCouponCode] ApplyCouponActionGroup");
+		$I->waitForElement("#block-discount-heading", 30); // stepKey: waitForCouponHeaderEnterCouponCode
+		$I->conditionalClick("#block-discount-heading", ".block.discount.active", false); // stepKey: clickCouponHeaderEnterCouponCode
+		$I->waitForElementVisible("#coupon_code", 30); // stepKey: waitForCouponFieldEnterCouponCode
+		$I->fillField("#coupon_code", "99999testing99999"); // stepKey: fillCouponFieldEnterCouponCode
+		$I->click("#discount-coupon-form button[class*='apply']"); // stepKey: clickApplyButtonEnterCouponCode
+		$I->waitForPageLoad(30); // stepKey: clickApplyButtonEnterCouponCodeWaitForPageLoad
+		$I->waitForPageLoad(30); // stepKey: waitForPageLoadEnterCouponCode
+		$I->comment("Exiting Action Group [enterCouponCode] ApplyCouponActionGroup");
+		$I->seeElement("td[data-th='Discount']"); // stepKey: verifyDiscountAmountDisplayed
+		$I->comment("Check redirect to checkout page");
+		$I->click("main .action.primary.checkout span"); // stepKey: clickCheckoutButtonInCheckoutPage
+		$I->waitForPageLoad(30); // stepKey: clickCheckoutButtonInCheckoutPageWaitForPageLoad
+		$I->waitForPageLoad(30); // stepKey: waitForCheckoutPageLoad
+		$I->seeElement("#checkout"); // stepKey: verifyCheckoutContainerInPage
 	}
 }
