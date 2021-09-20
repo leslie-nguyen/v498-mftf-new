@@ -1,0 +1,9 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="CheckoutShippingMethodsSection">
+        <element name="shippingMethodBlock" type="block" selector="#co-shipping-method-form" />
+        <element name="checkShippingMethodByName" type="text" selector="//div[@id='checkout-shipping-method-load']//td[contains(., '{{var1}}')]/..//input/following-sibling::label" parameterized="true"/>
+
+    </section>
+</sections>
+

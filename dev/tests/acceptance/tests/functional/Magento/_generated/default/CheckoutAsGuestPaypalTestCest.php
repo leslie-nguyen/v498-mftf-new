@@ -38,6 +38,10 @@ class CheckoutAsGuestPaypalTestCest
 		$I->dontSeeJsError(); // stepKey: dontSeeJsErrorAccessPageAndVerifyJSError
 		$I->waitForPageLoad(30); // stepKey: waitForPageLoadAccessPageAndVerifyJSError
 		$I->comment("Exiting Action Group [accessPageAndVerifyJSError] AmOnPageVerifyJSErrorActionGroup");
+		$I->comment("Entering Action Group [closeCookiePopup] CloseCookiePopupActionGroup");
+		$I->waitForElement("#onetrust-close-btn-container button", 30); // stepKey: waitForOneTrustCookieDisplayedCloseCookiePopup
+		$I->click("#onetrust-close-btn-container button"); // stepKey: closeCookiePopupCloseCookiePopup
+		$I->comment("Exiting Action Group [closeCookiePopup] CloseCookiePopupActionGroup");
 		$I->comment("Check product link");
 		$I->comment("Entering Action Group [verifyFirstProductLinkInCateListingPage] VerifyFirstProductLinkInProductListingPageActionGroup");
 		$I->comment("Grab first product ID, name in product listing page");
@@ -118,11 +122,16 @@ class CheckoutAsGuestPaypalTestCest
 		$I->comment("Check redirect to checkout page");
 		$I->click("main .action.primary.checkout span"); // stepKey: clickCheckoutButtonInCheckoutPage
 		$I->waitForPageLoad(30); // stepKey: clickCheckoutButtonInCheckoutPageWaitForPageLoad
-		$I->waitForPageLoad(30); // stepKey: waitForCheckoutPageLoad
-		$I->seeElement("#checkout"); // stepKey: verifyCheckoutContainerInPage
-		$I->comment("Check checkout page, Check email form, Check shipping address form, Check payment step display");
+		$I->comment("Check display checkout page - Shipping step, Filling Email, address form & proceed to Payment tep");
+		$I->comment("Entering Action Group [checkDisplayedCheckoutPageShippingStep] VerifyDisplayedCheckoutShippingStepActionGroup");
+		$I->waitForPageLoad(30); // stepKey: waitForCheckoutPageLoadCheckDisplayedCheckoutPageShippingStep
+		$I->seeElement("#checkout"); // stepKey: verifyCheckoutContainerInPageCheckDisplayedCheckoutPageShippingStep
+		$I->seeElement("div.block.items-in-cart"); // stepKey: checkDisplayedItemListBlockCheckDisplayedCheckoutPageShippingStep
+		$I->seeElement("#co-shipping-method-form"); // stepKey: checkDisplayedShippingMethodBlockCheckDisplayedCheckoutPageShippingStep
+		$I->seeElement("#co-shipping-form"); // stepKey: checkDisplayedAddressFormCheckDisplayedCheckoutPageShippingStep
+		$I->comment("Exiting Action Group [checkDisplayedCheckoutPageShippingStep] VerifyDisplayedCheckoutShippingStepActionGroup");
 		$I->selectOption("//select[contains(@name,'cafedu_phone_preffix')]", "France: +33"); // stepKey: selectPhoneCode
-		$I->comment("Entering Action Group [fillingEmailAndAddress] GuestCheckoutFillingShippingSectionActionGroup");
+		$I->comment("Entering Action Group [fillingEmailAndAddress] GuestCheckoutFillingShippingSectionRewriteActionGroup");
 		$I->fillField("input[id*=customer-email]", "testmagentobss@gmail.com"); // stepKey: enterEmailFillingEmailAndAddress
 		$I->fillField("input[name=firstname]", "test"); // stepKey: enterFirstNameFillingEmailAndAddress
 		$I->fillField("input[name=lastname]", "test"); // stepKey: enterLastNameFillingEmailAndAddress
@@ -132,14 +141,29 @@ class CheckoutAsGuestPaypalTestCest
 		$I->fillField("input[name=postcode]", "test"); // stepKey: enterPostcodeFillingEmailAndAddress
 		$I->fillField("input[name=telephone]", "234234"); // stepKey: enterTelephoneFillingEmailAndAddress
 		$I->waitForLoadingMaskToDisappear(); // stepKey: waitForLoadingMaskFillingEmailAndAddress
-		$I->waitForElement("//div[@id='checkout-shipping-method-load']//td[contains(., '')]/..//input", 30); // stepKey: waitForShippingMethodFillingEmailAndAddress
-		$I->click("//div[@id='checkout-shipping-method-load']//td[contains(., '')]/..//input"); // stepKey: selectShippingMethodFillingEmailAndAddress
+		$I->scrollToTopOfPage(); // stepKey: scrollToTopOfPagesFillingEmailAndAddress
+		$I->waitForElement("//div[@id='checkout-shipping-method-load']//td[contains(., 'Free')]/..//input/following-sibling::label", 30); // stepKey: waitForShippingMethodFillingEmailAndAddress
+		$I->click("//div[@id='checkout-shipping-method-load']//td[contains(., 'Free')]/..//input/following-sibling::label"); // stepKey: selectShippingMethodFillingEmailAndAddress
 		$I->waitForElement("button.button.action.continue.primary", 30); // stepKey: waitForNextButtonFillingEmailAndAddress
 		$I->waitForPageLoad(30); // stepKey: waitForNextButtonFillingEmailAndAddressWaitForPageLoad
 		$I->click("button.button.action.continue.primary"); // stepKey: clickNextFillingEmailAndAddress
 		$I->waitForPageLoad(30); // stepKey: clickNextFillingEmailAndAddressWaitForPageLoad
 		$I->waitForElement("//*[@id='checkout-payment-method-load']//div[@data-role='title']", 30); // stepKey: waitForPaymentSectionLoadedFillingEmailAndAddress
 		$I->seeInCurrentUrl("/checkout/#payment"); // stepKey: assertCheckoutPaymentUrlFillingEmailAndAddress
-		$I->comment("Exiting Action Group [fillingEmailAndAddress] GuestCheckoutFillingShippingSectionActionGroup");
+		$I->comment("Exiting Action Group [fillingEmailAndAddress] GuestCheckoutFillingShippingSectionRewriteActionGroup");
+		$I->comment("Check payment step display");
+		$I->comment("Entering Action Group [checkDisplayedCheckoutPagePaymentStep] VerifyDisplayedCheckoutPaymentStepActionGroup");
+		$I->waitForPageLoad(30); // stepKey: waitForCheckoutPageLoadCheckDisplayedCheckoutPagePaymentStep
+		$I->seeElement("//*[@id='checkout-payment-method-load']//*[contains(@class, 'payment-group')]//label[normalize-space(.)='Pay by Card (Stripe)']"); // stepKey: verifyDisplayedCreditCardPaymentMethodCheckDisplayedCheckoutPagePaymentStep
+		$I->seeElement("//*[@id='checkout-payment-method-load']//*[contains(@class, 'payment-group')]//label[normalize-space(.)='PayPal What is PayPal?']"); // stepKey: verifyDisplayedPaypalPaymentMethodCheckDisplayedCheckoutPagePaymentStep
+		$I->seeElement("div.block.items-in-cart"); // stepKey: checkDisplayedItemListBlockCheckDisplayedCheckoutPagePaymentStep
+		$I->seeElement("//tr[@class='totals sub']//span[@class='price']"); // stepKey: checkDisplayedOrderSummarySubtotalCheckDisplayedCheckoutPagePaymentStep
+		$I->seeElement("//tr[@class='totals shipping incl']//span[@class='price']"); // stepKey: checkDisplayedOrderShippingTotalIncludingCheckDisplayedCheckoutPagePaymentStep
+		$I->seeElement("//tr[@class='grand totals']//span[@class='price']"); // stepKey: checkDisplayedOrderSummaryTotalCheckDisplayedCheckoutPagePaymentStep
+		$I->click("#opc-block-shipping-information .cafedu-opc-sidebar-title"); // stepKey: openShippingInformationTabCheckDisplayedCheckoutPagePaymentStep
+		$I->waitForElement("//div[@class='ship-via']//div[@class='shipping-information-content']", 30); // stepKey: waitForShippingInformationDisplayedCheckDisplayedCheckoutPagePaymentStep
+		$I->seeElement("//div[@class='ship-via']//div[@class='shipping-information-content']"); // stepKey: checkDisplayedShippingMethodInformationCheckDisplayedCheckoutPagePaymentStep
+		$I->seeElement(".ship-to .shipping-information-content"); // stepKey: checkDisplayedShippingAddressCheckDisplayedCheckoutPagePaymentStep
+		$I->comment("Exiting Action Group [checkDisplayedCheckoutPagePaymentStep] VerifyDisplayedCheckoutPaymentStepActionGroup");
 	}
 }

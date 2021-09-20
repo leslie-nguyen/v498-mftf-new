@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
-    <test name="HomepageTest">
+    <test name="HomePageTest">
         <annotations>
             <features value="Check display homepage"/>
             <stories value="Check display homepage"/>
@@ -10,12 +10,11 @@
             <testCaseId value="QUICK-HOME01"/>
             <group value="QuickGoThrough"/>
         </annotations>
-<!--    Access Homepage, close cookie popup-->
+        <!--    Access Homepage, close cookie popup-->
         <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
             <argument name="PageUrl" value="{{QuickGoThroughData.homeUrl}}"/>
         </actionGroup>
-        <waitForElement selector="{{OneTrustCookieSection.ClosePopupIcon}}" stepKey="waitForOneTrustCookieDisplayed"/>
-        <click selector="{{OneTrustCookieSection.ClosePopupIcon}}" stepKey="closeCookiePopup"/>
+        <actionGroup ref="CloseCookiePopupActionGroup" stepKey="closeCookiePopup"/>
 <!--        Verify display banner, logo, menu, Search field and search icon-->
         <seeElement selector="{{BannerSection.BannerImage}}" stepKey="verifyBannerImageDisplayed"/>
         <seeElement selector="{{BannerSection.HomeMenuCategories}}" stepKey="verifyHomeMenuCategoriesDisplayed"/>
@@ -29,5 +28,6 @@
         <see selector="{{HomeFooterSection.CopyrightText}}" stepKey="verifyCopyrightText" userInput="Copyright©2019 CAFÉ DU CYCLISTE. All rights reserved."/>
         <click selector="{{StoreSwitcherSection.CountryDropdown}}" stepKey="clickCountryDropdown" />
         <makeScreenshot userInput="HomepageScreenshot" stepKey="screenshotHomepage"/>
+
     </test>
 </tests>

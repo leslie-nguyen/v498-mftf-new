@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="CloseCookiePopupActionGroup">
+        <waitForElement selector="{{OneTrustCookieSection.ClosePopupIcon}}" stepKey="waitForOneTrustCookieDisplayed"/>
+        <click selector="{{OneTrustCookieSection.ClosePopupIcon}}" stepKey="closeCookiePopup"/>
+    </actionGroup>
+</actionGroups>

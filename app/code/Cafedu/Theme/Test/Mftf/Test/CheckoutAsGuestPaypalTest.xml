@@ -14,6 +14,7 @@
         <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
             <argument name="PageUrl" value="{{QuickGoThroughData.cateListingUrl}}"/>
         </actionGroup>
+        <actionGroup ref="CloseCookiePopupActionGroup" stepKey="closeCookiePopup"/>
 <!--        Check product link -->
         <actionGroup ref="VerifyFirstProductLinkInProductListingPageActionGroup" stepKey="verifyFirstProductLinkInCateListingPage"/>
 <!--        Check add product to cart & verify in mini cart-->
@@ -52,15 +53,18 @@
         <seeElement selector="{{CheckoutCartSummarySection.discountAmount}}" stepKey="verifyDiscountAmountDisplayed"/>
 <!--        Check redirect to checkout page-->
         <click selector="{{CheckoutCartSummarySection.proceedToCheckout}}" stepKey="clickCheckoutButtonInCheckoutPage"/>
-        <waitForPageLoad stepKey="waitForCheckoutPageLoad"/>
-        <seeElement selector="#checkout" stepKey="verifyCheckoutContainerInPage"/>
-<!--        Check checkout page, Check email form, Check shipping address form, Check payment step display-->
+<!--        Check display checkout page - Shipping step, Filling Email, address form & proceed to Payment tep-->
+        <actionGroup ref="VerifyDisplayedCheckoutShippingStepActionGroup" stepKey="checkDisplayedCheckoutPageShippingStep"/>
         <selectOption selector="{{CheckoutShippingSection.countryPhoneCode}}" userInput="{{CheckoutFlowCustomerAddressData.phoneCode}}" stepKey="selectPhoneCode"/>
-        <actionGroup ref="GuestCheckoutFillingShippingSectionActionGroup" stepKey="fillingEmailAndAddress">
+        <actionGroup ref="GuestCheckoutFillingShippingSectionRewriteActionGroup" stepKey="fillingEmailAndAddress">
             <argument name="customerVar" value="CheckoutFlowGuestCustomerData"/>
             <argument name="customerAddressVar" value="CheckoutFlowCustomerAddressData"/>
+            <argument name="shippingMethod" value="{{CheckoutFlowShippingAndPaymentMethodsName.shippingMethodName}}"/>
         </actionGroup>
-
-
+<!--        Check payment step display-->
+        <actionGroup ref="VerifyDisplayedCheckoutPaymentStepActionGroup" stepKey="checkDisplayedCheckoutPagePaymentStep">
+            <argument name="paymentMethodName1" value="{{CheckoutFlowShippingAndPaymentMethodsName.paymentMethodName1}}"/>
+            <argument name="paymentMethodName2" value="{{CheckoutFlowShippingAndPaymentMethodsName.paymentMethodName2}}"/>
+        </actionGroup>
     </test>
 </tests>

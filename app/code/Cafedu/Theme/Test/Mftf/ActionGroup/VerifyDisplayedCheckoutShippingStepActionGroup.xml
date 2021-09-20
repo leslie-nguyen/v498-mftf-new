@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedCheckoutShippingStepActionGroup">
+        <annotations>
+            <description>Verify Checkout shipping step displayed: shipping methods, Address form, Item list</description>
+        </annotations>
+        <waitForPageLoad stepKey="waitForCheckoutPageLoad"/>
+        <seeElement selector="#checkout" stepKey="verifyCheckoutContainerInPage"/>
+        <seeElement selector="{{CheckoutPaymentSection.cartItemsArea}}" stepKey="checkDisplayedItemListBlock"/>
+        <seeElement selector="{{CheckoutShippingMethodsSection.shippingMethodBlock}}" stepKey="checkDisplayedShippingMethodBlock"/>
+        <seeElement selector="{{CheckoutShippingSection.addressForm}}" stepKey="checkDisplayedAddressForm"/>
+    </actionGroup>
+</actionGroups>

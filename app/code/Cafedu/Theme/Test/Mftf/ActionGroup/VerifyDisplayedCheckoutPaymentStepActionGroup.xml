@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyDisplayedCheckoutPaymentStepActionGroup">
+        <annotations>
+            <description>Verify Checkout payment step displayed: Payment methods, Item list, Order summary, Shipping information</description>
+        </annotations>
+        <arguments>
+            <argument name="paymentMethodName1" type="string"/>
+            <argument name="paymentMethodName2" type="string"/>
+        </arguments>
+
+        <waitForPageLoad stepKey="waitForCheckoutPageLoad"/>
+        <seeElement selector="{{CheckoutPaymentSection.paymentMethodByName(paymentMethodName1)}}" stepKey="verifyDisplayedCreditCardPaymentMethod"/>
+        <seeElement selector="{{CheckoutPaymentSection.paymentMethodByName(paymentMethodName2)}}" stepKey="verifyDisplayedPaypalPaymentMethod"/>
+        <seeElement selector="{{CheckoutPaymentSection.cartItemsArea}}" stepKey="checkDisplayedItemListBlock"/>
+        <seeElement selector="{{CheckoutPaymentSection.orderSummarySubtotal}}" stepKey="checkDisplayedOrderSummarySubtotal"/>
+        <seeElement selector="{{StorefrontCheckoutPaymentSection.orderShippingTotalIncluding}}" stepKey="checkDisplayedOrderShippingTotalIncluding"/>
+        <seeElement selector="{{CheckoutPaymentSection.orderSummaryTotal}}" stepKey="checkDisplayedOrderSummaryTotal"/>
+        <click selector="{{CheckoutPaymentSection.shipInformationBlock}}" stepKey="openShippingInformationTab"/>
+        <waitForElement selector="{{CheckoutPaymentSection.shippingMethodInformation}}" stepKey="waitForShippingInformationDisplayed"/>
+        <seeElement selector="{{CheckoutPaymentSection.shippingMethodInformation}}" stepKey="checkDisplayedShippingMethodInformation"/>
+        <seeElement selector="{{CheckoutPaymentSection.shippingInformationSection}}" stepKey="checkDisplayedShippingAddress"/>
+
+    </actionGroup>
+</actionGroups>

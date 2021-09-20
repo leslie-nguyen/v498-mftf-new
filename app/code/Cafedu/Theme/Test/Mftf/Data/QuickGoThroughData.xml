@@ -41,6 +41,11 @@
         <data key="telephone">234234</data>
         <data key="phoneCode">France: +33</data>
     </entity>
+    <entity name="CheckoutFlowShippingAndPaymentMethodsName" type="quote">
+        <data key="shippingMethodName">Free</data>
+        <data key="paymentMethodName1">Pay by Card (Stripe)</data>
+        <data key="paymentMethodName2">PayPal What is PayPal?</data>
+    </entity>
 
 </entities>
 

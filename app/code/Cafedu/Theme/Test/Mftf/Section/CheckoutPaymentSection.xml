@@ -1,0 +1,8 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="CheckoutPaymentSection">
+        <element name="shipInformationBlock" type="block" selector="#opc-block-shipping-information .cafedu-opc-sidebar-title"/>
+
+    </section>
+</sections>
+
