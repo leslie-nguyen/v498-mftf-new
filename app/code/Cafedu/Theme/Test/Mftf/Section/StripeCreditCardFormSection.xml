@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="StripeCreditCardFormSection">
+        <element name="defaultContent" type="iframe" selector="stripe-payments-card-number iframe" />
+        <element name="cardNumberIframe" type="iframe" selector="stripe-payments-card-number iframe" />
+        <element name="cardNumber" type="input" selector=".InputElement[name='cardnumber']"/>
+        <element name="cardExpireIframe" type="iframe" selector="stripe-payments-card-expiry iframe"/>
+        <element name="cardExpire" type="input" selector=".InputElement[name='exp-date']"/>
+        <element name="cardCVCIframe" type="iframe" selector="stripe-payments-card-cvc iframe"/>
+        <element name="cardCVC" type="input" selector=".InputElement[name='cvc']"/>
+    </section>
+</sections>

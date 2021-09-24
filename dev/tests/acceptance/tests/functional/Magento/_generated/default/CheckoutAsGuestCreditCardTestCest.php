@@ -13,22 +13,22 @@ use Yandex\Allure\Adapter\Model\SeverityLevel;
 use Yandex\Allure\Adapter\Annotation\TestCaseId;
 
 /**
- * @Description("Checkout as guest with Paypal<h3>Test files</h3>app\code\Cafedu\Theme\Test\Mftf\Test\CheckoutAsGuestPaypalTest.xml<br>")
+ * @Description("Checkout as guest with Credit Card - Stripe<h3>Test files</h3>app\code\Cafedu\Theme\Test\Mftf\Test\CheckoutAsGuestCreditCardTest.xml<br>")
  * @TestCaseId("FLOW01")
  * @group CheckoutFlow
  */
-class CheckoutAsGuestPaypalTestCest
+class CheckoutAsGuestCreditCardTestCest
 {
 	/**
 	 * @Features({"Theme"})
-	 * @Stories({"Checkout as guest with Paypal"})
+	 * @Stories({"Checkout as guest with Credit Card - Stripe"})
 	 * @Severity(level = SeverityLevel::NORMAL)
 	 * @Parameter(name = "AcceptanceTester", value="$I")
 	 * @param AcceptanceTester $I
 	 * @return void
 	 * @throws \Exception
 	 */
-	public function CheckoutAsGuestPaypalTest(AcceptanceTester $I)
+	public function CheckoutAsGuestCreditCardTest(AcceptanceTester $I)
 	{
 		$I->comment("Access Cate Listing page page");
 		$I->comment("Entering Action Group [accessPageAndVerifyJSError] AmOnPageVerifyJSErrorActionGroup");
@@ -165,5 +165,28 @@ class CheckoutAsGuestPaypalTestCest
 		$I->seeElement("//div[@class='ship-via']//div[@class='shipping-information-content']"); // stepKey: checkDisplayedShippingMethodInformationCheckDisplayedCheckoutPagePaymentStep
 		$I->seeElement(".ship-to .shipping-information-content"); // stepKey: checkDisplayedShippingAddressCheckDisplayedCheckoutPagePaymentStep
 		$I->comment("Exiting Action Group [checkDisplayedCheckoutPagePaymentStep] VerifyDisplayedCheckoutPaymentStepActionGroup");
+		$I->comment("Fill Credit card form");
+		$I->click("//*[@id='checkout-payment-method-load']//*[contains(@class, 'payment-group')]//label[normalize-space(.)='Pay by Card (Stripe)']"); // stepKey: selectStripe
+		$I->comment("Entering Action Group [fillCreditCardForm] StripeFillCreditCartFormActionGroup");
+		$I->wait(4); // stepKey: waitFourSecondsFillCreditCardForm
+		$I->switchToIFrame("stripe-payments-card-number iframe"); // stepKey: switchToCardNumberIframeFillCreditCardForm
+		$I->fillField(".InputElement[name='cardnumber']", "4242424242424242"); // stepKey: fillCardNumberFillCreditCardForm
+		$I->switchToIFrame(); // stepKey: switchToDefaultContentFillCreditCardForm
+		$I->switchToIFrame("stripe-payments-card-expiry iframe"); // stepKey: switchToCardExpireIframeFillCreditCardForm
+		$I->fillField(".InputElement[name='exp-date']", "1222"); // stepKey: fillCardExpireFillCreditCardForm
+		$I->switchToIFrame(); // stepKey: switchToDefaultContent1FillCreditCardForm
+		$I->switchToIFrame("stripe-payments-card-cvc iframe"); // stepKey: switchToCardCVCIframeFillCreditCardForm
+		$I->fillField(".InputElement[name='cvc']", "123"); // stepKey: fillCardCVCFillCreditCardForm
+		$I->switchToIFrame(); // stepKey: switchToDefaultContent2FillCreditCardForm
+		$I->wait(2); // stepKey: waitTwoSecondsFillCreditCardForm
+		$I->click(".payment-method._active button.action.primary.checkout"); // stepKey: clickPlaceOrderFillCreditCardForm
+		$I->waitForPageLoad(30); // stepKey: clickPlaceOrderFillCreditCardFormWaitForPageLoad
+		$I->comment("Exiting Action Group [fillCreditCardForm] StripeFillCreditCartFormActionGroup");
+		$I->comment("Entering Action Group [checkDisplayedSuccessPage] VerifyDisplayedSuccessPageActionGroup");
+		$I->waitForElement("div.checkout-success", 30); // stepKey: waitForMainContentSuccessPageDisplayedCheckDisplayedSuccessPage
+		$I->seeInCurrentUrl("/checkout/onepage/success/"); // stepKey: assertSuccessPageUrlCheckDisplayedSuccessPage
+		$I->seeElement(".order-number>strong"); // stepKey: seeOrderNumberInPageContentCheckDisplayedSuccessPage
+		$I->see("testmagentobss@gmail.com", ".success-order .email"); // stepKey: seeCustomerEmailInMainContentCheckDisplayedSuccessPage
+		$I->comment("Exiting Action Group [checkDisplayedSuccessPage] VerifyDisplayedSuccessPageActionGroup");
 	}
 }

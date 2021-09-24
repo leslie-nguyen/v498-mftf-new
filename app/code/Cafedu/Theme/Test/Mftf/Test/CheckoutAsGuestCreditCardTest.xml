@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
-    <test name="CheckoutAsGuestPaypalTest">
+    <test name="CheckoutAsGuestCreditCardTest">
         <annotations>
-            <features value="Checkout as guest with Paypal"/>
-            <stories value="Checkout as guest with Paypal"/>
-            <description value="Checkout as guest with Paypal"/>
+            <features value="Checkout as guest with Credit Card - Stripe"/>
+            <stories value="Checkout as guest with Credit Card - Stripe"/>
+            <description value="Checkout as guest with Credit Card - Stripe"/>
             <severity value="MAJOR"/>
             <testCaseId value="FLOW01"/>
             <group value="CheckoutFlow"/>
@@ -66,5 +66,13 @@
             <argument name="paymentMethodName1" value="{{CheckoutFlowShippingAndPaymentMethodsName.paymentMethodName1}}"/>
             <argument name="paymentMethodName2" value="{{CheckoutFlowShippingAndPaymentMethodsName.paymentMethodName2}}"/>
         </actionGroup>
+<!--        Fill Credit card form-->
+        <click selector="{{CheckoutPaymentSection.paymentMethodByName(CheckoutFlowShippingAndPaymentMethodsName.paymentMethodName1)}}" stepKey="selectStripe"/>
+        <actionGroup ref="StripeFillCreditCartFormActionGroup" stepKey="fillCreditCardForm" />
+<!--            Check display success page-->
+        <actionGroup ref="VerifyDisplayedSuccessPageActionGroup" stepKey="checkDisplayedSuccessPage">
+            <argument name="customerEmail" value="{{CheckoutFlowGuestCustomerData.email}}"/>
+        </actionGroup>
+
     </test>
 </tests>
