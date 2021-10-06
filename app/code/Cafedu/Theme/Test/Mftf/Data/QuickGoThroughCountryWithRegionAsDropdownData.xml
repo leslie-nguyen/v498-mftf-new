@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
-    <entity name="QuickGoThroughData" type="url">
+    <entity name="QuickGoThroughData_a" type="url">
         <data key="homeUrl">/en_ca/</data>
         <data key="cateLandingUrl">/en_ca/mens-cycling-apparel.html</data>
         <data key="cateListingUrl">/en_ca/mens-cycling-jerseys.html</data>
@@ -18,38 +18,43 @@
         <data key="robotTxtUrl">/en_ca/robots.txt</data>
         <data key="sitemapUrl" >/en_ca/sitemap/sitemap_en_ca.xml</data>
     </entity>
-    <entity name="CheckoutFlowProductData" type="text">
+    <entity name="CheckoutFlowProductData_a" type="text">
         <data key="configurableUrl">/en_ca/test-2.html</data>
         <data key="productName" >test 2</data>
         <data key="attributeName" >Color</data>
         <data key="attributeCode" >color</data>
         <data key="attributeOption">Navy</data>
     </entity>
-    <entity name="CheckoutFlowCouponCode" type="text">
+    <entity name="CheckoutFlowCouponCode_a" type="text">
         <data key="code">99999testing99999</data>
     </entity>
-    <entity name="CheckoutFlowGuestCustomerData" type="text">
+    <entity name="CheckoutFlowGuestCustomerData_a" type="text">
         <data key="email">testmagentobss@gmail.com</data>
         <data key="firstname">test</data>
         <data key="lastname">test</data>
     </entity>
-    <entity name="CheckoutFlowCustomerAddressData" type="text">
+    <entity name="CheckoutFlowCustomerAddressData_a" type="text">
         <data key="street">Test Street</data>
         <data key="city">Test city</data>
         <data key="state">Alberta</data>
         <data key="postcode">test</data>
+        <data key="country">CA</data>
         <data key="telephone">234234</data>
-        <data key="phoneCode">France: +33</data>
+        <data key="phoneCode">Canada: +1</data>
     </entity>
-    <entity name="CheckoutFlowShippingAndPaymentMethodsName" type="quote">
+    <entity name="CheckoutFlowShippingAndPaymentMethodsName_a" type="quote">
         <data key="shippingMethodName">Free</data>
         <data key="paymentMethodName1">Pay by Card (Stripe)</data>
         <data key="paymentMethodName2">PayPal What is PayPal?</data>
     </entity>
-    <entity name="CheckoutFlowCreditCartInformation" type="text">
+    <entity name="CheckoutFlowCreditCartInformation_a" type="text">
         <data key="cardNumber">4242424242424242</data>
         <data key="cardExpire">1222</data>
         <data key="cardCVC">123</data>
+    </entity>
+    <entity name="CheckoutFlowCustomerLogin_a" type="text">
+        <data key="email">testmagento321@gmail.com</data>
+        <data key="password">Bss123@#</data>
     </entity>
 
 </entities>
