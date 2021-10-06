@@ -7,7 +7,6 @@
         </annotations>
         <waitForPageLoad stepKey="waitForPageLoad"/>
         <seeElement selector="{{CheckoutCartSummarySection.subTotal}}" stepKey="verifySubTotalPriceDisplayed"/>
-        <seeElement selector="{{CheckoutCartSummarySection.shippingPrice}}" stepKey="verifyShippingPriceDisplayed"/>
         <seeElement selector="{{CheckoutCartSummarySection.orderTotal}}" stepKey="verifyOrderTotalPriceDisplayed"/>
 
         <seeElement selector="{{CheckoutCartSummarySection.proceedToCheckout}}" stepKey="verifyCheckoutButtonDisplayed"/>

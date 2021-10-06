@@ -1,0 +1,23 @@
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="StorefrontCancelAndApplyActionGroup">
+        <annotations>
+            <description>Applies the provided Coupon Code to the Storefront Shopping Cart.</description>
+        </annotations>
+        <arguments>
+            <argument name="coupon"/>
+        </arguments>
+        <!--        In this website, after logged in the customer account might saved previous discount code,
+        therefore click on the Button in the form before fill the field will cancel all discount already applied-->
+        <conditionalClick selector="{{CheckoutCartSummarySection.discountTab}}" dependentSelector="{{StorefrontSalesRuleCartCouponSection.couponField}}" visible="false" stepKey="expandDiscountTab1"/>
+        <waitForElementVisible selector="{{StorefrontSalesRuleCartCouponSection.couponField}}" stepKey="waitForCouponField1"/>
+        <click selector="#discount-coupon-form button" stepKey="cancelAnyCouponAlreadyApplied"/>
+        <waitForPageLoad stepKey="waitForPageLoad1"/>
+        <conditionalClick selector="{{CheckoutCartSummarySection.discountTab}}" dependentSelector="{{StorefrontSalesRuleCartCouponSection.couponField}}" visible="false" stepKey="expandDiscountTab2"/>
+        <waitForElementVisible selector="{{StorefrontSalesRuleCartCouponSection.couponField}}" stepKey="waitForCouponField2"/>
+        <fillField userInput="{{coupon.code}}" selector="{{StorefrontSalesRuleCartCouponSection.couponField}}" stepKey="fillCouponField"/>
+        <click selector="{{StorefrontSalesRuleCartCouponSection.applyButton}}" stepKey="clickApplyButton"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <seeElement selector="{{CheckoutCartSummarySection.discountAmount}}" stepKey="verifyDiscountAmountDisplayed"/>
+    </actionGroup>
+</actionGroups>

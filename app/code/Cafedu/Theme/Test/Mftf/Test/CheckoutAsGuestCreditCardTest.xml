@@ -46,11 +46,9 @@
         </actionGroup>
 <!--        Enter coupon code-->
         <grabTextFrom selector="{{CheckoutCartSummarySection.orderTotal}}" stepKey="grabTotalBeforeAppliedDiscount"/>
-        <conditionalClick selector="{{CheckoutCartSummarySection.discountTab}}" dependentSelector="{{StorefrontSalesRuleCartCouponSection.couponField}}" visible="false" stepKey="expandDiscountTab"/>
-        <actionGroup ref="StorefrontApplyCouponActionGroup" stepKey="enterCouponCode">
+        <actionGroup ref="StorefrontCancelAndApplyActionGroup" stepKey="enterCouponCode">
             <argument name="coupon" value="CheckoutFlowCouponCode"/>
         </actionGroup>
-        <seeElement selector="{{CheckoutCartSummarySection.discountAmount}}" stepKey="verifyDiscountAmountDisplayed"/>
 <!--        Check redirect to checkout page-->
         <click selector="{{CheckoutCartSummarySection.proceedToCheckout}}" stepKey="clickCheckoutButtonInCheckoutPage"/>
 <!--        Check display checkout page - Shipping step, Filling Email, address form & proceed to Payment tep-->

@@ -1,0 +1,17 @@
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="AAPaypalSandboxActionGroup">
+        <annotations>
+            <description>Login on Paypal Sandbox. Select Payment method. Clicks on Paynow.</description>
+        </annotations>
+        <arguments>
+            <argument name="customerEmail" type="string"/>
+            <argument name="customerPwd" type="string"/>
+        </arguments>
+        <waitForElementVisible selector="{{AAPaypalSandboxLoginSection.paypalEmail}}" stepKey="waitForElementToBeVisible"/>
+        <fillField  stepKey="fillEmail" userInput="{{customerEmail}}" selector="{{AAPaypalSandboxLoginSection.paypalEmail}}"/>
+        <fillField  stepKey="fillPassword" userInput="{{customerPwd}}" selector="{{AAPaypalSandboxLoginSection.paypalPassword}}"/>
+        <click stepKey="clickSignInButton" selector="{{AAPaypalSandboxLoginSection.paypalSignIn}}"/>
+
+    </actionGroup>
+</actionGroups>

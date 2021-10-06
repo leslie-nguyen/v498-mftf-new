@@ -13,7 +13,6 @@
         <waitForElement selector="{{CheckoutSuccessMainSection.success}}" stepKey="waitForMainContentSuccessPageDisplayed"/>
         <seeInCurrentUrl url="{{CheckoutPage.url}}/onepage/success/" stepKey="assertSuccessPageUrl"/>
         <seeElement selector="{{CheckoutSuccessMainSection.orderNumber22}}" stepKey="seeOrderNumberInPageContent"/>
-        <see userInput="{{customerEmail}}" selector="{{CheckoutSuccessRegisterSection.customerEmail}}" stepKey="seeCustomerEmailInMainContent"/>
 
     </actionGroup>
 </actionGroups>

@@ -1,0 +1,11 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="StorefrontCustomerSignInPopupFormSection">
+        <element name="errorMessage" type="text" selector="//aside[@style]//div[@data-ui-id='checkout-cart-validationmessages-message-error']"/>
+        <element name="email" type="input" selector="//aside[@style]//input[@id='emaill']"/>
+        <element name="password" type="input" selector="//aside[@style]//input[@id='pass']"/>
+        <element name="signIn" type="button" selector="//aside[@style]//button[@id='send2']"/>
+        <element name="createAnAccount" type="button" selector="//aside[@style]//button[@class='action secondary']"/>
+        <element name="forgotPassword" type="button" selector="//aside[@style]//a[@class='cafedu-action-password']"/>
+    </section>
+</sections>

@@ -17,7 +17,8 @@
         <seeElement selector="{{CheckoutPaymentSection.orderSummarySubtotal}}" stepKey="checkDisplayedOrderSummarySubtotal"/>
         <seeElement selector="{{StorefrontCheckoutPaymentSection.orderShippingTotalIncluding}}" stepKey="checkDisplayedOrderShippingTotalIncluding"/>
         <seeElement selector="{{CheckoutPaymentSection.orderSummaryTotal}}" stepKey="checkDisplayedOrderSummaryTotal"/>
-        <click selector="{{CheckoutPaymentSection.shipInformationBlock}}" stepKey="openShippingInformationTab"/>
+        <scrollTo selector="{{CheckoutPaymentSection.orderSummaryTotal}}" stepKey="scrollToOrderTotalSummary"/>
+        <conditionalClick selector="{{CheckoutPaymentSection.shipInformationBlock}}" dependentSelector="{{CheckoutPaymentSection.shippingMethodInformation}}" visible="false" stepKey="openShippingInformationTab"/>
         <waitForElement selector="{{CheckoutPaymentSection.shippingMethodInformation}}" stepKey="waitForShippingInformationDisplayed"/>
         <seeElement selector="{{CheckoutPaymentSection.shippingMethodInformation}}" stepKey="checkDisplayedShippingMethodInformation"/>
         <seeElement selector="{{CheckoutPaymentSection.shippingInformationSection}}" stepKey="checkDisplayedShippingAddress"/>

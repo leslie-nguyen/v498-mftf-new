@@ -1,0 +1,8 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="AAPaypalSandboxLoginSection">
+        <element name="paypalEmail" type="input" selector="//input[@id='email']"/>
+        <element name="paypalPassword" type="input" selector="//input[@id='password']"/>
+        <element name="paypalSignIn" type="button" selector="//button[@id='btnLogin']"/>
+    </section>
+</sections>

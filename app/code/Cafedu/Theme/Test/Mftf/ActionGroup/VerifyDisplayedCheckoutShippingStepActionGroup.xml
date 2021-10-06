@@ -9,6 +9,6 @@
         <seeElement selector="#checkout" stepKey="verifyCheckoutContainerInPage"/>
         <seeElement selector="{{CheckoutPaymentSection.cartItemsArea}}" stepKey="checkDisplayedItemListBlock"/>
         <seeElement selector="{{CheckoutShippingMethodsSection.shippingMethodBlock}}" stepKey="checkDisplayedShippingMethodBlock"/>
-        <seeElement selector="{{CheckoutShippingSection.addressForm}}" stepKey="checkDisplayedAddressForm"/>
+        <seeElement selector="{{CheckoutShippingSection.addressBlock}}" stepKey="checkDisplayedAddressForm"/>
     </actionGroup>
 </actionGroups>

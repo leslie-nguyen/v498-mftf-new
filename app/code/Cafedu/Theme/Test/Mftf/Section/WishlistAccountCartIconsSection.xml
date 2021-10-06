@@ -3,8 +3,10 @@
 <sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
     <section name="WishlistAccountCartIconsSection">
-        <element name="WishlistIcon" type="button" selector="a.trigger-auth-wishlist-popup"/>
-        <element name="AccountIcon" type="button" selector="a.trigger-auth-popup"/>
+        <element name="WishlistIcon" type="button" selector=".wishlist-link"/>
+        <element name="AccountIcon" type="button" selector=".authorization-link"/>
+        <element name="MyAccountLink" type="button" selector=".cafedu-customer-account"/>
+        <element name="SignOutLink" type="button" selector=".cafedu-customer-signout"/>
         <element name="MiniCartIcon" type="button" selector="a#cafedu-minicart-overlay"/>
     </section>
 </sections>

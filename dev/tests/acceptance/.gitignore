@@ -6,6 +6,6 @@ tests/_output/*
 tests/functional.suite.yml
 tests/functional/Magento/FunctionalTest/_generated
 vendor/*
-mftf.log
+mftf.log28.09
 /.credentials.example
 /utils/

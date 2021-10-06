@@ -1,9 +1,12 @@
 <sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
     <section name="CheckoutShippingSection">
-        <element name="addressForm" type="block" selector="#co-shipping-form"/>
+        <element name="addressBlock" type="block" selector="#checkout-step-shipping"/>
         <element name="countryPhoneCode" type="select" selector="//select[contains(@name,'cafedu_phone_preffix')]"/>
 
+        <element name="firstNameInPopup" type="input" selector=".control input[name=firstname]"/>
+        <element name="lastNameInPopup" type="input" selector=".control input[name=lastname]"/>
+        <element name="proceedToPayment" type="button" selector="main .button.action.continue.primary"/>
     </section>
 </sections>
 

@@ -1,0 +1,10 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="AACheckoutPaymentSection">
+
+        <element name="paymentPaypal" type="button" selector="//*[@id='paypal_express']"/>
+        <element name="paymentPaypalButton" type="button" selector="//*[@data-bind='click: continueToPayPal, enable: (getCode() == isChecked())']"/>
+
+    </section>
+</sections>
+

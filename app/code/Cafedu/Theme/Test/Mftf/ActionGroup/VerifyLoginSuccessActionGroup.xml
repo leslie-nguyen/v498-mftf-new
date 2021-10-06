@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="VerifyLoginSuccessActionGroup">
+        <annotations>
+            <description>Verify display Account link and Sign out link when hover on account icon in header</description>
+        </annotations>
+        <scrollToTopOfPage stepKey="scrollToTopOfPages"/>
+        <moveMouseOver selector="{{WishlistAccountCartIconsSection.AccountIcon}}" stepKey="hoverOverAccountIcon"/>
+        <makeScreenshot userInput="HoverOnAccountIconAfterLogin" stepKey="screenshotPage"/>
+        <seeElement selector="{{WishlistAccountCartIconsSection.MyAccountLink}}" stepKey="seeMyAccountLink"/>
+        <seeElement selector="{{WishlistAccountCartIconsSection.SignOutLink}}" stepKey="seeSignOutLink"/>
+    </actionGroup>
+</actionGroups>

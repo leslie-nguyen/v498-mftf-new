@@ -1,0 +1,6 @@
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <section name="AAPaypalSandboxPaymentSection">
+        <element name="paypalPayNowButton" type="button" selector="//button[@id='payment-submit-btn']"/>
+    </section>
+</sections>

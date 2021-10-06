@@ -2,15 +2,21 @@
 <actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
     <actionGroup name="StripeFillCreditCartFormActionGroup">
+        <arguments>
+            <argument name="cardNumber" type="string"/>
+            <argument name="cardExpire" type="string"/>
+            <argument name="cardCVC" type="string"/>
+        </arguments>
+
         <wait time="4" stepKey="waitFourSeconds"/>
         <switchToIFrame selector="{{StripeCreditCardFormSection.cardNumberIframe}}" stepKey="switchToCardNumberIframe"/>
-        <fillField userInput="{{CheckoutFlowCreditCartInformation.cardNumber}}" selector="{{StripeCreditCardFormSection.cardNumber}}" stepKey="fillCardNumber"/>
+        <fillField userInput="{{cardNumber}}" selector="{{StripeCreditCardFormSection.cardNumber}}" stepKey="fillCardNumber"/>
         <switchToIFrame stepKey="switchToDefaultContent"/>
         <switchToIFrame selector="{{StripeCreditCardFormSection.cardExpireIframe}}" stepKey="switchToCardExpireIframe"/>
-        <fillField userInput="{{CheckoutFlowCreditCartInformation.cardExpire}}" selector="{{StripeCreditCardFormSection.cardExpire}}" stepKey="fillCardExpire"/>
+        <fillField userInput="{{cardExpire}}" selector="{{StripeCreditCardFormSection.cardExpire}}" stepKey="fillCardExpire"/>
         <switchToIFrame stepKey="switchToDefaultContent1"/>
         <switchToIFrame selector="{{StripeCreditCardFormSection.cardCVCIframe}}" stepKey="switchToCardCVCIframe"/>
-        <fillField userInput="{{CheckoutFlowCreditCartInformation.cardCVC}}" selector="{{StripeCreditCardFormSection.cardCVC}}" stepKey="fillCardCVC"/>
+        <fillField userInput="{{cardCVC}}" selector="{{StripeCreditCardFormSection.cardCVC}}" stepKey="fillCardCVC"/>
         <switchToIFrame stepKey="switchToDefaultContent2"/>
         <wait time="2" stepKey="waitTwoSeconds"/>
         <click selector="{{CheckoutPaymentSection.placeOrder}}" stepKey="clickPlaceOrder"/>

@@ -1,0 +1,30 @@
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <actionGroup name="AddNewShippingAddressInPopupWithRegionAsTextActionGroup" >
+        <annotations>
+            <description>Add new address in Storefront Checkout page section for country with region/state field as text.
+                Selects the a Shipping Method by name. Clicks on Next.</description>
+        </annotations>
+        <arguments>
+            <argument name="customerVar"/>
+            <argument name="customerAddressVar"/>
+            <argument name="shippingMethod" defaultValue="" type="string"/>
+        </arguments>
+        <fillField selector="{{CheckoutShippingSection.firstNameInPopup}}" userInput="{{customerVar.firstname}}" stepKey="enterFirstName"/>
+        <fillField selector="{{CheckoutShippingSection.lastNameInPopup}}" userInput="{{customerVar.lastname}}" stepKey="enterLastName"/>
+        <fillField selector="{{CheckoutShippingSection.street}}" userInput="{{customerAddressVar.street[0]}}" stepKey="enterStreet"/>
+        <fillField selector="{{CheckoutShippingSection.city}}" userInput="{{customerAddressVar.city}}" stepKey="enterCity"/>
+        <fillField selector="{{CheckoutShippingSection.postcode}}" userInput="{{customerAddressVar.postcode}}" stepKey="enterPostcode"/>
+        <fillField selector="{{CheckoutShippingSection.telephone}}" userInput="{{customerAddressVar.telephone}}" stepKey="enterTelephone"/>
+        <fillField selector="{{CheckoutShippingSection.stateInput}}" userInput="{{customerAddressVar.state}}" stepKey="enterState"/>
+        <click selector="{{CheckoutShippingSection.saveAddress}}" stepKey="clickSaveAddress"/>
+        <waitForLoadingMaskToDisappear stepKey="waitForLoadingMask"/>
+        <scrollToTopOfPage stepKey="scrollToTopOfPages"/>
+        <waitForElement selector="{{CheckoutShippingMethodsSection.checkShippingMethodByName(shippingMethod)}}" stepKey="waitForShippingMethod"/>
+        <click selector="{{CheckoutShippingMethodsSection.checkShippingMethodByName(shippingMethod)}}" stepKey="selectShippingMethod"/>
+        <waitForElement selector="{{CheckoutShippingSection.next}}" time="30" stepKey="waitForNextButton"/>
+        <click selector="{{CheckoutShippingSection.next}}" stepKey="clickNext"/>
+        <waitForElement selector="{{CheckoutPaymentSection.paymentSectionTitle}}" time="30" stepKey="waitForPaymentSectionLoaded"/>
+        <seeInCurrentUrl url="{{CheckoutPage.url}}/#payment" stepKey="assertCheckoutPaymentUrl"/>
+    </actionGroup>
+</actionGroups>

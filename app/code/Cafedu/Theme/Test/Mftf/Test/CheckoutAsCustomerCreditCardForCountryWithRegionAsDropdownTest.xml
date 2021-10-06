@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="CheckoutAsCustomerCreditCardForCountryWithRegionAsDropdownTest">
+        <annotations>
+            <features value="Checkout as customer with Credit Card - Stripe"/>
+            <stories value="Checkout as customer with Credit Card - Stripe"/>
+            <description value="Checkout as customer with Credit Card - Stripe"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="FLOW02"/>
+            <group value="CheckoutFlow- country with region as dropdown"/>
+        </annotations>
+        <!--        Access Cate Listing page page-->
+        <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
+            <argument name="PageUrl" value="{{QuickGoThroughData_a.cateListingUrl}}"/>
+        </actionGroup>
+        <actionGroup ref="CloseCookiePopupActionGroup" stepKey="closeCookiePopup"/>
+        <!--        Login customer account and verify if customer login success-->
+        <wait time="3" stepKey="waitThreeSec"/>
+        <click selector="{{WishlistAccountCartIconsSection.AccountIcon}}" stepKey="openSignInPopup"/>
+        <actionGroup ref="StorefrontCustomerSignInPopUpActionGroup" stepKey="loginCustomerAccount">
+            <argument name="customerEmail" value="{{CheckoutFlowCustomerLogin_a.email}}"/>
+            <argument name="customerPwd" value="{{CheckoutFlowCustomerLogin_a.password}}"/>
+        </actionGroup>
+        <actionGroup ref="VerifyLoginSuccessActionGroup" stepKey="verifyCustomerLoginSuccess" />
+        <amOnPage url="{{QuickGoThroughData_a.cateListingUrl}}" stepKey="redirectToTargetPage"/>
+        <waitForPageLoad stepKey="waitForCategoryPageLoad"/>
+        <!--        Check product link -->
+        <actionGroup ref="VerifyFirstProductLinkInProductListingPageActionGroup" stepKey="verifyFirstProductLinkInCateListingPage"/>
+        <!--        Check add product to cart & verify in mini cart-->
+        <amOnPage url="{{CheckoutFlowProductData_a.configurableUrl}}" stepKey="accessConfigurablePdp"/>
+        <waitForPageLoad stepKey="waitForProductPageLoad"/>
+        <actionGroup ref="AddConfigurableProductToCartActionGroup" stepKey="addConfigurablePrdToCart">
+            <argument name="attributeCode" value="{{CheckoutFlowProductData_a.attributeCode}}"/>
+            <argument name="attributeOption" value="{{CheckoutFlowProductData_a.attributeOption}}"/>
+        </actionGroup>
+        <grabTextFrom selector="{{ProductMainInfoSection.ProductPrice}}" stepKey="getProductPriceInPdp"/>
+        <actionGroup ref="VerifyMiniCartItemsActionGroup" stepKey="assertItemInMiniCart">
+            <argument name="productName" value="{{CheckoutFlowProductData_a.productName}}"/>
+            <argument name="productPrice" value="{$getProductPriceInPdp}"/>
+            <argument name="productAttribute" value="{{CheckoutFlowProductData_a.attributeName}}"/>
+            <argument name="productOption" value="{{CheckoutFlowProductData_a.attributeOption}}"/>
+        </actionGroup>
+        <!--        Check redirect to Cart page-->
+        <conditionalClick selector="{{WishlistAccountCartIconsSection.MiniCartIcon}}" dependentSelector="{{StorefrontMinicartSection.blockMiniCart}}" visible="false" stepKey="openMiniCart"/>
+        <click selector="{{StorefrontMinicartSection.goToCheckout}}" stepKey="clickCheckoutButtonInMiniCart"/>
+        <waitForPageLoad stepKey="waitForCartPageLoad"/>
+        <seeInCurrentUrl url="/checkout/cart/" stepKey="seeCartLinkInCurrentUrl"/>
+        <!--        Check cart page display-->
+        <actionGroup ref="VerifyCartSummaryBlockCartTotalBlockAndCheckoutButtonActionGroup" stepKey="verifyCartSummaryCartTotalAndCheckoutButtonDisplayed"/>
+        <actionGroup ref="VerifyCartItemsActionGroup" stepKey="verifyCartItemInformation" >
+            <argument name="productName" value="{{CheckoutFlowProductData_a.productName}}"/>
+            <argument name="productPrice" value="{$getProductPriceInPdp}"/>
+            <argument name="productAttribute" value="{{CheckoutFlowProductData_a.attributeName}}"/>
+            <argument name="productOption" value="{{CheckoutFlowProductData_a.attributeOption}}"/>
+        </actionGroup>
+        <!--        Enter coupon code-->
+        <grabTextFrom selector="{{CheckoutCartSummarySection.orderTotal}}" stepKey="grabTotalBeforeAppliedDiscount"/>
+        <actionGroup ref="StorefrontCancelAndApplyActionGroup" stepKey="enterCouponCode">
+            <argument name="coupon" value="CheckoutFlowCouponCode_a"/>
+        </actionGroup>
+        <!--        Check redirect to checkout page-->
+        <click selector="{{CheckoutCartSummarySection.proceedToCheckout}}" stepKey="clickCheckoutButtonInCheckoutPage"/>
+        <!--        Check display checkout page - Shipping step, Filling Email, address form & proceed to Payment tep-->
+        <actionGroup ref="VerifyDisplayedCheckoutShippingStepActionGroup" stepKey="checkDisplayedCheckoutPageShippingStep"/>
+        <click selector="{{CheckoutShippingSection.newAddressButton}}" stepKey="clickAddNewAddressButton"/>
+        <selectOption selector="{{CheckoutShippingSection.countryPhoneCode}}" userInput="{{CheckoutFlowCustomerAddressData_a.phoneCode}}" stepKey="selectPhoneCode"/>
+        <actionGroup ref="AddNewShippingAddressInPopupWithRegionAsDropdownActionGroup" stepKey="fillingEmailAndAddress">
+            <argument name="customerVar" value="CheckoutFlowGuestCustomerData_a"/>
+            <argument name="customerAddressVar" value="CheckoutFlowCustomerAddressData_a"/>
+            <argument name="shippingMethod" value="{{CheckoutFlowShippingAndPaymentMethodsName_a.shippingMethodName}}"/>
+        </actionGroup>
+        <!--        Check payment step display-->
+        <actionGroup ref="VerifyDisplayedCheckoutPaymentStepActionGroup" stepKey="checkDisplayedCheckoutPagePaymentStep">
+            <argument name="paymentMethodName1" value="{{CheckoutFlowShippingAndPaymentMethodsName_a.paymentMethodName1}}"/>
+            <argument name="paymentMethodName2" value="{{CheckoutFlowShippingAndPaymentMethodsName_a.paymentMethodName2}}"/>
+        </actionGroup>
+        <!--        Fill Credit card form-->
+        <click selector="{{CheckoutPaymentSection.paymentMethodByName(CheckoutFlowShippingAndPaymentMethodsName_a.paymentMethodName1)}}" stepKey="selectStripe"/>
+        <actionGroup ref="StripeFillCreditCartFormActionGroup" stepKey="fillCreditCardForm" >
+            <argument name="cardNumber" value="{{CheckoutFlowCreditCartInformation_a.cardNumber}}"/>
+            <argument name="cardExpire" value="{{CheckoutFlowCreditCartInformation_a.cardExpire}}"/>
+            <argument name="cardCVC" value="{{CheckoutFlowCreditCartInformation_a.cardCVC}}"/>
+        </actionGroup>
+        <!--            Check display success page-->
+        <actionGroup ref="VerifyDisplayedSuccessPageActionGroup" stepKey="checkDisplayedSuccessPage">
+            <argument name="customerEmail" value="{{CheckoutFlowCustomerLogin_a.email}}"/>
+        </actionGroup>
+
+    </test>
+</tests>

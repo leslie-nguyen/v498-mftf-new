@@ -1,8 +1,10 @@
 <suites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
-    <suite name="DemoSuite1">
+    <suite name="BasicFunction">
         <include>
-            <group name="QuickGoThrough"/>
+<!--            <group name="QuickGoThrough"/>-->
+            <group name="CheckoutFlow- country with region as dropdown"/>
+            <group name="CheckoutFlow- country with region as text"/>
         </include>
     </suite>
 </suites>

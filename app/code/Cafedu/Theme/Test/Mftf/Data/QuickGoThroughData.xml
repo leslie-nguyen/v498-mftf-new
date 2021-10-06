@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <entity name="QuickGoThroughData" type="url">
+        <data key="homeUrl">/en_row/</data>
+        <data key="cateLandingUrl">/en_row/mens-cycling-apparel.html</data>
+        <data key="cateListingUrl">/en_row/mens-cycling-jerseys.html</data>
+        <data key="shopTheLookUrl">/en_row/mens-ss21-collection-shop-the-look.html</data>
+        <data key="lookDetailUrl">/en_row/mens-ss21-collection-shop-the-look-floriane-petunia-marinette-navy.html</data>
+        <data key="pdpUrl">/en_row//men-cycling-jersey-floriane-petunia.html</data>
+        <data key="laGazetteListUrl">/en_row/la-gazette/</data>
+        <data key="laGazettePostUrl">/en_row/la-gazette/a-coastal-classico/</data>
+        <data key="shopPageUrl">/en_row/shops</data>
+        <data key="cartUrl">/en_row/checkout/cart/</data>
+        <data key="cmsUrl">/en_row/orders-returns</data>
+        <data key="notFoundUrl">/en_row/aaaaaaaaaa</data>
+        <data key="loginUrl">/en_row/customer/account/login</data>
+        <data key="robotTxtUrl">/en_row/robots.txt</data>
+        <data key="sitemapUrl" >/en_row/sitemap/sitemap_en_row.xml</data>
+    </entity>
+    <entity name="CheckoutFlowProductData" type="text">
+        <data key="configurableUrl">/en_row/test-2.html</data>
+        <data key="productName" >test 2</data>
+        <data key="attributeName" >Color</data>
+        <data key="attributeCode" >color</data>
+        <data key="attributeOption">Navy</data>
+    </entity>
+    <entity name="CheckoutFlowCouponCode" type="text">
+        <data key="code">99999testing99999</data>
+    </entity>
+    <entity name="CheckoutFlowGuestCustomerData" type="text">
+        <data key="email">testmagentobss+9@gmail.com</data>
+        <data key="firstname">test</data>
+        <data key="lastname">test</data>
+    </entity>
+    <entity name="CheckoutFlowCustomerAddressData" type="text">
+        <data key="street">Test Street</data>
+        <data key="city">Test city</data>
+        <data key="state">Alberta</data>
+        <data key="postcode">test</data>
+        <data key="telephone">234234</data>
+        <data key="phoneCode">France: +33</data>
+    </entity>
+    <entity name="PaypalSandboxLogin" type="text">
+        <data key="paypalEmail">testmagento321@gmail.com</data>
+        <data key="paypalPassword">Bss123@#</data>
+    </entity>
+</entities>
+
