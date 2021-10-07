@@ -4,6 +4,7 @@
 
     <test name="AACheckoutAsGuestPaypalTest">
         <annotations>
+            <title value="Checkout As Guest with Paypal"></title>
             <features value="Checkout as guest with Paypal"/>
             <stories value="Checkout as guest with Paypal"/>
             <description value="Checkout as guest with Paypal"/>
@@ -16,7 +17,6 @@
         <actionGroup ref="AmOnPageVerifyJSErrorActionGroup" stepKey="accessPageAndVerifyJSError">
             <argument name="PageUrl" value="{{QuickGoThroughData.cateListingUrl}}"/>
         </actionGroup>
-        <actionGroup ref="CloseCookiePopupActionGroup" stepKey="closeCookiePopup"/>
 
         <!--        Check product link -->
         <actionGroup ref="VerifyFirstProductLinkInProductListingPageActionGroup" stepKey="verifyFirstProductLinkInCateListingPage"/>
@@ -63,12 +63,6 @@
             <argument name="customerAddressVar" value="CheckoutFlowCustomerAddressData"/>
         </actionGroup>
 
-        <!--        Check payment step display-->
-        <actionGroup ref="VerifyDisplayedCheckoutPaymentStepActionGroup" stepKey="checkDisplayedCheckoutPagePaymentStep">
-            <argument name="paymentMethodName1" value="{{CheckoutFlowShippingAndPaymentMethodsName.paymentMethodName1}}"/>
-            <argument name="paymentMethodName2" value="{{CheckoutFlowShippingAndPaymentMethodsName.paymentMethodName2}}"/>
-        </actionGroup>
-
         <!--        Check redirect to Payment step, click Paypal-->
         <click selector="{{CheckoutShippingSection.proceedToPayment}}" stepKey="clickProceedButtonInCheckoutPage"/>
         <waitForPageLoad time="3" stepKey="waitForPaymentLoad"/>
@@ -84,10 +78,10 @@
         </actionGroup>
 
         <!--        Pay With Paypal -->
-        <waitForElementVisible selector="{{AAPaypalSandboxLoginSection.paypalPayNowButton}}" stepKey="waitForPayNowButtonToBeVisible"/>
         <click selector="{{AAPaypalSandboxPaymentSection.paypalPayNowButton}}" stepKey="clickPayNowButton"/>
 
         <!--        Check display success page-->
+        <wait time="3" stepKey="waitThreeSecPaypalPayment"/>
         <actionGroup ref="VerifyDisplayedSuccessPageActionGroup" stepKey="checkDisplayedSuccessPage">
             <argument name="customerEmail" value="{{CheckoutFlowGuestCustomerData.email}}"/>
         </actionGroup>
